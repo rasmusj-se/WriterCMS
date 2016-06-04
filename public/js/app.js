@@ -47,36 +47,40 @@ writer.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
         /* Admin states */
         .state('base.admin', {
             url: '/admin',
-            templateUrl: 'partials/admin/login.html',
+            templateUrl: 'partials/admin/base.html',
             authenticate: true
         })
+        .state('base.admin.login', {
+            templateUrl: 'partials/admin/login.html',
+            controller: 'LoginCtrl'
+        })
         .state('base.admin.dashboard', {
-            url: '/admin/dashboard',
+            url: '/dashboard',
             templateUrl: 'partials/admin/dashboard.html',
             authenticate: true
         })
         .state('base.admin.posts', {
-            url: '/admin/posts',
+            url: '/posts',
             templateUrl: 'partials/admin/posts.html',
             authenticate: true
         })
         .state('base.admin.posts.new', {
-            url: '/admin/posts/new',
+            url: '/new',
             templateUrl: 'partials/admin/posts-new.html',
             authenticate: true
         })
         .state('base.admin.users', {
-            url: '/admin/users',
+            url: '/users',
             templateUrl: 'partials/admin/users.html',
             authenticate: true
         })
         .state('base.admin.users.new', {
-            url: '/admin/users/new',
+            url: '/new',
             templateUrl: 'partials/admin/users-new.html',
             authenticate: true
         })
         .state('base.admin.settings', {
-            url: '/admin/settings',
+            url: '/settings',
             templateUrl: 'partials/admin/settings.html',
             authenticate: true
         })
@@ -84,12 +88,17 @@ writer.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 
 /* Adding authentication */
 writer.run(function ($rootScope, $state, AuthService) {
-    $rootScope.authenticated = true;
+    $rootScope.authenticated = AuthService.isAuthenticated();
 
     $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
         if (toState.authenticate && !AuthService.isAuthenticated()) {
-            $state.transitionTo('base.admin');
+            $state.transitionTo('base.admin.login');
             event.preventDefault(); 
         }
+    });
+    $rootScope.$on('$stateChangeSuccess', function (evt, toState) {
+        if (toState.name === 'base.admin') {
+            $state.go('base.admin.dashboard');
+        }  
     });
 });
