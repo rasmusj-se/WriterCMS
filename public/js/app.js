@@ -14,7 +14,7 @@ moment.locale('sv');
 /* Router setup */
 writer.config(function($stateProvider, $urlRouterProvider) {
     /* Fallback URL */
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/posts');
 
     $stateProvider
         .state('base', {
@@ -22,9 +22,14 @@ writer.config(function($stateProvider, $urlRouterProvider) {
             controller: 'BaseCtrl',
             abstract: true
         })
-        .state('base.home', {
-            url: '/',
-            templateUrl: 'partials/home.html',
-            controller: 'HomeCtrl',
+        .state('base.posts', {
+            url: '/posts',
+            templateUrl: 'partials/posts/posts.html',
+            controller: 'PostCtrl',
+        })
+        .state('base.postdetail', {
+            url: '/:id',
+            templateUrl: 'partials/posts/posts-detail.html',
+            controller: 'PostDetailCtrl'
         })
 });
