@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var inject = require('gulp-inject');
 var mainBowerFiles = require('gulp-main-bower-files');
+var server = require('gulp-server-livereload');
 
 gulp.task('bower', function() {
     return gulp.src('./bower.json')
@@ -36,3 +37,13 @@ gulp.task('js-inject', function() {
 });
 
 gulp.task('inject', ['js-inject', 'bower-inject']);
+
+gulp.task('default', function() {
+    gulp.watch('./public/js/**/*.js', ['js-inject']);
+
+    return gulp.src('./public')
+        .pipe(server({
+            livereload: true,
+            host: '0.0.0.0'
+        }));
+});

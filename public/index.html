@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="writer">
 <head>
     <title>Writer</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
     <!-- bower:css -->
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap-theme.min.css">
@@ -10,36 +12,20 @@
     <!-- inject:css -->
     <!-- endinject -->
 </head>
-<body class="text-center" ng-app="writer">
-
+<body>
+    <div ui-view></div>
     <!-- bower:js -->
     <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="lib/jquery/dist/jquery.js"></script>
     <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
     <!-- endinject -->
     <!-- inject:js -->
     <script src="js/app.js"></script>
+    <script src="js/controllers/BaseCtrl.js"></script>
+    <script src="js/controllers/HomeCtrl.js"></script>
+    <script src="js/services/PostService.js"></script>
+    <script src="js/filters/TrustFilter.js"></script>
     <!-- endinject -->
-    <script type="text/javascript">
-    function createPost() {
-        var data = {
-            title: $('#title').val(),
-            content: $('#content').val()
-        }
-
-        $.ajax({
-            method: 'POST',
-            url: '/posts',
-            data: JSON.stringify(data),
-            contentType: 'application/json',
-            success: function(response) {
-                console.log(response);
-            },
-            error: function(err) {
-                console.log(err);
-            }
-        });
-    }
-    </script>
 </body>
 </html>

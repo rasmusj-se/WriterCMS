@@ -1,7 +1,7 @@
 {
   "name": "Writer",
   "version": "0.0.1",
-  "description": "Clean, extremely simple writing tool for bloggers.",
+  "description": "Clean, extremely simple writing tool for developers.",
   "author": "Axel Niklasson <info@axelniklasson.se>",
   "scripts": {
     "start": "nodemon ./server.js"
@@ -13,6 +13,7 @@
     "gulp": "^3.9.1",
     "gulp-inject": "^4.1.0",
     "gulp-main-bower-files": "^1.5.1",
+    "gulp-server-livereload": "^1.8.0",
     "marked": "^0.3.5",
     "mongoose": "^4.4.19",
     "nodemon": "^1.9.2"

@@ -11,9 +11,10 @@ mongoose.connect(db, { server: { reconnectTries: Number.MAX_VALUE } });
 var app = express();
 app.use(express.static('public'));
 app.use(bodyParser.json());
-
-app.get('/', function (req, res) {
-    res.send('Hello World!');
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
 });
 
 /* Routing */
