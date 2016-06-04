@@ -12,7 +12,10 @@ angular.module('writer.directives', []);
 moment.locale('sv');
 
 /* Router setup */
-writer.config(function($stateProvider, $urlRouterProvider) {
+writer.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
+    /* API Base URL */
+    $httpProvider.defaults.base_url = 'http://localhost:3000';
+
     /* Fallback URL */
     $urlRouterProvider.otherwise('/posts');
 
