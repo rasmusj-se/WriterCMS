@@ -7,7 +7,6 @@ module.controller('LoginCtrl', function($rootScope, $scope, $state, AuthService)
             localStorage.setItem('token', response.token);
             $rootScope.authenticated = true;
             $state.go('base.admin.dashboard');
-            location.reload();
         }).error(function(err) {
             console.log(err);
         });
