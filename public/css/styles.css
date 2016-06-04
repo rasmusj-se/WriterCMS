@@ -15,7 +15,7 @@
 
 .post .post-header {
     padding: 0 2%;
-    height: 50px;
+    height: 60px;
     background: #66B3FF;
 }
 
@@ -26,11 +26,19 @@
 }
 
 .post .post-header .post-author img {
-    width: 25%;
+    height: 50px;
+    position: relative;
+    top: 5px;
+    border: 3px solid white;
+    border-radius: 50%;
 }
 
 .post .post-header .post-date {
     width: 40%;
+    height: 10px;
+    position: relative;
+    top: 20px;
+    font-size: 110%;
     float: left;
     text-align: right;
 }
@@ -39,4 +47,20 @@
     padding: 2%;
     max-height: 300px;
     overflow: hidden;
+}
+
+.post .post-content h1 {
+    font-size: 200%;
+}
+
+.post .post-content h2 {
+    font-size: 175%;
+}
+
+.post .post-content h3 {
+    font-size: 150%;
+}
+
+.post .post-content h4 {
+    font-size: 125%;
 }
