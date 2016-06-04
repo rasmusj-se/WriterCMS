@@ -2,8 +2,8 @@
     <h1 class="heading center">Admin</h1>
     <hr class="heading">
     <form id="loginForm">
-        <input type="text" name="username" placeholder="Användarnamn">
-        <input type="password" name="password" placeholder="Lösenord">
+        <input ng-model="username" type="text" placeholder="Användarnamn">
+        <input ng-model="password" type="password" placeholder="Lösenord">
         <button ng-click="logIn()">Logga in</button>
     </form>
 </div>

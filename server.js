@@ -21,20 +21,24 @@ app.use(function(req, res, next) {
 app.set('tokenSecret', require('./config/token.js'));
 
 app.use(function(req, res, next) {
-    console.log(req.path);
-    if (req.path != '/auth/login' && req.path != '/posts') {
-        var token = req.body.token || req.query.token || req.headers['token'];
+    if (req.path !== '/auth/login') {
 
-        if (token) {
-            jwt.verify(token, app.get('tokenSecret'), function(err, decoded) {
-                if (err) {
-                    return res.status(401).send('No token provided');
-                } else {
-                    next();
-                }
-            });
+        if (req.method === 'GET' && req.path === '/posts') {
+            next();
         } else {
-            return res.status(400).send('No token provided');
+            var token = req.body.token || req.query.token || req.headers['token'];
+
+            if (token) {
+                jwt.verify(token, app.get('tokenSecret'), function(err, decoded) {
+                    if (err) {
+                        return res.status(401).send('Invalid token.');
+                    } else {
+                        next();
+                    }
+                });
+            } else {
+                return res.status(400).send('No token provided.');
+            }
         }
     } else {
         next();

@@ -5,13 +5,20 @@ module.factory('AuthService', function($http, $rootScope) {
         isAuthenticated: function() {
             return !(localStorage.getItem('token') === null);
         },
-        logIn: function(username, password) {
-            localStorage.setItem('token', '98a7syd98agsd98ygas7dyfg');
-            $rootScope.authenticated = true;
+        logIn: function(credentials) {
+            var req = {
+                method: 'POST',
+                url: $http.defaults.base_url + '/auth/login',
+                data: credentials,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+
+            return $http(req);
         },
         logOut: function() {
             localStorage.removeItem('token');
-            $rootScope.authenticated = false;
         }
     }
 });
