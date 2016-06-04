@@ -19,7 +19,7 @@ gulp.task('bower', function() {
         .pipe(gulp.dest('./public/lib'));
 });
 
-gulp.task('bower-inject', ['bower'], function() {
+gulp.task('lib-inject', ['bower'], function() {
     // Force jQuery to load before other libs, given dependency problems
     var sources = gulp.src(['./public/lib/jquery.js', './public/lib/**/*.js', './public/lib/**/*.css'], {read: false});
 
@@ -36,10 +36,20 @@ gulp.task('js-inject', function() {
         .pipe(gulp.dest('./public'));
 });
 
-gulp.task('inject', ['js-inject', 'bower-inject']);
+gulp.task('styles-inject', function() {
+    var sources = gulp.src(['./public/css/**/*.css'], {read: false});
 
-gulp.task('default', function() {
+    return gulp.src('./public/index.html')
+        .pipe(inject(sources, {relative: true}))
+        .pipe(gulp.dest('./public'));
+});
+
+gulp.task('inject', ['js-inject', 'lib-inject', 'styles-inject']);
+
+gulp.task('default', ['inject'], function() {
     gulp.watch('./public/js/**/*.js', ['js-inject']);
+    gulp.watch('./public/css/**/*.css', ['styles-inject']);
+    gulp.watch('./bower_components/**/*', ['lib-inject']);
 
     return gulp.src('./public')
         .pipe(server({

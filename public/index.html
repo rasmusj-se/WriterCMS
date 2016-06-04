@@ -10,11 +10,13 @@
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
     <!-- endinject -->
     <!-- inject:css -->
+    <link rel="stylesheet" href="css/styles.css">
     <!-- endinject -->
 </head>
 <body>
     <div ui-view></div>
     <!-- bower:js -->
+    <script src="lib/moment.js"></script>
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="lib/jquery/dist/jquery.js"></script>
@@ -24,8 +26,9 @@
     <script src="js/app.js"></script>
     <script src="js/controllers/BaseCtrl.js"></script>
     <script src="js/controllers/HomeCtrl.js"></script>
-    <script src="js/services/PostService.js"></script>
+    <script src="js/filters/DateFilter.js"></script>
     <script src="js/filters/TrustFilter.js"></script>
+    <script src="js/services/PostService.js"></script>
     <!-- endinject -->
 </body>
 </html>

@@ -8,6 +8,9 @@ angular.module('writer.services', []);
 angular.module('writer.filters', []);
 angular.module('writer.directives', []);
 
+/* Moment.js init */
+moment.locale('sv');
+
 /* Router setup */
 writer.config(function($stateProvider, $urlRouterProvider) {
     /* Fallback URL */
