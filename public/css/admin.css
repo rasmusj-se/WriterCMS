@@ -1,0 +1,25 @@
+#loginForm {
+    width: 90%;
+    margin: 10% auto;
+    padding-top: 5%;
+}
+
+#loginForm input {
+    width: 90%;
+    margin: 2.5% auto;
+    background: white;
+    padding-left: 5%;
+    height: 50px;
+    font-size: 130%;
+    border: 1px solid #66B3FF;
+}
+
+#loginForm button {
+    width: 90%;
+    margin: 2.5% auto;
+    background: #66B3FF;
+    height: 50px;
+    font-size: 130%;
+    color: white;
+    border: none;
+}

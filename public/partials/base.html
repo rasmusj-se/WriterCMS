@@ -17,7 +17,20 @@
         <li><a ui-sref="base.posts">Blogg</a></li>
         <li><a ui-sref="base.route">Rutt</a></li>
         <li><a ui-sref="base.about">Om oss</a></li>
-        <li><a ui-sref="admin">Admin</a></li>
+        <li ng-show="!authenticated"><a ui-sref="base.admin">Admin</a></li>
+        <li ng-show="authenticated" class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Skriv nytt inlägg</a></li>
+            <li><a href="#">Hantera inlägg</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Lägg till användare</a></li>
+            <li><a href="#">Hantera användare</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Inställningar</a></li>
+            <li><a href="#">Logga ut</a></li>
+          </ul>
+        </li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

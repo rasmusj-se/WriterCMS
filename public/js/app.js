@@ -41,6 +41,24 @@ writer.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
         })
         .state('base.about', {
             url: '/about',
-            templateUrl: 'partials/about.html'
+            templateUrl: 'partials/about.html',
+            authenticate: true
         })
+        .state('base.admin', {
+            url: '/admin',
+            templateUrl: 'partials/admin/login.html',
+            authenticate: true
+        })
+});
+
+/* Adding authentication */
+writer.run(function ($rootScope, $state, AuthService) {
+    $rootScope.authenticated = true;
+
+    $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+        if (toState.authenticate && !AuthService.isAuthenticated()) {
+            $state.transitionTo('base.admin');
+            event.preventDefault(); 
+        }
+    });
 });
