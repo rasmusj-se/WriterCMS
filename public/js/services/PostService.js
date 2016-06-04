@@ -5,7 +5,7 @@ module.factory('PostService', function($http) {
         getAllPosts: function() {
             var req = {
                 method: 'GET',
-                url: 'http://localhost:3000/posts',
+                url: $http.defaults.base_url + '/posts',
                 headers: {
                     'Content-Type': 'application/json'
                 }
@@ -16,7 +16,7 @@ module.factory('PostService', function($http) {
         getPostByID: function(ID) {
             var req = {
                 method: 'GET',
-                url: 'http://localhost:3000/posts/' + ID,
+                url: $http.defaults.base_url + '/posts/' + ID,
                 headers: {
                     'Content-Type': 'application/json'
                 }

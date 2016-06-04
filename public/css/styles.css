@@ -8,6 +8,16 @@
     padding-left: 5%;
 }
 
+h1.heading {
+    text-align: center;
+}
+
+hr.heading {
+    width: 60%;
+    height: 1px;
+    background-color: #66B3FF;
+}
+
 .post {
     width: 90%;
     background: #EFEFEF;

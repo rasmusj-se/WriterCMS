@@ -1,11 +1,15 @@
-<div class="posts" ng-repeat="post in posts">
-    <div class="post" ui-sref="base.postdetail({ id: post._id })">
-        <div class="post-header"">
-            <div class="post-author">
-                <img src="img/axel.png">
+<div>
+    <h1 class="heading center">Senaste inläggen</h1>
+    <hr class="heading">
+    <div class="posts" ng-repeat="post in posts">
+        <div class="post" ui-sref="base.postdetail({ id: post._id })">
+            <div class="post-header"">
+                <div class="post-author">
+                    <img src="img/axel.png">
+                </div>
+                <div class="post-date">{{ post.date | prettyDate }}</div>
             </div>
-            <div class="post-date">{{ post.date | prettyDate }}</div>
+            <div class="post-content" ng-bind-html="post.content | trust"></div>
         </div>
-        <div class="post-content" ng-bind-html="post.content | trust"></div>
     </div>
 </div>
