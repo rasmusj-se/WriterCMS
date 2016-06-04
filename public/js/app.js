@@ -44,9 +44,40 @@ writer.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
             templateUrl: 'partials/about.html',
             authenticate: true
         })
+        /* Admin states */
         .state('base.admin', {
             url: '/admin',
             templateUrl: 'partials/admin/login.html',
+            authenticate: true
+        })
+        .state('base.admin.dashboard', {
+            url: '/admin/dashboard',
+            templateUrl: 'partials/admin/dashboard.html',
+            authenticate: true
+        })
+        .state('base.admin.posts', {
+            url: '/admin/posts',
+            templateUrl: 'partials/admin/posts.html',
+            authenticate: true
+        })
+        .state('base.admin.posts.new', {
+            url: '/admin/posts/new',
+            templateUrl: 'partials/admin/posts-new.html',
+            authenticate: true
+        })
+        .state('base.admin.users', {
+            url: '/admin/users',
+            templateUrl: 'partials/admin/users.html',
+            authenticate: true
+        })
+        .state('base.admin.users.new', {
+            url: '/admin/users/new',
+            templateUrl: 'partials/admin/users-new.html',
+            authenticate: true
+        })
+        .state('base.admin.settings', {
+            url: '/admin/settings',
+            templateUrl: 'partials/admin/settings.html',
             authenticate: true
         })
 });

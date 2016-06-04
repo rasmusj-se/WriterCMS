@@ -21,14 +21,15 @@
         <li ng-show="authenticated" class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Skriv nytt inlägg</a></li>
-            <li><a href="#">Hantera inlägg</a></li>
+            <li><a ui-sref="base.admin.dashboard">Dashboard</a></li>
+            <li><a ui-sref="base.admin.posts.new">Skriv nytt inlägg</a></li>
+            <li><a ui-sref="base.admin.posts">Hantera inlägg</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">Lägg till användare</a></li>
-            <li><a href="#">Hantera användare</a></li>
+            <li><a ui-sref="base.admin.users.new">Lägg till användare</a></li>
+            <li><a ui-sref="base.admin.users">Hantera användare</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">Inställningar</a></li>
-            <li><a href="#">Logga ut</a></li>
+            <li><a ui-sref="base.admin.settings">Inställningar</a></li>
+            <li><a>Logga ut</a></li>
           </ul>
         </li>
       </ul>
