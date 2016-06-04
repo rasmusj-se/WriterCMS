@@ -22,8 +22,7 @@ app.set('tokenSecret', require('./config/token.js'));
 
 app.use(function(req, res, next) {
     if (req.path !== '/auth/login') {
-
-        if (req.method === 'GET' && req.path === '/posts') {
+        if (req.method === 'GET' && req.path.split('/')[1] == 'posts') {
             next();
         } else {
             var token = req.body.token || req.query.token || req.headers['token'];
