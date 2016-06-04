@@ -28,7 +28,7 @@ writer.config(function($stateProvider, $urlRouterProvider) {
             controller: 'PostCtrl',
         })
         .state('base.postdetail', {
-            url: '/:id',
+            url: '/posts/:id',
             templateUrl: 'partials/posts/posts-detail.html',
             controller: 'PostDetailCtrl'
         })

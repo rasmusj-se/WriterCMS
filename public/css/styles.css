@@ -4,6 +4,10 @@
     transform: translateY(-50%);
 }
 
+.back {
+    padding-left: 5%;
+}
+
 .post {
     width: 90%;
     background: #EFEFEF;
@@ -48,6 +52,10 @@
     padding: 2%;
     max-height: 300px;
     overflow: hidden;
+}
+
+.post .post-detailed-content {
+    padding: 2%;
 }
 
 .post .post-content h1 {
