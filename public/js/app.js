@@ -32,4 +32,12 @@ writer.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: 'partials/posts/posts-detail.html',
             controller: 'PostDetailCtrl'
         })
+        .state('base.route', {
+            url: '/route',
+            templateUrl: 'partials/route.html'
+        })
+        .state('base.about', {
+            url: '/about',
+            templateUrl: 'partials/about.html'
+        })
 });
