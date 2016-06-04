@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Writer</title>
+
+    <!-- bower:css -->
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+    <!-- endinject -->
+    <!-- inject:css -->
+    <!-- endinject -->
+</head>
+<body class="text-center" ng-app="writer">
+
+    <!-- bower:js -->
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/jquery/dist/jquery.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
+    <!-- endinject -->
+    <!-- inject:js -->
+    <script src="js/app.js"></script>
+    <!-- endinject -->
+    <script type="text/javascript">
+    function createPost() {
+        var data = {
+            title: $('#title').val(),
+            content: $('#content').val()
+        }
+
+        $.ajax({
+            method: 'POST',
+            url: '/posts',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            success: function(response) {
+                console.log(response);
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        });
+    }
+    </script>
+</body>
+</html>
