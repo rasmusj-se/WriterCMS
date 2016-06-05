@@ -13,6 +13,11 @@ gulp.task('bower', function() {
                         './dist/css/*.min.*',
                         './dist/fonts/*.*'
                     ]
+                },
+                'blueimp-load-image': {
+                    main: [
+                        './js/load-image.all.min.js'
+                    ]
                 }
             }
         }))

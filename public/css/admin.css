@@ -31,3 +31,40 @@ form button {
     padding: 2%;
     height: 300px;
 }
+
+.new-post input[type="file"] {
+    display: none;
+}
+
+.new-post-gallery {
+    width: 90%;
+    margin: 5% auto;
+}
+
+.new-post-gallery img {
+    width: 25%;
+    max-height: 100px;
+    margin: 2% 4.16666667%;
+    float: left;
+}
+
+.new-post .custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    background: #66B3FF;
+    color: white;
+    font-weight: 400;
+    width: 90%;
+    height: 50px;
+    padding-top: 12px;
+    font-size: 130%;
+    margin-top: 5%;
+}
+
+#picturesInput {
+    margin: auto;
+    margin-top: 5%;
+    width: 90%;
+}

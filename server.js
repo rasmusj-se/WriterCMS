@@ -14,11 +14,16 @@ mongoose.connect(db, { server: { reconnectTries: Number.MAX_VALUE } });
 var app = express();
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: '50mb' }));
 app.use(favicon(__dirname + '/public/img/favicon.ico'));
 /* Enabling CORS */
 app.use(cors());
 app.set('tokenSecret', require('./config/token.js'));
+
+app.use(function(req, res, next) {
+    req.static = express.static('public');
+    next();
+});
 
 app.use(function(req, res, next) {
     if (req.path !== '/auth/login') {

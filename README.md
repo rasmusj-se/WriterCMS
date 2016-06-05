@@ -21,3 +21,6 @@ As long as it is completed and deployed prior to our trip. No need to rush it.
 # Attributions
 ## Success and error icons
 Icons made by [Madebyoliver](http://www.flaticon.com/authors/madebyoliver) from [www.flaticon.com](http://www.flaticon.com) is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/).
+
+## Camera icon
+Icons made by [Daniel Bruce](http://www.flaticon.com/authors/daniel-bruce) from [www.flaticon.com](http://www.flaticon.com) is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/).

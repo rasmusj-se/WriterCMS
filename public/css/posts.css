@@ -64,8 +64,32 @@ hr.heading {
     overflow: hidden;
 }
 
-.post .post-detailed-content {
+.post .post-detailed-content, .post .post-detailed-images-section {
     padding: 2%;
+}
+
+.post-images-section {
+    width: 90%;
+    margin:auto;
+}
+
+.post-images img {
+    width: 50%;
+    float: left;
+    max-height: 200px;
+}
+
+.post .post-footer {
+    padding-top: 5%;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-bottom: 2%;
+}
+
+.post .post-footer .post-images img {
+    width: 8%;
+    position: relative;
+    bottom: 25px;
 }
 
 .post h1 {
