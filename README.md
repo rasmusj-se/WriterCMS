@@ -8,12 +8,11 @@ After scouting the web, I could not find a blogging tool as simple as clean as I
 Writer is intended to be used by me and my friend while backpacking in South-East Asia in 2017. We're going away for six months and I thought it would be awesome to document our trip using a blog. It will therefore probably be heavily customized for personal use.
 
 # Features
-* Designed mobile-first, since we won't bring computers on our trip. Mobility is key.
-* Markdown support. Being able to write Markdown in posts is insanely sweet.
-* Attaching images to each post, to be displayed in a gallery at the end of each post.
-* Categories will be implemented.
-* Writer will also support multiple users.
-* Integration with Facebook and possibly Twitter. Automatically share all posts to Facebook.
+- [x] Markdown support. Writing posts in Markdown is awesome.
+- [x] Attaching images to posts, which are later displayed in a gallery in post details.
+- [ ] Categories
+- [ ] Making it possible for readers to comment on posts.
+- [ ] Facebook (and possibly Twitter) integration, to enable auto-sharing.
 
 # Timeline
 As long as it is completed and deployed prior to our trip. No need to rush it.
