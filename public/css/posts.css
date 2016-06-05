@@ -99,13 +99,13 @@ hr.heading {
 }
 
 .post h2 {
-    font-size: 175%;
-}
-
-.post h3 {
     font-size: 150%;
 }
 
-.post h4 {
+.post h3 {
     font-size: 125%;
+}
+
+.post h4 {
+    font-size: 115%;
 }
