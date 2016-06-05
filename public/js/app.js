@@ -1,5 +1,5 @@
 /* Angular init */
-var writer = angular.module('writer', ['ui.router', 
+var writer = angular.module('writer', ['ui.router', 'ngDialog', 
     'writer.controllers', 'writer.services', 'writer.filters', 'writer.directives']);
 
 /* Module setup */

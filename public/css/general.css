@@ -1,0 +1,13 @@
+.ngdialog-content {
+    width: 80% !important;
+    text-align: center;
+    padding-top: 10%;
+}
+
+.ngdialog-content h1 {
+    font-size: 150%;
+}
+
+.popup.postSuccess img {
+    width: 20%;
+}

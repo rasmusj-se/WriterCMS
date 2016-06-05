@@ -18,13 +18,14 @@ module.controller('PostDetailCtrl', function($scope, $stateParams, PostService) 
     });
 });
 
-module.controller('NewPostCtrl', function($scope, $stateParams, PostService) {
+module.controller('NewPostCtrl', function($scope, $stateParams, PostService, ngDialog) {
     $scope.submitPost = function() {
         var post = { content: $scope.post.content };
         PostService.createPost(post).success(function(response) {
-            console.log(response);
+            $scope.post = {};
+            ngDialog.open({ template: 'partials/popups/postCreatedSuccess.html', className: 'ngdialog-theme-default' });
         }).error(function(err) {
-            console.log(err);
+            ngDialog.open({ template: 'partials/popups/postCreatedError.html', className: 'ngdialog-theme-default' });
         });
     }
 });

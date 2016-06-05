@@ -68,18 +68,18 @@ hr.heading {
     padding: 2%;
 }
 
-.post .post-content h1 {
+.post h1 {
     font-size: 200%;
 }
 
-.post .post-content h2 {
+.post h2 {
     font-size: 175%;
 }
 
-.post .post-content h3 {
+.post h3 {
     font-size: 150%;
 }
 
-.post .post-content h4 {
+.post h4 {
     font-size: 125%;
 }
