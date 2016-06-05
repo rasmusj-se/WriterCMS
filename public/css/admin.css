@@ -14,7 +14,7 @@
     border: 1px solid #66B3FF;
 }
 
-#loginForm button {
+form button {
     width: 90%;
     margin: 2.5% auto;
     background: #66B3FF;
@@ -22,4 +22,12 @@
     font-size: 130%;
     color: white;
     border: none;
+}
+
+.new-post textarea {
+    width: 90%;
+    border: 1px solid #66B3FF;
+    resize: none;
+    padding: 2%;
+    height: 300px;
 }

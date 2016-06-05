@@ -17,3 +17,14 @@ module.controller('PostDetailCtrl', function($scope, $stateParams, PostService) 
         console.log(err);
     });
 });
+
+module.controller('NewPostCtrl', function($scope, $stateParams, PostService) {
+    $scope.submitPost = function() {
+        var post = { content: $scope.post.content };
+        PostService.createPost(post).success(function(response) {
+            console.log(response);
+        }).error(function(err) {
+            console.log(err);
+        });
+    }
+});

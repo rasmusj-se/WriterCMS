@@ -41,8 +41,7 @@ writer.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
         })
         .state('base.about', {
             url: '/about',
-            templateUrl: 'partials/about.html',
-            authenticate: true
+            templateUrl: 'partials/about.html'
         })
         /* Admin states */
         .state('base.admin', {
@@ -67,6 +66,7 @@ writer.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
         .state('base.admin.posts.new', {
             url: '/new',
             templateUrl: 'partials/admin/posts-new.html',
+            controller: 'NewPostCtrl',
             authenticate: true
         })
         .state('base.admin.users', {

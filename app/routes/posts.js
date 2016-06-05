@@ -28,13 +28,11 @@ router.get('/:id', function(req, res) {
 
 /* Create a new post */
 router.post('/', function(req, res) {
-    var title = req.body.title;
-    
     markdown.compile(req.body.content, function(err, content) {
         if (err) {
             res.status(500).send('Could not compile markdown. Error: ' + err);
         } else {
-            Post.create({ title: title, content: content }, function(err, post) {
+            Post.create({ content: content }, function(err, post) {
                 if (err) {
                     res.status(500).send('Could not create post. Error: ' + err);
                 } else {

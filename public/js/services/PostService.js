@@ -23,6 +23,19 @@ module.factory('PostService', function($http) {
             }
 
             return $http(req);
+        },
+        createPost: function(post) {
+            var req = {
+                method: 'POST',
+                url: $http.defaults.base_url + '/posts',
+                data: post,
+                headers: {
+                    'Token': localStorage.getItem('token'),
+                    'Content-Type': 'application/json'
+                }
+            }
+
+            return $http(req);
         }
     }
 });
