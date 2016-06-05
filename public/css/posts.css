@@ -73,10 +73,11 @@ hr.heading {
     margin:auto;
 }
 
-.post-images img {
-    width: 50%;
+.post-images-section .post-images img {
+    max-height: 250px;
+    width: 45%;
     float: left;
-    max-height: 200px;
+    margin: 2.5%;
 }
 
 .post .post-footer {
@@ -89,6 +90,7 @@ hr.heading {
 .post .post-footer .post-images img {
     width: 8%;
     position: relative;
+    float: left;
     bottom: 25px;
 }
 
