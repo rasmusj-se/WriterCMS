@@ -34,7 +34,7 @@ gulp.task('lib-inject', ['bower'], function() {
 });
 
 gulp.task('js-inject', function() {
-    var sources = gulp.src(['./public/js/**/*.js'], {read: false});
+    var sources = gulp.src(['public/js/lib/**/*.js', 'public/js/app.js','./public/js/**/*.js'], {read: false});
 
     return gulp.src('./public/index.html')
         .pipe(inject(sources, {relative: true}))

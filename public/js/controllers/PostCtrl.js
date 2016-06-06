@@ -3,6 +3,9 @@ var module = angular.module('writer.controllers');
 module.controller('PostCtrl', function($scope, PostService) {
     PostService.getAllPosts().success(function(response) {
         $scope.posts = response;
+        angular.forEach($scope.posts, function(post) {
+            post.content = marked(post.content);
+        });
     }).error(function(err) {
         $scope.posts = [];
         console.log(err);

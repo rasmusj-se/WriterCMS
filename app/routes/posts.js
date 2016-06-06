@@ -31,6 +31,7 @@ router.get('/:id', function(req, res) {
 /* Create a new post */
 router.post('/', function(req, res) {
     if (req.body.images) {
+        var content = req.body.content;
         var images = req.body.images;
         var authorID = req.body.author;
         var categories = req.body.categories;
@@ -43,18 +44,12 @@ router.post('/', function(req, res) {
             imageLinks[i] = '/storage/' + hash + '.png';
         }
 
-        markdown.compile(req.body.content, function(err, content) {
+        Post.create({ content: content, images: imageLinks, author: authorID, 
+        categories: categories }, function(err, post) {
             if (err) {
-                res.status(500).send('Could not compile markdown. Error: ' + err);
+                res.status(500).send('Could not create post. Error: ' + err);
             } else {
-                Post.create({ content: content, images: imageLinks, author: authorID, 
-                categories: categories }, function(err, post) {
-                    if (err) {
-                        res.status(500).send('Could not create post. Error: ' + err);
-                    } else {
-                        res.json(post);
-                    }
-                });
+                res.json(post);
             }
         });
     }
