@@ -56,6 +56,7 @@ textarea {
     border: 1px solid #66B3FF;
     resize: none;
     padding: 2%;
+    padding-left: 5%;
     height: 300px;
     font-size: 120%;
 }
@@ -97,34 +98,48 @@ textarea {
     width: 90%;
 }
 
-.admin-post-wrapper {
-    margin: 5% auto;
+.admin-post {
+    padding: 5%;
 }
 
-.admin-post-content {
-    max-height: 150px;
-    overflow: hidden;
-    width: 90%;
-    margin: auto;
-    border: 1px solid #66B3FF;
-}
-
-.admin-post-footer {
-    background: #66B3FF;
-    width: 90%;
-    margin: auto;
-    color: white;
-    height: 25px;
+.admin-post .post-title {
+    text-align: left;
+    font-size: 180%;
     font-weight: 200;
-    font-size: 130%;
-    padding-left: 3%;
-    padding-right: 3%;
+    margin-top: 10px;
 }
 
-.admin-post-footer .admin-post-author {
+.admin-post .footer {
     float: left;
 }
 
-.admin-post-footer .admin-post-date {
-    float: right;
+.admin-edit-post-details {
+    padding: 0 5%;
+}
+
+.admin-edit-post-details textarea {
+    width: 100%;
+}
+
+.admin-edit-post-details .action-buttons {
+    background: red;
+    margin: 5% auto;
+}
+
+.admin-edit-post-details .action-buttons button {
+    width: 50%;
+    float: left;
+    border: none;
+    height: 30px;
+    font-size: 120%;
+    font-weight: 200;
+    color: white;
+}
+
+.admin-edit-post-details .action-buttons button.edit {
+    background: #66B3FF;
+}
+
+.admin-edit-post-details .action-buttons button.delete {
+    background: #Db4141;
 }

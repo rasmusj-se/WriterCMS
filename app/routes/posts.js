@@ -16,21 +16,10 @@ router.get('/', function(req, res) {
     });
 });
 
-/* Get post by ID */
-router.get('/:id', function(req, res) {
-    var ID = req.params.id;
-    Post.findOne({_id: ID}, function(err, post) {
-        if (err) {
-            res.status(500).send('Could not get post. Error: ' + err);
-        } else {
-            res.json(post);
-        }
-    });
-});
-
 /* Create a new post */
 router.post('/', function(req, res) {
     if (req.body.images) {
+        var title = req.body.title;
         var content = req.body.content;
         var images = req.body.images;
         var authorID = req.body.author;
@@ -44,7 +33,7 @@ router.post('/', function(req, res) {
             imageLinks[i] = '/storage/' + hash + '.png';
         }
 
-        Post.create({ content: content, images: imageLinks, author: authorID, 
+        Post.create({ title: title, content: content, images: imageLinks, author: authorID, 
         categories: categories }, function(err, post) {
             if (err) {
                 res.status(500).send('Could not create post. Error: ' + err);
@@ -54,6 +43,45 @@ router.post('/', function(req, res) {
         });
     }
 
+});
+
+/* Get post by ID */
+router.get('/:id', function(req, res) {
+    var ID = req.params.id;
+    Post.findOne({_id: ID}, function(err, post) {
+        if (err) {
+            res.status(500).send('Could not get post. Error: ' + err);
+        } else {
+            res.json(post);
+        }
+    });
+});
+
+/* Update post */
+router.put('/:id', function(req, res) {
+    var ID = req.params.id;
+    var title = req.body.title;
+    var content = req.body.content;
+    var categories = req.body.categories;
+    Post.update({_id: ID}, { title: title, content: content, categories: categories }, function(err, post) {
+        if (err) {
+            res.status(500).send('Could not update post. Error: ' + err);
+        } else {
+            res.json(post);
+        }
+    });
+});
+
+/* Delete post */
+router.delete('/:id', function(req, res) {
+    var ID = req.params.id;
+    Post.findOne({_id: ID}).remove(function(err) {
+        if (err) {
+            res.status(500).send('Could not remove post. Error: ' + err);
+        } else {
+            res.status(200).send('Post deleted.');
+        }
+    })
 });
 
 module.exports = router;

@@ -1,0 +1,30 @@
+<div class="back">
+    <a ui-sref="base.admin.posts">&larr; Tillbaka</a>
+</div>
+
+<div class="admin-edit-post-details">
+    <h3>Titel</h3>
+    <input ng-model="post.title" type="text" ng-required="true" ng-disabled="!editing">
+    <h3>Innehåll</h3>
+    <textarea ng-model="post.content" ng-disabled="!editing"></textarea>
+    <h3>Kategorier</h3>
+    <select ng-model="post.categories" ng-disabled="!editing" multiple>
+        <option ng-repeat="category in categories" value="{{ category._id }}">
+            {{ category.name }}
+        </option>
+    </select>
+    <div class="action-buttons">
+        <button class="edit" ng-click="toggleEdit()">
+            <span ng-show="!editing">Ändra</span>
+            <span ng-show="editing">Spara</span>
+        </button>
+        <button class="delete" ng-click="deletePost()">Ta bort</button>
+    </div>
+</div>
+
+<div class="post-images-section" ng-show="post.images.length > 0">
+    <h4>Bilder</h4>
+    <div class="post-images" ng-repeat="image in post.images">
+        <img ng-src="{{ image }}" />
+    </div>
+</div>

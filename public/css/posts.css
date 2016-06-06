@@ -18,99 +18,76 @@ hr.heading {
     background-color: #66B3FF;
 }
 
+hr.inline-separator {
+    margin: 10px auto;
+    width: 75%;
+}
+
 .post {
-    width: 90%;
-    background: #EFEFEF;
-    margin: 10% auto;
-    -webkit-box-shadow: 2px 2px 5px -2px rgba(0,0,0,0.72);
-    -moz-box-shadow: 2px 2px 5px -2px rgba(0,0,0,0.72);
-    box-shadow: 2px 2px 5px -2px rgba(0,0,0,0.72);
+    width: 100%;
+    margin: 40px auto !important;
     cursor: pointer;
+    text-align: center;
 }
 
-.post .post-header {
-    padding: 0 2%;
-    height: 60px;
-    background: #66B3FF;
+.post .post-title {
+    text-align: center;
+    font-weight: 200;
+    font-size: 250%;
 }
 
-.post .post-header .post-author {
-    width: 60%;
-    float: left;
-    font-size: 130%;
-}
-
-.post .post-header .post-author img {
-    height: 50px;
-    position: relative;
-    top: 5px;
-    border: 3px solid white;
-    border-radius: 50%;
-}
-
-.post .post-header .post-date {
-    width: 40%;
-    height: 10px;
-    position: relative;
-    top: 20px;
-    font-size: 110%;
-    float: left;
-    text-align: right;
+.post .post-date {
+    text-align: center;
+    font-style: italic;
+    font-size: 125%;
+    font-weight: 200;
 }
 
 .post .post-content {
-    padding: 2%;
-    overflow: hidden;
-}
-
-.post .post-detailed-content, .post .post-detailed-images-section {
-    padding: 2%;
-}
-
-.post-images-section {
     width: 90%;
-    margin:auto;
-}
-
-.post-images-section .post-images img {
-    max-height: 250px;
-    width: 45%;
-    float: left;
-    margin: 2.5%;
-}
-
-.post .post-footer {
-    padding-top: 5%;
-    padding-left: 2%;
-    padding-right: 2%;
-    padding-bottom: 2%;
+    padding: 15px 0;
+    font-size: 125%;
+    margin: auto;
+    height: auto;
 }
 
 .post .post-images {
-    padding: 2%;
+    width: 100%;
+    text-align: center;
+    padding: 0 !important;
 }
 
 .post .post-images img {
-    width: 45%;
-    margin: 2.5%;
+    width: 100% !important;
+    padding: 0;
+    margin: 0 !important;
+    margin-bottom: 20px !important;
 }
 
-.post-author-name {
+.post .post-footer {
     font-style: italic;
+    font-size: 120%;
 }
 
-.post h1 {
-    font-size: 200%;
-}
-
-.post h2 {
+.post .post-content h1 {
     font-size: 150%;
 }
 
-.post h3 {
-    font-size: 125%;
+.post .post-content h2 {
+    font-size: 130%;
 }
 
-.post h4 {
-    font-size: 115%;
+.post .post-content h3 {
+    font-size: 120%;
+}
+
+.post .post-content h4 {
+    font-size: 110%;
+}
+
+.post .post-content h1,
+.post .post-content h2,
+.post .post-content h3,
+.post .post-content h4 {
+    margin: 5px;
 }

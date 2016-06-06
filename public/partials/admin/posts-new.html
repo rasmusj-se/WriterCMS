@@ -2,6 +2,7 @@
     <h1>Nytt inlägg</h1>
     <hr class="heading">
     <form name="newPostForm">
+        <input type="text" ng-model="post.title" placeholder="Rubrik" ng-required="true" >
         <textarea ng-model="post.content" placeholder="Innehåll" ng-required="true"></textarea>
 
         <select ng-model="post.categories" ng-required="true" multiple>

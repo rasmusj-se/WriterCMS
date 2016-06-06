@@ -34,6 +34,47 @@ module.controller('PostDetailCtrl', function($scope, $stateParams, PostService) 
     });
 });
 
+module.controller('AdminPostDetailCtrl', function($scope, $state, $stateParams, 
+    ngDialog, CategoryService, PostService) {
+    $scope.editing = false;
+
+    $scope.toggleEdit = function() {
+        if ($scope.editing) {
+            var post = { ID: $scope.post._id, title: $scope.post.title, content: $scope.post.content, categories: $scope.post.categories };
+            PostService.updatePost(post).success(function(response) {
+                ngDialog.open({ template: 'partials/popups/postUpdatedSuccess.html', className: 'ngdialog-theme-default' });
+            }).error(function(err) {
+                console.log(err);
+                ngDialog.open({ template: 'partials/popups/postUpdatedError.html', className: 'ngdialog-theme-default' });
+            })
+        }
+        $scope.editing = !$scope.editing;
+    }
+
+    $scope.deletePost = function() {
+        PostService.deletePost($scope.post._id).success(function(response) {
+            ngDialog.open({ template: 'partials/popups/postDeletedSuccess.html', className: 'ngdialog-theme-default' });
+            $state.go('base.admin.posts');
+        }).error(function(err) {
+            console.log(err);
+            ngDialog.open({ template: 'partials/popups/postDeletedError.html', className: 'ngdialog-theme-default' });
+        })
+    }
+
+    CategoryService.getAllCategories().success(function(response) {
+        $scope.categories = response;
+    }).error(function(err) {
+        console.log(err);
+    });
+
+    PostService.getPostByID($stateParams.id).success(function(response) {
+        $scope.post = response;
+    }).error(function(err) {
+        $scope.post = {};
+        console.log(err);
+    });
+});
+
 module.controller('NewPostCtrl', function($scope, $stateParams, $timeout, CategoryService, PostService, ngDialog) {
     $scope.images = [];
     $scope.post = { categories: [] };
@@ -59,7 +100,7 @@ module.controller('NewPostCtrl', function($scope, $stateParams, $timeout, Catego
     }
 
     $scope.submitPost = function() {
-        var post = { content: $scope.post.content, images: $scope.images, 
+        var post = { title: $scope.post.title, content: $scope.post.content, images: $scope.images, 
             author: localStorage.getItem('userID'), categories: $scope.post.categories };
         PostService.createPost(post).success(function(response) {
             $scope.post = {};

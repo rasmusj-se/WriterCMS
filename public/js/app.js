@@ -14,7 +14,7 @@ moment.locale('sv');
 /* Router setup */
 writer.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
     /* API Base URL */
-    $httpProvider.defaults.base_url = 'http://localhost:3000';
+    $httpProvider.defaults.base_url = 'http://192.168.1.120:3000';
     //$httpProvider.defaults.base_url = 'http://188.166.29.45:3000';
 
     /* Fallback URL */
@@ -31,11 +31,11 @@ writer.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
             templateUrl: 'partials/posts/posts.html',
             controller: 'PostCtrl',
         })
-        .state('base.postdetail', {
-            url: '/posts/:id',
-            templateUrl: 'partials/posts/posts-detail.html',
-            controller: 'PostDetailCtrl'
-        })
+        // .state('base.postdetail', {
+        //     url: '/posts/:id',
+        //     templateUrl: 'partials/posts/posts-detail.html',
+        //     controller: 'PostDetailCtrl'
+        // })
         .state('base.route', {
             url: '/route',
             templateUrl: 'partials/route.html'
@@ -70,6 +70,11 @@ writer.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
             templateUrl: 'partials/admin/posts-new.html',
             controller: 'NewPostCtrl',
             authenticate: true
+        })
+        .state('base.admin.posts.detail', {
+            url: '/:id',
+            templateUrl: 'partials/admin/posts-detail.html',
+            controller: 'AdminPostDetailCtrl'
         })
         .state('base.admin.categories', {
             url: '/categories',

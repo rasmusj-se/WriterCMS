@@ -36,6 +36,31 @@ module.factory('PostService', function($http) {
             }
 
             return $http(req);
-        }
+        },
+        updatePost: function(post) {
+            var req = {
+                method: 'PUT',
+                url: $http.defaults.base_url + '/posts/' + post.ID,
+                data: post,
+                headers: {
+                    'Token': localStorage.getItem('token'),
+                    'Content-Type': 'application/json'
+                }
+            }
+
+            return $http(req);
+        },
+        deletePost: function(ID) {
+            var req = {
+                method: 'DELETE',
+                url: $http.defaults.base_url + '/posts/' + ID,
+                headers: {
+                    'Token': localStorage.getItem('token'),
+                    'Content-Type': 'application/json'
+                }
+            }
+
+            return $http(req);
+        },
     }
 });
