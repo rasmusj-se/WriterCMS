@@ -18,8 +18,15 @@ module.controller('PostDetailCtrl', function($scope, $stateParams, PostService) 
     });
 });
 
-module.controller('NewPostCtrl', function($scope, $stateParams, $timeout, PostService, ngDialog) {
+module.controller('NewPostCtrl', function($scope, $stateParams, $timeout, CategoryService, PostService, ngDialog) {
     $scope.images = [];
+    $scope.post = { categories: [] };
+
+    CategoryService.getAllCategories().success(function(response) {
+        $scope.categories = response;
+    }).error(function(err) {
+        console.log(err);
+    });
 
     $scope.renderImages = function(event) {
         if (event) {
@@ -37,7 +44,7 @@ module.controller('NewPostCtrl', function($scope, $stateParams, $timeout, PostSe
 
     $scope.submitPost = function() {
         var post = { content: $scope.post.content, images: $scope.images, 
-            author: localStorage.getItem('userID') };
+            author: localStorage.getItem('userID'), categories: $scope.post.categories };
         PostService.createPost(post).success(function(response) {
             $scope.post = {};
             $scope.images = [];

@@ -1,8 +1,22 @@
 <div class="new-post text-center">
     <h1>Nytt inlägg</h1>
     <hr class="heading">
-    <form>
-        <textarea ng-model="post.content" placeholder="Innehåll"></textarea>
+    <form name="newPostForm">
+        <textarea ng-model="post.content" placeholder="Innehåll" ng-required="true"></textarea>
+
+<!--         <div class="categories-wrapper" ng-repeat="category in categories track by category._id">
+            <div class="category-check-wrapper">
+                <input ng-click="toggleCategory(category._id)" type="checkbox" name=""><span>{{ category.name }}</span>
+            </div>
+        </div> -->
+
+        <select ng-model="post.categories" ng-required="true" multiple>
+            <option ng-repeat="category in categories" value="{{ category._id }}">
+                {{ category.name }}
+            </option>
+        </select>
+        <p>{{ post.categories }}</p>
+
         <label for="file-upload" class="custom-file-upload">
             <i class="fa fa-cloud-upload"></i> Lägg till bilder
         </label>
@@ -11,6 +25,6 @@
             <img ng-src="{{ image }}" />
         </div>
 
-        <button ng-click="submitPost()">Posta</button>
+        <button ng-click="submitPost()" ng-disabled="newPostForm.$invalid">Posta</button>
     </form>
 </div>

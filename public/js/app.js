@@ -70,6 +70,17 @@ writer.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
             controller: 'NewPostCtrl',
             authenticate: true
         })
+        .state('base.admin.categories', {
+            url: '/categories',
+            templateUrl: 'partials/admin/categories.html',
+            authenticate: true
+        })
+        .state('base.admin.categories.new', {
+            url: '/new',
+            templateUrl: 'partials/admin/categories-new.html',
+            controller: 'NewCategoryCtrl',
+            authenticate: true
+        })
         .state('base.admin.users', {
             url: '/users',
             templateUrl: 'partials/admin/users.html',

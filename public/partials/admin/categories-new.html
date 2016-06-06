@@ -1,0 +1,8 @@
+<div class="new-category text-center">
+    <h1>Ny kategori</h1>
+    <hr class="heading">
+    <form name="newCategoryForm">
+        <input ng-model="category.name" type="text" placeholder="Namn" ng-required="true" />
+        <button ng-disabled="newCategoryForm.$invalid" ng-click="createCategory()">Skapa kategori</button>
+    </form>
+</div>
