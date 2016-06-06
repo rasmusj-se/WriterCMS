@@ -115,6 +115,7 @@ textarea {
 
 .admin-edit-post-details {
     padding: 0 5%;
+    padding-bottom: 50px;
 }
 
 .admin-edit-post-details textarea {

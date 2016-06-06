@@ -40,7 +40,8 @@ module.controller('AdminPostDetailCtrl', function($scope, $state, $stateParams,
 
     $scope.toggleEdit = function() {
         if ($scope.editing) {
-            var post = { ID: $scope.post._id, title: $scope.post.title, content: $scope.post.content, categories: $scope.post.categories };
+            var post = { ID: $scope.post._id, title: $scope.post.title, content: $scope.post.content, 
+                categories: $scope.post.categories, images: $scope.post.images };
             PostService.updatePost(post).success(function(response) {
                 ngDialog.open({ template: 'partials/popups/postUpdatedSuccess.html', className: 'ngdialog-theme-default' });
             }).error(function(err) {
