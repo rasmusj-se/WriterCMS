@@ -1,3 +1,13 @@
-<div ui-view>
-    <h1>Inlägg</h1>
+<div ui-view class="text-center">
+    <h1>Hantera inlägg</h1>
+    <hr class="heading">
+    <div class="admin-posts-wrapper">
+        <div ng-repeat="post in posts" class="admin-post-wrapper">
+            <div ui-sref="base.admin.postdetail({ id: post._id })" class="admin-post-content" ng-bind-html="post.content | trust"></div>
+            <div class="admin-post-footer">
+                <span class="admin-post-author">Postat av {{ post.author.firstName }}</span>
+                <span class="admin-post-date">{{ post.date | prettyDate }}</span>
+            </div>
+        </div>
+    </div>
 </div>

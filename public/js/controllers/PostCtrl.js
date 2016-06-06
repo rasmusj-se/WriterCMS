@@ -12,9 +12,22 @@ module.controller('PostCtrl', function($scope, PostService) {
     });
 });
 
+module.controller('AdminPostCtrl', function($scope, PostService) {
+    PostService.getAllPosts().success(function(response) {
+        $scope.posts = response;
+        angular.forEach($scope.posts, function(post) {
+            post.content = marked(post.content);
+        });
+    }).error(function(err) {
+        $scope.posts = [];
+        console.log(err);
+    });
+});
+
 module.controller('PostDetailCtrl', function($scope, $stateParams, PostService) {
     PostService.getPostByID($stateParams.id).success(function(response) {
         $scope.post = response;
+        $scope.post.content = marked($scope.post.content);
     }).error(function(err) {
         $scope.post = {};
         console.log(err);

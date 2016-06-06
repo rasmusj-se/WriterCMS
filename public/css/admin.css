@@ -51,12 +51,13 @@ form button {
     border: none;
 }
 
-.new-post textarea {
+textarea {
     width: 90%;
     border: 1px solid #66B3FF;
     resize: none;
     padding: 2%;
     height: 300px;
+    font-size: 120%;
 }
 
 .new-post input[type="file"] {
@@ -94,4 +95,36 @@ form button {
     margin: auto;
     margin-top: 5%;
     width: 90%;
+}
+
+.admin-post-wrapper {
+    margin: 5% auto;
+}
+
+.admin-post-content {
+    max-height: 150px;
+    overflow: hidden;
+    width: 90%;
+    margin: auto;
+    border: 1px solid #66B3FF;
+}
+
+.admin-post-footer {
+    background: #66B3FF;
+    width: 90%;
+    margin: auto;
+    color: white;
+    height: 25px;
+    font-weight: 200;
+    font-size: 130%;
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+.admin-post-footer .admin-post-author {
+    float: left;
+}
+
+.admin-post-footer .admin-post-date {
+    float: right;
 }
