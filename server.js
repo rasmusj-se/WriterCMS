@@ -50,6 +50,7 @@ app.use(function(req, res, next) {
 
 /* Routing */
 app.use('/auth', require('./app/routes/auth'));
+app.use('/categories', require('./app/routes/categories'));
 app.use('/posts', require('./app/routes/posts'));
 app.use('/users', require('./app/routes/users'));
 
