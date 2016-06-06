@@ -5,6 +5,7 @@ module.controller('LoginCtrl', function($rootScope, $scope, $state, AuthService)
         var credentials = { username: $scope.username, password: $scope.password };
         AuthService.logIn(credentials).success(function(response) {
             localStorage.setItem('token', response.token);
+            localStorage.setItem('userID', response.userID);
             $rootScope.authenticated = true;
             $state.go('base.admin.dashboard');
         }).error(function(err) {

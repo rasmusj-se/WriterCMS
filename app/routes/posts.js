@@ -7,7 +7,7 @@ var crypto = require('crypto');
 
 /* Get all posts */
 router.get('/', function(req, res) {
-    Post.find({}).sort({ date: -1 }).exec(function(err, posts) {
+    Post.find({}).populate('author').sort({ date: -1 }).exec(function(err, posts) {
         if (err) {
             res.status(500).send('Could not get posts. Error: ' + err);
         } else {
@@ -32,6 +32,7 @@ router.get('/:id', function(req, res) {
 router.post('/', function(req, res) {
     if (req.body.images) {
         var images = req.body.images;
+        var authorID = req.body.author;
         var imageLinks = [];
 
         for (var i = 0; i < images.length; i++) {
@@ -45,7 +46,7 @@ router.post('/', function(req, res) {
             if (err) {
                 res.status(500).send('Could not compile markdown. Error: ' + err);
             } else {
-                Post.create({ content: content, images: imageLinks }, function(err, post) {
+                Post.create({ content: content, images: imageLinks, author: authorID }, function(err, post) {
                     if (err) {
                         res.status(500).send('Could not create post. Error: ' + err);
                     } else {

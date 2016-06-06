@@ -25,7 +25,8 @@ router.post('/login', function(req, res) {
                 res.json({
                     success: true,
                     message: 'User authenticated',
-                    token: token
+                    token: token,
+                    userID: user._id
                 });
             } else {
                 res.status(401).send('Wrong username and/or password');

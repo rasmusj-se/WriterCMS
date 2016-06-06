@@ -60,7 +60,6 @@ hr.heading {
 
 .post .post-content {
     padding: 2%;
-    max-height: 300px;
     overflow: hidden;
 }
 
@@ -87,11 +86,17 @@ hr.heading {
     padding-bottom: 2%;
 }
 
-.post .post-footer .post-images img {
-    width: 8%;
-    position: relative;
-    float: left;
-    bottom: 25px;
+.post .post-images {
+    padding: 2%;
+}
+
+.post .post-images img {
+    width: 45%;
+    margin: 2.5%;
+}
+
+.post-author-name {
+    font-style: italic;
 }
 
 .post h1 {

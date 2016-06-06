@@ -36,7 +36,8 @@ module.controller('NewPostCtrl', function($scope, $stateParams, $timeout, PostSe
     }
 
     $scope.submitPost = function() {
-        var post = { content: $scope.post.content, images: $scope.images };
+        var post = { content: $scope.post.content, images: $scope.images, 
+            author: localStorage.getItem('userID') };
         PostService.createPost(post).success(function(response) {
             $scope.post = {};
             $scope.images = [];
