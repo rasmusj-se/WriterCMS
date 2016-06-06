@@ -90,10 +90,42 @@ module.controller('NewPostCtrl', function($scope, $stateParams, $timeout, Catego
         if (event) {
             angular.forEach(event.target.files, function(file) {
                 var reader = new FileReader();
+                var img = new Image();
 
-                reader.addEventListener('load', function() {
-                    $scope.$apply($scope.images.push(this.result));
-                }, false);
+                reader.onload = function(e) {
+                    img.src = e.target.result;
+                    img.onload = function() {
+                        console.log(img);
+                        var canvas = document.createElement("canvas");
+                        var ctx = canvas.getContext("2d");
+                        ctx.drawImage(img, 0, 0);
+                        var MAX_WIDTH = 800;
+                        var MAX_HEIGHT = 600;
+                        var width = img.width;
+                        var height = img.height;
+                        console.log(ctx);
+
+                        if (width > height) {
+                          if (width > MAX_WIDTH) {
+                            height *= MAX_WIDTH / width;
+                            width = MAX_WIDTH;
+                          }
+                        } else {
+                          if (height > MAX_HEIGHT) {
+                            width *= MAX_HEIGHT / height;
+                            height = MAX_HEIGHT;
+                          }
+                        }
+                        canvas.width = width;
+                        canvas.height = height;
+                        var ctx = canvas.getContext("2d");
+                        ctx.drawImage(img, 0, 0, width, height);
+
+                        var base64 = canvas.toDataURL("image/png", 0.8);
+                        console.log(base64);
+                        $scope.$apply($scope.images.push(base64));
+                    }
+                }
 
                 reader.readAsDataURL(file);
             })
