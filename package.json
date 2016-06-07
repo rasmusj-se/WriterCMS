@@ -4,7 +4,8 @@
   "description": "Clean, extremely simple writing tool for developers.",
   "author": "Axel Niklasson <info@axelniklasson.se>",
   "scripts": {
-    "start": "nodemon ./server.js"
+    "dev": "NODE_ENV=development nodemon ./server.js",
+    "prod": "NODE_ENV=production node server.js"
   },
   "license": "MIT",
   "dependencies": {

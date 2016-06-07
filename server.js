@@ -54,11 +54,19 @@ app.use('/categories', require('./app/routes/categories'));
 app.use('/posts', require('./app/routes/posts'));
 app.use('/users', require('./app/routes/users'));
 
-/* Serving SPA */
+/* Serving application */
 app.get('*', function(req, res) {
-  res.sendFile(path.join(__dirname, '/public', 'index.html'));
+    res.sendFile(path.join(__dirname, '/public', 'index.html'));
 });
 
-app.listen(3000);
+/* Development */
+if (app.get('env') == 'development') {
+  app.listen(3000);
+}
+
+/* Production */
+if (app.get('env') == 'production') {
+    app.listen(3000);
+}
 
 module.exports = app;
