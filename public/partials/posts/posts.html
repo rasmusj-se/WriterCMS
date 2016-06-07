@@ -7,8 +7,8 @@
             <hr class="inline-separator">
             <p class="post-date">{{ post.date | prettyDate }}</p>
             <div class="post-content" ng-bind-html="post.content | trust"></div>
-            <div class="post-images" ng-repeat="image in post.images">
-                <img ng-src="{{ image }}">
+            <div class="post-images" ng-repeat="image in post.images track by $index">
+                <img image-lazy-load="{{ image }}" image-index="$index">
             </div>
             <div class="post-footer">
                 <span class="post-author-name">Postat av {{ post.author.firstName }} i 
