@@ -9,7 +9,7 @@ Writer is intended to be used by me and my friend while backpacking in South-Eas
 
 # Features
 - [x] Markdown support. Writing posts in Markdown is awesome.
-- [x] Attaching images to posts, which are later displayed in a gallery in post details.
+- [x] Attaching images to posts, which are displayed inline after each post.
 - [x] Categories
 - [ ] Making it possible for readers to comment on posts.
 - [ ] Facebook (and possibly Twitter) integration, to enable auto-sharing.
