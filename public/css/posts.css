@@ -25,6 +25,7 @@ hr.inline-separator {
 
 .post {
     width: 100%;
+    margin: 40px auto !important;
     cursor: pointer;
     text-align: center;
 }
@@ -61,10 +62,10 @@ hr.inline-separator {
     width: 100% !important;
     padding: 0;
     margin: 0 !important;
-    margin-bottom: 10px !important;
 }
 
 .post .post-footer {
+    margin-top: 30px;
     font-style: italic;
     font-size: 120%;
 }
