@@ -65,16 +65,44 @@ textarea {
     display: none;
 }
 
-.new-post-gallery {
+.new-post-gallery,
+.edit-post-gallery {
     width: 90%;
     margin: 5% auto;
 }
 
-.new-post-gallery img {
-    width: 25%;
-    max-height: 100px;
-    margin: 2% 4.16666667%;
+.new-post-gallery .gallery-image,
+.edit-post-gallery .gallery-image {
+    display:inline-block;
+    position:relative;
+    height: 100px;
     float: left;
+    width: 33%;
+}
+
+
+.new-post-gallery .gallery-image img,
+.edit-post-gallery .gallery-image img {
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.new-post-gallery .gallery-image .removePhotoButton,
+.edit-post-gallery .gallery-image .removePhotoButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 1px solid #dbd4d4;
+    border-radius: 5em;
+    background: white;
+    color: $brand-primary;
+    box-shadow: none;
+    width: 2em;
+    height: 2em;
+    padding: 0px;
 }
 
 .new-post .custom-file-upload {
@@ -115,7 +143,7 @@ textarea {
 
 .admin-edit-post-details {
     padding: 0 5%;
-    padding-bottom: 50px;
+    padding-bottom: 150px;
 }
 
 .admin-edit-post-details textarea {
@@ -128,10 +156,11 @@ textarea {
 }
 
 .admin-edit-post-details .action-buttons button {
-    width: 50%;
+    width: 100%;
     float: left;
     border: none;
-    height: 30px;
+    height: 40px;
+    margin: 10px 0;
     font-size: 120%;
     font-weight: 200;
     color: white;

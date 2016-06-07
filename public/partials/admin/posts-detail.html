@@ -4,20 +4,25 @@
 
 <div class="admin-edit-post-details">
     <h3>Titel</h3>
-    <input ng-model="post.title" type="text" ng-required="true" ng-disabled="!editing">
+    <input ng-model="post.title" type="text">
     <h3>Innehåll</h3>
-    <textarea ng-model="post.content" ng-disabled="!editing"></textarea>
+    <textarea ng-model="post.content"></textarea>
     <h3>Kategorier</h3>
-    <select ng-model="post.categories" ng-disabled="!editing" multiple>
+    <select ng-model="post.categories" multiple>
         <option ng-repeat="category in categories" value="{{ category._id }}">
             {{ category.name }}
         </option>
     </select>
+
+    <div class="edit-post-gallery" ng-repeat="image in post.images track by $index">
+        <div class="gallery-image">
+            <img ng-src="{{ image }}" />
+            <input type="button" class="removePhotoButton" value="X" ng-click="removePhoto($index)" />
+        </div>
+    </div>
+
     <div class="action-buttons">
-        <button class="edit" ng-click="toggleEdit()">
-            <span ng-show="!editing">Ändra</span>
-            <span ng-show="editing">Spara</span>
-        </button>
+        <button class="edit" ng-click="updatePost()">Uppdatera</button>
         <button class="delete" ng-click="deletePost()">Ta bort</button>
     </div>
 </div>

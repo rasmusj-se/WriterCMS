@@ -63,7 +63,9 @@ router.put('/:id', function(req, res) {
     var title = req.body.title;
     var content = req.body.content;
     var categories = req.body.categories;
-    Post.update({_id: ID}, { title: title, content: content, categories: categories }, function(err, post) {
+    var images = req.body.images;
+    Post.update({_id: ID}, { title: title, content: content, categories: categories, 
+        images: images }, function(err, post) {
         if (err) {
             res.status(500).send('Could not update post. Error: ' + err);
         } else {

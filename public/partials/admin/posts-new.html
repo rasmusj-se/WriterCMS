@@ -16,7 +16,10 @@
         </label>
         <input id="file-upload" type="file" custom-on-change="renderImages" multiple />
         <div class="new-post-gallery" ng-repeat="image in images track by $index">
-            <img ng-src="{{ image }}" />
+            <div class="gallery-image">
+                <img ng-src="{{ image }}" />
+                <input type="button" class="removePhotoButton" value="X" ng-click="removePhoto($index)" />
+            </div>
         </div>
 
         <button ng-click="submitPost()" ng-disabled="newPostForm.$invalid">Posta</button>

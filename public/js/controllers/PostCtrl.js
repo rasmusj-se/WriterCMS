@@ -36,20 +36,18 @@ module.controller('PostDetailCtrl', function($scope, $stateParams, PostService) 
 
 module.controller('AdminPostDetailCtrl', function($scope, $state, $stateParams, 
     ngDialog, CategoryService, PostService) {
-    $scope.editing = false;
 
-    $scope.toggleEdit = function() {
-        if ($scope.editing) {
-            var post = { ID: $scope.post._id, title: $scope.post.title, content: $scope.post.content, 
-                categories: $scope.post.categories, images: $scope.post.images };
-            PostService.updatePost(post).success(function(response) {
-                ngDialog.open({ template: 'partials/popups/postUpdatedSuccess.html', className: 'ngdialog-theme-default' });
-            }).error(function(err) {
-                console.log(err);
-                ngDialog.open({ template: 'partials/popups/postUpdatedError.html', className: 'ngdialog-theme-default' });
-            })
-        }
-        $scope.editing = !$scope.editing;
+    $scope.removePhoto = function(index) {
+        $scope.post.images.splice(index, 1);
+    }
+
+    $scope.updatePost = function() {
+        PostService.updatePost($scope.post).success(function(response) {
+            ngDialog.open({ template: 'partials/popups/postUpdatedSuccess.html', className: 'ngdialog-theme-default' });
+        }).error(function(err) {
+            console.log(err);
+            ngDialog.open({ template: 'partials/popups/postUpdatedError.html', className: 'ngdialog-theme-default' });
+        })
     }
 
     $scope.deletePost = function() {
@@ -86,6 +84,10 @@ module.controller('NewPostCtrl', function($scope, $stateParams, $timeout, Catego
         console.log(err);
     });
 
+    $scope.removePhoto = function(index) {
+        $scope.images.splice(index, 1);
+    }
+
     $scope.renderImages = function(event) {
         if (event) {
             angular.forEach(event.target.files, function(file) {
@@ -95,7 +97,6 @@ module.controller('NewPostCtrl', function($scope, $stateParams, $timeout, Catego
                 reader.onload = function(e) {
                     img.src = e.target.result;
                     img.onload = function() {
-                        console.log(img);
                         var canvas = document.createElement("canvas");
                         var ctx = canvas.getContext("2d");
                         ctx.drawImage(img, 0, 0);
@@ -103,7 +104,6 @@ module.controller('NewPostCtrl', function($scope, $stateParams, $timeout, Catego
                         var MAX_HEIGHT = 600;
                         var width = img.width;
                         var height = img.height;
-                        console.log(ctx);
 
                         if (width > height) {
                           if (width > MAX_WIDTH) {
@@ -121,8 +121,7 @@ module.controller('NewPostCtrl', function($scope, $stateParams, $timeout, Catego
                         var ctx = canvas.getContext("2d");
                         ctx.drawImage(img, 0, 0, width, height);
 
-                        var base64 = canvas.toDataURL("image/png", 0.8);
-                        console.log(base64);
+                        var base64 = canvas.toDataURL("image/png");
                         $scope.$apply($scope.images.push(base64));
                     }
                 }

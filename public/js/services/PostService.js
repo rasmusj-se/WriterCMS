@@ -40,7 +40,7 @@ module.factory('PostService', function($http) {
         updatePost: function(post) {
             var req = {
                 method: 'PUT',
-                url: $http.defaults.base_url + '/posts/' + post.ID,
+                url: $http.defaults.base_url + '/posts/' + post._id,
                 data: post,
                 headers: {
                     'Token': localStorage.getItem('token'),
