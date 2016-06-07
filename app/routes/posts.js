@@ -74,7 +74,7 @@ router.put('/:id', function(req, res) {
             }
         }
 
-        Post.update({_id: ID}, { title: title, content: content, categories: categories, 
+        post.update({ title: title, content: content, categories: categories, 
             images: images }, function(err, post) {
             if (err) {
                 res.status(500).send('Could not update post. Error: ' + err);
@@ -88,13 +88,22 @@ router.put('/:id', function(req, res) {
 /* Delete post */
 router.delete('/:id', function(req, res) {
     var ID = req.params.id;
-    Post.findOne({_id: ID}).remove(function(err) {
-        if (err) {
-            res.status(500).send('Could not remove post. Error: ' + err);
-        } else {
-            res.status(200).send('Post deleted.');
+
+    Post.findOne({_id: ID}, function(err, post) {
+        if (post.images.length > 0) {
+            for (var i = 0; i < post.images.length; i++) {
+                fs.unlinkSync('public' + post.images[i]);
+            }
         }
-    })
+
+        post.remove(function(err) {
+            if (err) {
+                res.status(500).send('Could not remove post. Error: ' + err);
+            } else {
+                res.status(200).send('Post deleted.');
+            }
+        });
+    });
 });
 
 module.exports = router;
