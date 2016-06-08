@@ -13,15 +13,21 @@ module.controller('PostCtrl', function($scope, PostService) {
 });
 
 module.controller('AdminPostCtrl', function($scope, PostService) {
-    PostService.getAllPosts().success(function(response) {
-        $scope.posts = response;
-        angular.forEach($scope.posts, function(post) {
-            post.content = marked(post.content);
-        });
-    }).error(function(err) {
-        $scope.posts = [];
-        console.log(err);
+    $scope.$on('$viewContentLoaded', function() {
+        fetchPosts();
     });
+
+    function fetchPosts() {
+        PostService.getAllPosts().success(function(response) {
+            $scope.posts = response;
+            angular.forEach($scope.posts, function(post) {
+                post.content = marked(post.content);
+            });
+        }).error(function(err) {
+            $scope.posts = [];
+            console.log(err);
+        });
+    }
 });
 
 module.controller('PostDetailCtrl', function($scope, $stateParams, PostService) {
@@ -137,7 +143,6 @@ module.controller('NewPostCtrl', function($scope, $stateParams, $timeout, Catego
         var post = { title: $scope.post.title, content: $scope.post.content, images: $scope.images, 
             author: localStorage.getItem('userID'), categories: $scope.post.categories };
 
-        console.log('initiate POST');
         PostService.createPost(post).success(function(response) {
             $scope.post = {};
             $scope.images = [];
