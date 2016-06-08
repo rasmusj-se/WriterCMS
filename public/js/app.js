@@ -14,7 +14,7 @@ moment.locale('sv');
 /* Router setup */
 writer.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
     /* API Base URL */
-    $httpProvider.defaults.base_url = 'http://192.168.1.120:3000';
+    $httpProvider.defaults.base_url = 'http://localhost:3000';
 
     /* Fallback URL */
     $urlRouterProvider.otherwise('/posts');

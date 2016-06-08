@@ -132,13 +132,16 @@ module.controller('NewPostCtrl', function($scope, $stateParams, $timeout, Catego
     }
 
     $scope.submitPost = function() {
+        var spinner = ngDialog.open({ template: 'partials/popups/spinner.html', className: 'ngdialog-theme-default' });
         var post = { title: $scope.post.title, content: $scope.post.content, images: $scope.images, 
             author: localStorage.getItem('userID'), categories: $scope.post.categories };
         PostService.createPost(post).success(function(response) {
             $scope.post = {};
             $scope.images = [];
+            spinner.close();
             ngDialog.open({ template: 'partials/popups/postCreatedSuccess.html', className: 'ngdialog-theme-default' });
         }).error(function(err) {
+            spinner.close();
             ngDialog.open({ template: 'partials/popups/postCreatedError.html', className: 'ngdialog-theme-default' });
         });
     }

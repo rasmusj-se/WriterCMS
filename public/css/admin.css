@@ -120,6 +120,11 @@ textarea {
     margin-top: 5%;
 }
 
+.popup.spinner i {
+    margin: auto;
+    font-size: 300%;
+}
+
 #picturesInput {
     margin: auto;
     margin-top: 5%;

@@ -10,13 +10,19 @@ gulp.task('bower', function() {
                 bootstrap: {
                     main: [
                         './dist/js/bootstrap.js',
-                        './dist/css/*.min.*',
+                        './dist/css/*.*',
                         './dist/fonts/*.*'
                     ]
                 },
                 'blueimp-load-image': {
                     main: [
-                        './js/load-image.all.min.js'
+                        './js/load-image.all.js'
+                    ]
+                },
+                'font-awesome': {
+                    main: [
+                        './css/font-awesome.css',
+                        './fonts/**/*'
                     ]
                 }
             }
@@ -25,6 +31,10 @@ gulp.task('bower', function() {
 });
 
 gulp.task('lib-inject', ['bower'], function() {
+    // Font awesome
+    gulp.src('./public/lib/font-awesome/**/*')
+        .pipe(gulp.dest('./public'));
+
     // Force jQuery to load before other libs, given dependency problems
     var sources = gulp.src(['./public/lib/jquery.js', './public/lib/**/*.js', './public/lib/**/*.css'], {read: false});
 
