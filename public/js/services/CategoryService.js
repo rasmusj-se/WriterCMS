@@ -36,6 +36,31 @@ module.factory('CategoryService', function($http) {
             }
 
             return $http(req);
+        },
+        updateCategory: function(category) {
+            var req = {
+                method: 'PUT',
+                url: $http.defaults.base_url + '/categories/' + category._id,
+                data: category,
+                headers: {
+                    'Token': localStorage.getItem('token'),
+                    'Content-Type': 'application/json'
+                }
+            }
+
+            return $http(req);
+        },
+        deleteCategory: function(ID) {
+            var req = {
+                method: 'DELETE',
+                url: $http.defaults.base_url + '/categories/' + ID,
+                headers: {
+                    'Token': localStorage.getItem('token'),
+                    'Content-Type': 'application/json'
+                }
+            }
+
+            return $http(req);
         }
     }
 });

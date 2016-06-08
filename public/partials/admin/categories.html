@@ -1,3 +1,14 @@
 <div ui-view>
-    <h1>Kategorier</h1>
+    <div class="text-center">
+        <h1>Hantera kategorier</h1>
+        <hr class="heading">
+        <div class="admin-list">
+            <div ng-repeat="category in categories">
+                <div ui-sref="base.admin.categories.detail({ id: category._id })" class="admin-category">
+                    <h1 class="category-name">{{ category.name }}</h1>
+                </div>
+                <hr>
+            </div>
+        </div>
+    </div>
 </div>

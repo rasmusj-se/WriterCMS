@@ -1,0 +1,15 @@
+<div class="admin">
+    <div class="back">
+        <a ui-sref="base.admin.categories">&larr; Tillbaka</a>
+    </div>
+
+    <div class="edit categories">
+        <h3>Namn</h3>
+        <input ng-model="category.name" type="text">
+
+        <div class="action-buttons">
+            <button class="edit" ng-click="updateCategory()">Uppdatera</button>
+            <button class="delete" ng-click="deleteCategory()">Ta bort</button>
+        </div>
+    </div>
+</div>

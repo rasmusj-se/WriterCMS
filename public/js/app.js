@@ -84,6 +84,7 @@ writer.config(function($stateProvider, $urlRouterProvider, $httpProvider, cfpLoa
         .state('base.admin.categories', {
             url: '/categories',
             templateUrl: 'partials/admin/categories.html',
+            controller: 'AdminCategoriesCtrl',
             authenticate: true
         })
         .state('base.admin.categories.new', {
@@ -91,6 +92,11 @@ writer.config(function($stateProvider, $urlRouterProvider, $httpProvider, cfpLoa
             templateUrl: 'partials/admin/categories-new.html',
             controller: 'NewCategoryCtrl',
             authenticate: true
+        })
+        .state('base.admin.categories.detail', {
+            url: '/:id',
+            templateUrl: 'partials/admin/categories-detail.html',
+            controller: 'AdminCategoryDetailCtrl'
         })
         .state('base.admin.users', {
             url: '/users',

@@ -61,6 +61,6 @@ module.factory('PostService', function($http) {
             }
 
             return $http(req);
-        },
+        }
     }
 });

@@ -4,11 +4,11 @@
     padding-top: 5%;
 }
 
-select {
+.admin select {
     width: 90%;
 }
 
-input[type="text"], input[type="password"] {
+.admin input[type="text"], input[type="password"] {
     width: 90%;
     margin: 2.5% auto;
     background: white;
@@ -18,30 +18,14 @@ input[type="text"], input[type="password"] {
     border: 1px solid #66B3FF;
 }
 
-.category-check-wrapper {
-    width: 90%;
-    height: 25px;
-    text-align: left;
-    margin: 2.5% auto;
-}
-
-.category-check-wrapper span {
-    height: 100%;
-    font-size: 110%;
-}
-
-input[type="checkbox"] {
+.admin input[type="checkbox"] {
     width: 15%;
     background: white;
     height: 25px;
     margin: 0;
 }
 
-button.disabled {
-    background: red;
-}
-
-form button {
+.admin form button {
     width: 90%;
     margin: 2.5% auto;
     background: #66B3FF;
@@ -51,7 +35,7 @@ form button {
     border: none;
 }
 
-textarea {
+.admin textarea {
     width: 90%;
     border: 1px solid #66B3FF;
     resize: none;
@@ -102,6 +86,8 @@ textarea {
     box-shadow: none;
     width: 2em;
     height: 2em;
+    font-size: 100%;
+    text-align: center;
     padding: 0px;
 }
 
@@ -131,36 +117,34 @@ textarea {
     width: 90%;
 }
 
-.admin-post {
+.admin-list {
+    padding: 5%;
+    text-align: left;
+    font-weight: 200;
+}
+
+.admin-list h1 {
+    font-size: 160%;
+    margin-top: 10px;
+    font-weight: 200;
+}
+
+.admin {
     padding: 5%;
 }
 
-.admin-post .post-title {
+.admin .back {
+    padding: 0;
+}
+
+.admin input {
     text-align: left;
     font-size: 180%;
     font-weight: 200;
     margin-top: 10px;
 }
 
-.admin-post .footer {
-    float: left;
-}
-
-.admin-edit-post-details {
-    padding: 0 5%;
-    padding-bottom: 150px;
-}
-
-.admin-edit-post-details textarea {
-    width: 100%;
-}
-
-.admin-edit-post-details .action-buttons {
-    background: red;
-    margin: 5% auto;
-}
-
-.admin-edit-post-details .action-buttons button {
+.admin .action-buttons button {
     width: 100%;
     float: left;
     border: none;
@@ -168,13 +152,13 @@ textarea {
     margin: 10px 0;
     font-size: 120%;
     font-weight: 200;
-    color: white;
+    color: white;    
 }
 
-.admin-edit-post-details .action-buttons button.edit {
+.admin .action-buttons button.edit {
     background: #66B3FF;
 }
 
-.admin-edit-post-details .action-buttons button.delete {
+.admin .action-buttons button.delete {
     background: #Db4141;
 }

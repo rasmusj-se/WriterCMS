@@ -49,20 +49,20 @@ module.controller('AdminPostDetailCtrl', function($scope, $state, $stateParams,
 
     $scope.updatePost = function() {
         PostService.updatePost($scope.post).success(function(response) {
-            ngDialog.open({ template: 'partials/popups/postUpdatedSuccess.html', className: 'ngdialog-theme-default' });
+            ngDialog.open({ template: 'partials/popups/posts/postUpdatedSuccess.html', className: 'ngdialog-theme-default' });
         }).error(function(err) {
             console.log(err);
-            ngDialog.open({ template: 'partials/popups/postUpdatedError.html', className: 'ngdialog-theme-default' });
+            ngDialog.open({ template: 'partials/popups/posts/postUpdatedError.html', className: 'ngdialog-theme-default' });
         })
     }
 
     $scope.deletePost = function() {
         PostService.deletePost($scope.post._id).success(function(response) {
-            ngDialog.open({ template: 'partials/popups/postDeletedSuccess.html', className: 'ngdialog-theme-default' });
+            ngDialog.open({ template: 'partials/popups/posts/postDeletedSuccess.html', className: 'ngdialog-theme-default' });
             $state.go('base.admin.posts');
         }).error(function(err) {
             console.log(err);
-            ngDialog.open({ template: 'partials/popups/postDeletedError.html', className: 'ngdialog-theme-default' });
+            ngDialog.open({ template: 'partials/popups/posts/postDeletedError.html', className: 'ngdialog-theme-default' });
         })
     }
 
@@ -139,7 +139,7 @@ module.controller('NewPostCtrl', function($scope, $stateParams, $timeout, Catego
     }
 
     $scope.submitPost = function() {
-        var spinner = ngDialog.open({ template: 'partials/popups/spinner.html', className: 'ngdialog-theme-default' });
+        var spinner = ngDialog.open({ template: 'partials/popups/posts/spinner.html', className: 'ngdialog-theme-default' });
         var post = { title: $scope.post.title, content: $scope.post.content, images: $scope.images, 
             author: localStorage.getItem('userID'), categories: $scope.post.categories };
 
@@ -147,10 +147,10 @@ module.controller('NewPostCtrl', function($scope, $stateParams, $timeout, Catego
             $scope.post = {};
             $scope.images = [];
             spinner.close();
-            ngDialog.open({ template: 'partials/popups/postCreatedSuccess.html', className: 'ngdialog-theme-default' });
+            ngDialog.open({ template: 'partials/popups/posts/postCreatedSuccess.html', className: 'ngdialog-theme-default' });
         }).error(function(err) {
             spinner.close();
-            ngDialog.open({ template: 'partials/popups/postCreatedError.html', className: 'ngdialog-theme-default' });
+            ngDialog.open({ template: 'partials/popups/posts/postCreatedError.html', className: 'ngdialog-theme-default' });
         });
     }
 });
