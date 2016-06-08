@@ -97,6 +97,7 @@ module.controller('NewPostCtrl', function($scope, $stateParams, $timeout, Catego
                 reader.onload = function(e) {
                     img.src = e.target.result;
                     img.onload = function() {
+
                         var canvas = document.createElement("canvas");
                         var ctx = canvas.getContext("2d");
                         ctx.drawImage(img, 0, 0);
@@ -135,6 +136,8 @@ module.controller('NewPostCtrl', function($scope, $stateParams, $timeout, Catego
         var spinner = ngDialog.open({ template: 'partials/popups/spinner.html', className: 'ngdialog-theme-default' });
         var post = { title: $scope.post.title, content: $scope.post.content, images: $scope.images, 
             author: localStorage.getItem('userID'), categories: $scope.post.categories };
+
+        console.log('initiate POST');
         PostService.createPost(post).success(function(response) {
             $scope.post = {};
             $scope.images = [];

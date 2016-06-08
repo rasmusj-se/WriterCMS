@@ -1,5 +1,5 @@
 /* Angular init */
-var writer = angular.module('writer', ['ui.router', 'ngDialog', 
+var writer = angular.module('writer', ['ui.router', 'ngDialog', 'angular-loading-bar', 
     'writer.controllers', 'writer.services', 'writer.filters', 'writer.directives']);
 
 /* Module setup */
@@ -12,9 +12,12 @@ angular.module('writer.directives', []);
 moment.locale('sv');
 
 /* Router setup */
-writer.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
+writer.config(function($stateProvider, $urlRouterProvider, $httpProvider, cfpLoadingBarProvider) {
     /* API Base URL */
     $httpProvider.defaults.base_url = 'http://localhost:3000';
+
+    /* Remove spinner */
+    cfpLoadingBarProvider.includeSpinner = false;
 
     /* Fallback URL */
     $urlRouterProvider.otherwise('/posts');
