@@ -19,6 +19,9 @@ writer.config(function($stateProvider, $urlRouterProvider, $httpProvider, cfpLoa
     /* Remove spinner */
     cfpLoadingBarProvider.includeSpinner = false;
 
+    /* Set delay prior to loading bar displayed */
+    cfpLoadingBarProvider.latencyThreshold = 500;
+
     /* Fallback URL */
     $urlRouterProvider.otherwise('/posts');
 
