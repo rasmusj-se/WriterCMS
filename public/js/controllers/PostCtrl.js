@@ -139,7 +139,7 @@ module.controller('NewPostCtrl', function($scope, $stateParams, $timeout, Catego
     }
 
     $scope.submitPost = function() {
-        var spinner = ngDialog.open({ template: 'partials/popups/posts/spinner.html', className: 'ngdialog-theme-default' });
+        var spinner = ngDialog.open({ template: 'partials/popups/spinner.html', className: 'ngdialog-theme-default' });
         var post = { title: $scope.post.title, content: $scope.post.content, images: $scope.images, 
             author: localStorage.getItem('userID'), categories: $scope.post.categories };
 

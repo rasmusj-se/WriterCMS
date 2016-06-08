@@ -137,10 +137,10 @@
     padding: 0;
 }
 
-.admin input {
+.admin input,
+.admin textarea {
     text-align: left;
-    font-size: 180%;
-    font-weight: 200;
+    font-weight: 300;
     margin-top: 10px;
 }
 
@@ -151,7 +151,7 @@
     height: 40px;
     margin: 10px 0;
     font-size: 120%;
-    font-weight: 200;
+    font-weight: 300;
     color: white;    
 }
 
