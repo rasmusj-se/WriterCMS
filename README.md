@@ -23,3 +23,6 @@ Icons made by [Madebyoliver](http://www.flaticon.com/authors/madebyoliver) from 
 
 ## Camera icon
 Icons made by [Daniel Bruce](http://www.flaticon.com/authors/daniel-bruce) from [www.flaticon.com](http://www.flaticon.com) is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/).
+
+## Favicon
+Icon downloaded from [freefavicon.com](http://www.freefavicon.com/freefavicons/objects/iconinfo/travel-globe-152-170988.html).
