@@ -32,3 +32,18 @@ body {
 .popup.postSuccess img {
     width: 20%;
 }
+
+.navbar-brand {
+    padding: 15px;
+}
+
+#title-image {
+    width: 20px;
+    margin-right: 5px;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+#title-span {
+    font-size: 110%;
+}
