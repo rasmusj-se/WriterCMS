@@ -67,7 +67,8 @@ hr.inline-separator {
 .post .post-footer {
     margin-top: 30px;
     font-style: italic;
-    font-size: 120%;
+    font-size: 110%;
+    font-weight: 300;
 }
 
 .post .post-share {
