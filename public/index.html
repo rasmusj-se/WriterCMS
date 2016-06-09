@@ -49,6 +49,7 @@
     <div ui-view></div>
     <!-- bower:js -->
     <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-easyfb/build/angular-easyfb.js"></script>
     <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="lib/angular-loading-bar/build/loading-bar.js"></script>
     <script src="lib/jquery/dist/jquery.js"></script>
@@ -73,14 +74,6 @@
     <script src="js/services/PostService.js"></script>
     <script src="js/navbar.js"></script>
     <!-- endinject -->
-
-    <script>(function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/sv_SE/sdk.js#xfbml=1&version=v2.6&appId=1539788846329411";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
 
 </body>
 </html>
