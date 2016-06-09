@@ -15,7 +15,7 @@ var app = express();
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json({ limit: '50mb' }));
-app.use(favicon(__dirname + '/public/img/favicon.ico'));
+
 /* Enabling CORS */
 app.use(cors());
 app.set('tokenSecret', require('./config/token.js'));

@@ -70,6 +70,34 @@ hr.inline-separator {
     font-size: 120%;
 }
 
+.post .post-share {
+    padding: 30px;
+}
+
+.post .post-share a {
+    width: 100px;
+    display: inline-block;
+    padding: 10px;
+    border-radius: 5px;
+    position: relative;
+    margin: auto 10px;
+}
+
+.post .post-share .twitter-share-button {
+    background: #1b95e0;
+    color: white;
+}
+
+.post .post-share .facebook-share-button {
+    display: inline-block;
+}
+
+.post .post-share .facebook-share-button > * {
+    background: #3B5998;
+    display: inline-block;
+    color: white;
+}
+
 .post .post-content h1 {
     font-size: 150%;
 }

@@ -61,16 +61,24 @@
     <script src="js/controllers/CategoryCtrl.js"></script>
     <script src="js/controllers/LoginCtrl.js"></script>
     <script src="js/controllers/PostCtrl.js"></script>
-    <script src="js/filters/DateFilter.js"></script>
-    <script src="js/filters/TrustFilter.js"></script>
     <script src="js/directives/customChangeDirective.js"></script>
     <script src="js/directives/imageLazyLoadDirective.js"></script>
+    <script src="js/filters/DateFilter.js"></script>
+    <script src="js/filters/TrustFilter.js"></script>
     <script src="js/services/AuthService.js"></script>
     <script src="js/services/CategoryService.js"></script>
     <script src="js/services/LocationService.js"></script>
     <script src="js/services/PostService.js"></script>
     <script src="js/navbar.js"></script>
     <!-- endinject -->
+
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/sv_SE/sdk.js#xfbml=1&version=v2.6&appId=1539788846329411";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
 
 </body>
 </html>
