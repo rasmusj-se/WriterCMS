@@ -80,9 +80,15 @@ module.controller('AdminPostDetailCtrl', function($scope, $state, $stateParams,
     });
 });
 
-module.controller('NewPostCtrl', function($scope, $stateParams, $timeout, CategoryService, PostService, ngDialog) {
+module.controller('NewPostCtrl', function($scope, $stateParams, $timeout, CategoryService, LocationService, PostService, ngDialog) {
     $scope.images = [];
     $scope.post = { categories: [] };
+
+    LocationService.getCurrentLocation().then(function(location) {
+        $scope.post.location = location;
+    }).catch(function(err) {
+        console.log(err);
+    });
 
     CategoryService.getAllCategories().success(function(response) {
         $scope.categories = response;
@@ -141,7 +147,8 @@ module.controller('NewPostCtrl', function($scope, $stateParams, $timeout, Catego
     $scope.submitPost = function() {
         var spinner = ngDialog.open({ template: 'partials/popups/spinner.html', className: 'ngdialog-theme-default' });
         var post = { title: $scope.post.title, content: $scope.post.content, images: $scope.images, 
-            author: localStorage.getItem('userID'), categories: $scope.post.categories };
+            author: localStorage.getItem('userID'), categories: $scope.post.categories, location: $scope.post.location };
+        console.log(post);
 
         PostService.createPost(post).success(function(response) {
             $scope.post = {};

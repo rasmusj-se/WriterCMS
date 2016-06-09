@@ -24,6 +24,7 @@ router.post('/', function(req, res) {
         var images = req.body.images;
         var authorID = req.body.author;
         var categories = req.body.categories;
+        var location = req.body.location;
         var imageLinks = [];
 
         for (var i = 0; i < images.length; i++) {
@@ -34,7 +35,7 @@ router.post('/', function(req, res) {
         }
 
         Post.create({ title: title, content: content, images: imageLinks, author: authorID, 
-        categories: categories }, function(err, post) {
+        categories: categories, location: location }, function(err, post) {
             if (err) {
                 res.status(500).send('Could not create post. Error: ' + err);
             } else {
