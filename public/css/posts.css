@@ -85,10 +85,9 @@ hr.inline-separator {
 
 .post .post-share li {
     margin: auto;
-    margin-left: 10px;
-    margin-right: 10px;
     display: inline-block;
     float: none;
+    max-width: 40px;
 }
 
 .post .post-share > * {
