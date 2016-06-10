@@ -75,6 +75,22 @@ hr.inline-separator {
     padding: 30px;
 }
 
+.post .post-share ul {
+    text-align: center !important;
+}
+
+.post .rrssb-buttons {
+    width: auto;
+}
+
+.post .post-share li {
+    margin: auto;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: inline-block;
+    float: none;
+}
+
 .post .post-share > * {
     margin: 10px;
 }

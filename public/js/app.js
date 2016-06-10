@@ -12,7 +12,7 @@ angular.module('writer.directives', []);
 moment.locale('sv');
 
 /* Router setup */
-writer.config(function($stateProvider, $urlRouterProvider, $httpProvider, cfpLoadingBarProvider, ezfbProvider) {
+writer.config(function($stateProvider, $urlRouterProvider, $httpProvider, cfpLoadingBarProvider) {
     /* API Base URL */
     $httpProvider.defaults.base_url = 'http://localhost:3000';
 
@@ -21,13 +21,6 @@ writer.config(function($stateProvider, $urlRouterProvider, $httpProvider, cfpLoa
 
     /* Set delay prior to loading bar displayed */
     cfpLoadingBarProvider.latencyThreshold = 500;
-
-    /* Easy FB config */
-    ezfbProvider.setLocale('sv_SE');
-    ezfbProvider.setInitParams({
-        appId: 1539788846329411,
-        
-    });
 
     /* Fallback URL */
     $urlRouterProvider.otherwise('/posts');
