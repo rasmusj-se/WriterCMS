@@ -37,7 +37,7 @@ module.controller('PostDetailCtrl', function($scope, $stateParams, PostService) 
         $scope.post.content = marked($scope.post.content);
 
         $scope.$emit('newPageLoaded', { 'title': $scope.post.title, 'description': $scope.post.content,
-            'author': $scope.post.author.firstName + $scope.post.author.lastName });
+            'author': $scope.post.author.firstName + ' ' + $scope.post.author.lastName });
     }).error(function(err) {
         $scope.post = {};
         console.log(err);

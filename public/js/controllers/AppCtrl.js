@@ -8,6 +8,6 @@ module.controller('AppCtrl', function($scope) {
     }
 
     $scope.$on('newPageLoaded', function(event, metadata) {
-        $scope.metadata = metadata
+        $scope.metadata = metadata;
     });
 });
