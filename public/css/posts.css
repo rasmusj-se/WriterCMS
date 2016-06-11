@@ -93,6 +93,7 @@ hr.inline-separator {
 
 .post .post-location ng-map {
     max-height: 200px;
+    margin-top: 50px;
 }
 
 .post .post-content h1 {

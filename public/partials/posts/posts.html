@@ -11,7 +11,8 @@
                 <img image-lazy-load="{{ image }}" image-index="$index">
             </div>
             <div class="post-location" ng-show="post.location != undefined">
-              <ng-map center="[{{ post.location.latitude }}, {{ post.location.longitude }}]" zoom="10">
+              <ng-map center="[{{ post.location.latitude }}, {{ post.location.longitude }}]" zoom="10"
+              scrollwheel="false">
                 <marker position="[{{ post.location.latitude }}, {{ post.location.longitude }}]" />
               </ng-map>
             </div>
