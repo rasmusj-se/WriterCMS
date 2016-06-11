@@ -1,5 +1,5 @@
 /* Angular init */
-var writer = angular.module('writer', ['ui.router', 'ngDialog', 'angular-loading-bar', 'ezfb',
+var writer = angular.module('writer', ['ui.router', 'ngDialog', 'angular-loading-bar', 'ngMap',
     'writer.controllers', 'writer.services', 'writer.filters', 'writer.directives']);
 
 /* Module setup */

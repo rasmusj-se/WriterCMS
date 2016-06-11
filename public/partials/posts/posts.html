@@ -10,6 +10,11 @@
             <div class="post-images" ng-repeat="image in post.images track by $index">
                 <img image-lazy-load="{{ image }}" image-index="$index">
             </div>
+            <div class="post-location" ng-show="post.location != undefined">
+              <ng-map center="[{{ post.location.latitude }}, {{ post.location.longitude }}]" zoom="10">
+                <marker position="[{{ post.location.latitude }}, {{ post.location.longitude }}]" />
+              </ng-map>
+            </div>
             <div class="post-footer">
                 <span class="post-author-name">Postat av {{ post.author.firstName }} i 
                 <span ng-repeat="category in post.categories track by $index">

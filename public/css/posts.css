@@ -84,15 +84,15 @@ hr.inline-separator {
     text-align: center !important;
 }
 
-.post .rrssb-buttons {
-    /*width: auto;*/
-}
-
 .post .post-share li {
     margin: auto;
     display: inline-block;
     float: none;
     max-width: 40px;
+}
+
+.post .post-location ng-map {
+    max-height: 200px;
 }
 
 .post .post-content h1 {
