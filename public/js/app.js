@@ -17,7 +17,7 @@ writer.config(function($stateProvider, $locationProvider, $urlRouterProvider,
 
     /* Crawler magic */
     $locationProvider.hashPrefix('!');
-    // $locationProvider.html5Mode(true);
+    $locationProvider.html5Mode(true);
 
     /* API Base URL */
     $httpProvider.defaults.base_url = 'http://localhost:3000';
