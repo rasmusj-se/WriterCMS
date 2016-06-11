@@ -36,11 +36,11 @@ writer.config(function($stateProvider, $urlRouterProvider, $httpProvider, cfpLoa
             templateUrl: 'partials/posts/posts.html',
             controller: 'PostCtrl',
         })
-        // .state('base.postdetail', {
-        //     url: '/posts/:id',
-        //     templateUrl: 'partials/posts/posts-detail.html',
-        //     controller: 'PostDetailCtrl'
-        // })
+        .state('base.postdetail', {
+            url: '/posts/:id',
+            templateUrl: 'partials/posts/posts-detail.html',
+            controller: 'PostDetailCtrl'
+        })
         .state('base.route', {
             url: '/route',
             templateUrl: 'partials/route.html'
