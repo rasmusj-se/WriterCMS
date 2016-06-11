@@ -2,7 +2,8 @@ var module = angular.module('writer.controllers');
 
 module.controller('AppCtrl', function($scope) {
     $scope.metadata = {
-        title: 'Asien 2017',
+        title: 'Start',
+        description: 'Upplevelser och bilder från två backpackers på vift.',
         author: 'Axel Niklasson'
     }
 
