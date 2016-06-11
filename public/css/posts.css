@@ -12,6 +12,10 @@ h1.heading {
     text-align: center;
 }
 
+a h1 {
+    color: black;
+}
+
 hr.heading {
     width: 60%;
     height: 1px;
