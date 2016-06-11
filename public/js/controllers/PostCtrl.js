@@ -34,11 +34,11 @@ module.controller('PostDetailCtrl', function($scope, $stateParams, PostService) 
 
     PostService.getPostByID($stateParams.id).success(function(response) {
         $scope.post = response;
+        $scope.post.content = marked($scope.post.content);
+        console.log($scope.post);
 
         $scope.$emit('newPageLoaded', { 'title': $scope.post.title, 'description': $scope.post.content,
             'author': $scope.post.author.firstName + ' ' + $scope.post.author.lastName });
-        
-        $scope.post.content = marked($scope.post.content);
     }).error(function(err) {
         $scope.post = {};
         console.log(err);
