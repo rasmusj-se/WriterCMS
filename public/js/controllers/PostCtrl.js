@@ -35,7 +35,6 @@ module.controller('PostDetailCtrl', function($scope, $stateParams, PostService) 
     PostService.getPostByID($stateParams.id).success(function(response) {
         $scope.post = response;
         $scope.post.content = marked($scope.post.content);
-        console.log($scope.post);
 
         $scope.$emit('newPageLoaded', { 'title': $scope.post.title, 'description': $scope.post.content,
             'author': $scope.post.author.firstName + ' ' + $scope.post.author.lastName });
@@ -90,7 +89,7 @@ module.controller('NewPostCtrl', function($scope, $stateParams, $timeout, Catego
     $scope.post = { categories: [] };
 
     LocationService.getCurrentLocation().then(function(location) {
-        $scope.post.location = location;
+        $scope.$apply($scope.post.location = location);
     }).catch(function(err) {
         console.log(err);
     });
@@ -124,7 +123,6 @@ module.controller('NewPostCtrl', function($scope, $stateParams, $timeout, Catego
         var spinner = ngDialog.open({ template: 'partials/popups/spinner.html', className: 'ngdialog-theme-default' });
         var post = { title: $scope.post.title, content: $scope.post.content, images: $scope.images, 
             author: localStorage.getItem('userID'), categories: $scope.post.categories, location: $scope.post.location };
-        console.log(post);
 
         PostService.createPost(post).success(function(response) {
             $scope.post = {};

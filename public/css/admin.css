@@ -106,6 +106,12 @@
     margin-top: 5%;
 }
 
+.new-post .location {
+    width: 90%;
+    margin: auto;
+    text-align: left;
+}
+
 .popup.spinner i {
     margin: auto;
     font-size: 300%;
