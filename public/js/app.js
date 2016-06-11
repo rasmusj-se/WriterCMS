@@ -12,7 +12,13 @@ angular.module('writer.directives', []);
 moment.locale('sv');
 
 /* Router setup */
-writer.config(function($stateProvider, $urlRouterProvider, $httpProvider, cfpLoadingBarProvider) {
+writer.config(function($stateProvider, $locationProvider, $urlRouterProvider, 
+    $httpProvider, cfpLoadingBarProvider) {
+
+    /* Crawler magic */
+    $locationProvider.hashPrefix('!');
+    $locationProvider.html5Mode(true);
+
     /* API Base URL */
     $httpProvider.defaults.base_url = 'http://localhost:3000';
 
