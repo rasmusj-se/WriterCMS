@@ -31,9 +31,13 @@ module.controller('AdminPostCtrl', function($scope, PostService) {
 });
 
 module.controller('PostDetailCtrl', function($scope, $stateParams, PostService) {
+
     PostService.getPostByID($stateParams.id).success(function(response) {
         $scope.post = response;
         $scope.post.content = marked($scope.post.content);
+
+        $scope.$emit('newPageLoaded', { 'title': $scope.post.title, 
+            'author': $scope.post.author.firstName + $scope.post.author.lastName });
     }).error(function(err) {
         $scope.post = {};
         console.log(err);

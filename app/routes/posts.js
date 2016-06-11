@@ -49,7 +49,7 @@ router.post('/', function(req, res) {
 /* Get post by ID */
 router.get('/:id', function(req, res) {
     var ID = req.params.id;
-    Post.findOne({_id: ID}, function(err, post) {
+    Post.findOne({_id: ID}).populate('author').populate('categories').exec(function(err, post) {
         if (err) {
             res.status(500).send('Could not get post. Error: ' + err);
         } else {
