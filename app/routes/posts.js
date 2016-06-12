@@ -30,7 +30,7 @@ router.post('/', function(req, res) {
         for (var i = 0; i < images.length; i++) {
             var base64string = images[i].replace(/^data:image\/(png|jpg|jpeg);base64,/, '');
             var hash = crypto.randomBytes(20).toString('hex');
-            fs.writeFileSync('public/storage/' + hash + '.png', base64string, 'base64');
+            fs.writeFileSync('./public/storage/' + hash + '.png', base64string, 'base64');
             imageLinks[i] = '/storage/' + hash + '.png';
         }
 
