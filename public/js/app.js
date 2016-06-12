@@ -20,7 +20,7 @@ writer.config(function($stateProvider, $locationProvider, $urlRouterProvider,
     $locationProvider.html5Mode(true);
 
     /* API Base URL */
-    $httpProvider.defaults.base_url = 'http://localhost:3000';
+    $httpProvider.defaults.base_url = 'https://writer.axelniklasson.se';
 
     /* Remove spinner */
     cfpLoadingBarProvider.includeSpinner = false;

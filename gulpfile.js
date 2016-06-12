@@ -52,6 +52,12 @@ gulp.task('js', function() {
         .pipe(gulp.dest('./public/dist'));
 });
 
+gulp.task('js-inject', ['js'], function() {
+    return gulp.src('./public/index.html')
+        .pipe(inject(gulp.src('./public/dist/scripts.js'), {relative: true}))
+        .pipe(gulp.dest('./public'));
+});
+
 /* Build, concatenate and minify all SASS files */
 gulp.task('styles', function() {
     return gulp.src('./public/sass/**/*.scss')
