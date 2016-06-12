@@ -12,7 +12,7 @@ mongoose.connect(db, { server: { reconnectTries: Number.MAX_VALUE } });
 
 /* Express application setup */
 var app = express();
-app.use(express.static('public'));
+app.use('/storage', express.static('public/storage'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json({ limit: '50mb' }));
 
@@ -53,11 +53,6 @@ app.use('/auth', require('./app/routes/auth'));
 app.use('/categories', require('./app/routes/categories'));
 app.use('/posts', require('./app/routes/posts'));
 app.use('/users', require('./app/routes/users'));
-
-/* Serving application */
-app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname, '/public', 'index.html'));
-});
 
 /* Development */
 if (app.get('env') == 'development') {
