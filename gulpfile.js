@@ -87,3 +87,5 @@ gulp.task('default', ['inject'], function() {
             host: '0.0.0.0'
         }));
 });
+
+gulp.task('build', ['inject']);
