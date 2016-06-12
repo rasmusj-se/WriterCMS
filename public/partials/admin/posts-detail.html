@@ -15,7 +15,7 @@
             </option>
         </select>
 
-        <div class="edit-post-gallery" ng-repeat="image in post.images track by $index">
+        <div class="gallery" ng-repeat="image in post.images track by $index">
             <div class="gallery-image">
                 <img ng-src="{{ image }}" />
                 <input type="button" class="removePhotoButton" value="X" ng-click="removePhoto($index)" />

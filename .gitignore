@@ -6,3 +6,5 @@ config
 *.sublime-workspace
 public/storage
 npm-debug.log
+public/dist
+build

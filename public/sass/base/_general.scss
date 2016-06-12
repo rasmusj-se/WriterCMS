@@ -1,0 +1,27 @@
+html {
+    min-height: 100%;
+    position: relative;
+}
+
+body {
+    height: 100%;
+}
+
+a, a:link, a:hover, a:active {
+    text-decoration: none;
+}
+
+.main-content {
+    padding-top: 50px;
+    text-align: center;
+}
+
+.back {
+    padding-left: 5%;
+    margin-top: 20px;
+    text-align: left;
+}
+
+.admin {
+    padding: 5%;
+}

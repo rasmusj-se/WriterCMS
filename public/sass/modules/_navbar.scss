@@ -1,0 +1,27 @@
+nav .navbar-brand img {
+    width: 10%;
+    display: inline-block;
+}
+
+.navbar.navbar-default {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+}
+
+.navbar-brand {
+    padding: 15px;
+}
+
+#title-image {
+    width: 20px;
+    margin-right: 5px;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+#title-span {
+    font-size: 110%;
+}

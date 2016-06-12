@@ -1,0 +1,17 @@
+.admin {
+    button {
+        width: 100%;
+        background: $light-blue;
+        float: left;
+        border: none;
+        margin: 10px 0;
+        font-size: 120%;
+        font-weight: 300;
+        color: white;
+        height: $button-height;
+    }
+
+    button.delete {
+        background: $light-red;
+    }
+}

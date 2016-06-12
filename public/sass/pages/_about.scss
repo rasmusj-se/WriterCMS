@@ -1,0 +1,26 @@
+.about {
+    .author {
+        width: 90%;
+        margin: 10% auto;
+    }
+
+    .author img {
+        width: 50%;
+        border-radius: 50%;
+    }
+
+    .author p.desc {
+        font-style: italic;
+        font-size: 125%;
+    }
+
+    hr.divider {
+        width: 80%;
+    }
+
+    hr.primary {
+        width: 25%;
+        background-color: #66B3FF;
+        height: 2px;
+    }
+}

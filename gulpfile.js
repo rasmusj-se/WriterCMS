@@ -2,6 +2,10 @@ var gulp = require('gulp');
 var inject = require('gulp-inject');
 var mainBowerFiles = require('gulp-main-bower-files');
 var server = require('gulp-server-livereload');
+var sass = require('gulp-sass');
+var cleanCSS = require('gulp-clean-css');
+var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
 
 gulp.task('bower', function() {
     return gulp.src('./bower.json')
@@ -30,40 +34,51 @@ gulp.task('bower', function() {
         .pipe(gulp.dest('./public/lib'));
 });
 
-gulp.task('lib-inject', ['bower'], function() {
-    // Font awesome
-    gulp.src('./public/lib/font-awesome/**/*')
-        .pipe(gulp.dest('./public'));
+gulp.task('lib', ['bower'], function() {
+    gulp.src('./public/lib/**/*.js')
+        .pipe(concat('lib_scripts.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('./public/dist'));
 
-    // Force jQuery to load before other libs, given dependency problems
-    var sources = gulp.src(['./public/lib/jquery.js', './public/lib/**/*.js', './public/lib/**/*.css'], {read: false});
-
-    return gulp.src('./public/index.html')
-        .pipe(inject(sources, {relative: true, name: 'bower'}))
-        .pipe(gulp.dest('./public'));
+    gulp.src('./public/lib/**/*.css')
+        .pipe(concat('lib_styles.css'))
+        .pipe(cleanCSS({compatibility: 'ie8'}))
+        .pipe(gulp.dest('./public/dist'));
 });
 
-gulp.task('js-inject', function() {
-    var sources = gulp.src(['public/js/lib/**/*.js', 'public/js/app.js', './public/js/**/*.js'], {read: false});
+gulp.task('js', function() {
+    return gulp.src(['public/js/lib/**/*.js', 'public/js/app.js', './public/js/**/*.js'])
+        .pipe(concat('scripts.js'))
+        .pipe(gulp.dest('./public/dist'));
+});
+
+/* Build, concatenate and minify all SASS files */
+gulp.task('styles', function() {
+    return gulp.src('./public/sass/**/*.scss')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(concat('styles.css'))
+        .pipe(cleanCSS({compatibility: 'ie8'}))
+        .pipe(gulp.dest('./public/dist'));
+});
+
+gulp.task('styles-inject', ['styles'], function() {
+    return gulp.src('./public/index.html')
+        .pipe(inject(gulp.src('./public/dist/*.css'), {relative: true}))
+        .pipe(gulp.dest('./public'))
+});
+
+gulp.task('inject', ['lib', 'styles', 'js'], function() {
+    var sources = gulp.src(['./public/dist/lib_styles.css', './public/dist/lib_scripts.js', 
+        './public/dist/styles.css', './public/dist/scripts.js'], {read: false});
 
     return gulp.src('./public/index.html')
         .pipe(inject(sources, {relative: true}))
         .pipe(gulp.dest('./public'));
 });
-
-gulp.task('styles-inject', function() {
-    var sources = gulp.src(['./public/css/**/*.css'], {read: false});
-
-    return gulp.src('./public/index.html')
-        .pipe(inject(sources, {relative: true}))
-        .pipe(gulp.dest('./public'));
-});
-
-gulp.task('inject', ['js-inject', 'lib-inject', 'styles-inject']);
 
 gulp.task('default', ['inject'], function() {
     gulp.watch('./public/js/**/*.js', ['js-inject']);
-    gulp.watch('./public/css/**/*.css', ['styles-inject']);
+    gulp.watch('./public/sass/**/*.scss', ['styles-inject']);
     gulp.watch('./bower_components/**/*', ['lib-inject']);
 
     return gulp.src('./public')

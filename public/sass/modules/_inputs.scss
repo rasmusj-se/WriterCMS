@@ -1,0 +1,27 @@
+input, textarea {
+    @extend .border;
+    text-align: left;
+    font-weight: 300;
+    width: 100%;
+    margin-top: 10px;
+    padding: 2%;
+    padding-left: 3%;
+}
+
+input {
+    margin: 2.5% auto;
+    background: white;
+    height: 50px;
+    font-size: 130%;
+}
+
+textarea {
+    resize: none;
+    height: 300px;
+    font-size: 120%;
+}
+
+.admin select {
+    @extend .border;
+    width: 100%;
+}

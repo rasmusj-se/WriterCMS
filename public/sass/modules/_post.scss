@@ -1,0 +1,59 @@
+.post {
+
+    h1 {
+        color: black;
+        font-weight: 200;
+    }
+
+    .post-date {
+        font-style: italic;
+        font-weight: 200;
+    }
+
+    .post-content {
+        margin: 30px auto;
+    }
+
+    .post-images {
+        width: 100%;
+        text-align: center;
+        padding: 0 !important;
+    }
+
+    .post-images img {
+        width: 100% !important;
+        padding: 0;
+        margin: 0 !important;
+    }
+
+    .post-location {
+        margin: 50px auto;
+    }
+
+    .post-location ng-map {
+        max-height: 200px;
+        margin-top: 25px;
+    }
+
+    .post-footer {
+        margin-top: 30px;
+        font-style: italic;
+        font-size: 110%;
+        font-weight: 300;
+    }
+
+    .post-share {
+        padding: 30px;
+    }
+
+    .post-share ul {
+        text-align: center !important;
+    }
+
+    .post-share li {
+        margin: auto;
+        display: inline-block;
+        float: none;
+        max-width: 40px;
+    }
+}
