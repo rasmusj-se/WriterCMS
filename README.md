@@ -4,6 +4,9 @@ Clean, extremely simple writing tool for developers.
 ## Purpose
 After scouting the web, I could not find a blogging tool as simple as clean as I was searching for. Most of the tools contain lots of - for me - unnecessary features, which inspired me to write my own tool. Hence, Writer was born.
 
+## Demo
+I am currently developing Writer during my spare time, and my pre-alpha version can be found [here](http://resa.axelniklasson.se). Please bear in mind that I'm currently focusing on funcitonality and have only implemented styles for small screens. Mobile-first and all that.
+
 ## Goal
 Writer is intended to be used by me and my friend while backpacking in South-East Asia in 2017. We're going away for six months and I thought it would be awesome to document our trip using a blog. It will therefore probably be heavily customized for personal use.
 
