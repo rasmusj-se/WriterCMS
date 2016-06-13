@@ -32,5 +32,18 @@
             text-align: center;
             padding: 0px;
         }
-    }    
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .gallery {
+        width: $input-width-tablet;
+
+        .gallery-image {
+
+            img {
+                max-width: 100%;
+            }
+        }
+    }
 }

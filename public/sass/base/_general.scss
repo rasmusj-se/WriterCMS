@@ -7,6 +7,10 @@ body {
     height: 100%;
 }
 
+p, h1, h2, h3, h4 {
+  font-weight: 300;
+}
+
 a, a:link, a:hover, a:active {
     text-decoration: none;
 }
@@ -20,8 +24,13 @@ a, a:link, a:hover, a:active {
     padding-left: 5%;
     margin-top: 20px;
     text-align: left;
+    font-size: $font-size-mobile;
 }
 
 .admin {
     padding: 5%;
+
+    .back {
+        padding-left: 0;
+    }
 }

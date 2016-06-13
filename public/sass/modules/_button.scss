@@ -1,17 +1,27 @@
 .admin {
     button {
-        width: 100%;
+        width: $button-width-mobile;
         background: $light-blue;
-        float: left;
         border: none;
-        margin: 10px 0;
-        font-size: 120%;
+        margin: 10px auto;
+        font-size: $font-size-mobile;
         font-weight: 300;
         color: white;
-        height: $button-height;
+        height: $button-height-mobile;
     }
 
     button.delete {
         background: $light-red;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .admin {
+        button {
+            width: $button-width-tablet;
+            margin: 15px auto;
+            height: $button-height-tablet;
+            font-size: $font-size-tablet;
+        }
     }
 }

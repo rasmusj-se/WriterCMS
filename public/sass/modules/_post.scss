@@ -65,3 +65,37 @@
         max-width: 40px;
     }
 }
+
+@media only screen and (min-width: 768px) {
+
+  .post {
+    width: 60%;
+    margin: auto;
+
+    .post-date {
+      font-size: 125%;
+    }
+
+    .post-content {
+      font-size: 150%;
+    }
+
+    .post-images img {
+        max-width: 80%;
+        margin: auto;
+    }
+
+    .post-location ng-map {
+        max-width: 80%;
+        margin-top: 25px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .post-footer {
+      font-size: 125%;
+    }
+
+  }
+
+}

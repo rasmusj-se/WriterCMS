@@ -2,10 +2,22 @@
     padding: 5%;
     text-align: left;
     font-weight: 200;
+    font-size: $font-size-mobile;
 
     h1 {
-        font-size: 160%;
+        font-size: $font-size-mobile * 1.1;
         margin-top: 10px;
-        font-weight: 200;
+        font-weight: 300;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .admin-list {
+        margin: auto;
+        font-size: $font-size-tablet;
+
+        h1 {
+            font-size: $font-size-tablet * 1.1;
+        }
     }
 }

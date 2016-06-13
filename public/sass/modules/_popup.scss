@@ -1,10 +1,10 @@
 .ngdialog-content {
-    width: 80% !important;
+    width: 80%;
     text-align: center;
     padding-top: 10%;
 
     h1 {
-        font-size: 150%;
+        font-size: $font-size-mobile;
     }
 
     img {
@@ -14,4 +14,22 @@
 
 .popup.spinner i {
     font-size: 200%;
+}
+
+@media only screen and (min-width: 768px) {
+    .ngdialog-content {
+        width: 50%;
+
+        h1 {
+            font-size: $font-size-tablet;
+        }
+
+        img {
+            width: 15%;
+        }
+
+        p {
+            font-size: $font-size-tablet * 0.9;
+        }
+    }
 }
