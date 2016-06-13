@@ -27,6 +27,7 @@ textarea {
 .admin select {
     @extend .border;
     width: $input-width-mobile;
+    font-size: $font-size-mobile;
     font-weight: 300;
     padding: 1%;
 }

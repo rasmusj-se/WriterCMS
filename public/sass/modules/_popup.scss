@@ -1,5 +1,5 @@
 .ngdialog-content {
-    width: 80%;
+    width: 80% !important;
     text-align: center;
     padding-top: 10%;
 
@@ -18,7 +18,7 @@
 
 @media only screen and (min-width: 768px) {
     .ngdialog-content {
-        width: 50%;
+        width: 50% !important;
 
         h1 {
             font-size: $font-size-tablet;
