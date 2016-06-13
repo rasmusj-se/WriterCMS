@@ -14,6 +14,7 @@ Writer is intended to be used by me and my friend while backpacking in South-Eas
 - [x] Markdown support. Writing posts in Markdown is awesome.
 - [x] Attaching images to posts, which are displayed inline after each post.
 - [x] Categories
+- [ ] Fully responsive - all types of devices should be supported.
 - [ ] Making it possible for readers to comment on posts.
 - [ ] Facebook (and possibly Twitter) integration, to enable auto-sharing.
 
