@@ -46,6 +46,13 @@ gulp.task('lib', ['bower'], function() {
         .pipe(gulp.dest('./public/dist'));
 });
 
+gulp.task('lib-inject', ['lib'], function() {
+    var sources = gulp.src(['./public/dist/lib_scripts.js', './public/dist/lib_styles.css']);
+    return gulp.src('./public/index.html')
+        .pipe(inject(sources, {relative: true}))
+        .pipe(gulp.dest('./public'))
+});
+
 gulp.task('js', function() {
     return gulp.src(['public/js/lib/**/*.js', 'public/js/app.js', './public/js/**/*.js'])
         .pipe(concat('scripts.js'))
@@ -74,7 +81,7 @@ gulp.task('styles-inject', ['styles'], function() {
 });
 
 gulp.task('inject', ['lib', 'styles', 'js'], function() {
-    var sources = gulp.src(['./public/dist/lib_styles.css', './public/dist/lib_scripts.js', 
+    var sources = gulp.src(['./public/dist/lib_styles.css', './public/dist/lib_scripts.js',
         './public/dist/styles.css', './public/dist/scripts.js'], {read: false});
 
     return gulp.src('./public/index.html')
