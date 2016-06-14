@@ -19,4 +19,10 @@ module.controller('DashboardCtrl', function($scope, DashboardService) {
     }).error(function(err) {
         console.log(err);
     });
+
+    DashboardService.getStats().success(function(response) {
+        $scope.stats = response;
+    }).error(function(err) {
+        console.log(err);
+    });
 });

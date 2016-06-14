@@ -51,8 +51,9 @@ app.use(function(req, res, next) {
 /* Routing */
 app.use('/auth', require('./app/routes/auth'));
 app.use('/categories', require('./app/routes/categories'));
+app.use('/dashboard', require('./app/routes/dashboard'));
 app.use('/posts', require('./app/routes/posts'));
-app.use('/status', require('./app/routes/status'));
+app.use('/stats', require('./app/routes/stats'));
 app.use('/users', require('./app/routes/users'));
 
 app.listen(3000);
