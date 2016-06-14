@@ -101,4 +101,4 @@ gulp.task('default', ['inject'], function() {
         }));
 });
 
-gulp.task('build', ['inject']);
+gulp.task('build', ['lib', 'js', 'styles', 'inject']);
