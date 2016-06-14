@@ -1,24 +1,28 @@
-.dashboard-status-item {
-    border: 3px solid $light-blue;
-    width: 30%;
-    padding: 10%;
-    margin: 5% auto;
-    border-radius: 50%;
-    display: table;
-    position: relative;
+.dashboard {
+    font-size: $font-size-mobile;
 
-    i {
-        color: $light-blue;
-    }
-
-    span {
-        padding: 5px 10px;
-        font-size: 100%;
-        background: $light-red;
+    .dashboard-status-item {
+        border: 3px solid $light-blue;
+        width: 30%;
+        padding: 10%;
+        margin: 5% auto;
         border-radius: 50%;
-        color: white;
-        position: absolute;
-        top: 0;
-        right: 0 - width/2;
+        display: table;
+        position: relative;
+
+        i {
+            color: $light-blue;
+        }
+
+        span {
+            padding: 5px 10px;
+            font-size: 100%;
+            background: $light-red;
+            border-radius: 50%;
+            color: white;
+            position: absolute;
+            top: 0;
+            right: 0 - width/2;
+        }
     }
 }
