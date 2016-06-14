@@ -7,4 +7,5 @@ config
 public/storage
 npm-debug.log
 public/dist
+public/lib
 build
