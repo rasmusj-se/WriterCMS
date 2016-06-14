@@ -13,4 +13,10 @@ module.controller('DashboardCtrl', function($scope, DashboardService) {
     }).error(function(err) {
         console.log(err);
     });
+
+    DashboardService.getLastPost().success(function(response) {
+        $scope.lastPost = response[0];
+    }).error(function(err) {
+        console.log(err);
+    });
 });

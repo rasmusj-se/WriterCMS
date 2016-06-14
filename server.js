@@ -55,14 +55,6 @@ app.use('/posts', require('./app/routes/posts'));
 app.use('/status', require('./app/routes/status'));
 app.use('/users', require('./app/routes/users'));
 
-/* Development */
-if (app.get('env') == 'development') {
-  app.listen(3000);
-}
-
-/* Production */
-if (app.get('env') == 'production') {
-    app.listen(3000);
-}
+app.listen(3000);
 
 module.exports = app;

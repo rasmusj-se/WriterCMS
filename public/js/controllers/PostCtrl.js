@@ -34,9 +34,18 @@ module.controller('PostDetailCtrl', function($scope, $stateParams, PostService) 
 
     PostService.getPostByID($stateParams.id).success(function(response) {
         $scope.post = response;
-        $scope.$emit('newPageLoaded', { 'title': $scope.post.title, 'description': $scope.post.content,
-            'author': $scope.post.author.firstName + ' ' + $scope.post.author.lastName,
-            'image': 'https://' + document.domain + $scope.post.images[0]});
+        var metadata = {
+            title: $scope.post.title,
+            description: $scope.post.content,
+            author: $scope.post.author.firstName + ' ' + $scope.post.author.lastName
+        };
+
+        if ($scope.post.images.length > 0) {
+            metadata.image = 'https://' + document.domain + $scope.post.images[0];
+        } else {
+            metadata.image = null;
+        }
+        $scope.$emit('newPageLoaded', metadata);
 
         $scope.post.content = marked($scope.post.content);
     }).error(function(err) {

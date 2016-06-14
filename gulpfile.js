@@ -96,8 +96,7 @@ gulp.task('default', ['lib', 'js', 'styles', 'inject'], function() {
 
     return gulp.src('./public')
         .pipe(server({
-            livereload: true,
-            host: '0.0.0.0'
+            livereload: true
         }));
 });
 

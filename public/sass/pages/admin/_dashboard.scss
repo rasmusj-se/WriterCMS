@@ -12,14 +12,13 @@
     }
 
     span {
-        background: red;
         padding: 5px 10px;
-        font-size: 130%;
+        font-size: 100%;
         background: $light-red;
         border-radius: 50%;
         color: white;
         position: absolute;
         top: 0;
-        right: 0;
+        right: 0 - width/2;
     }
 }

@@ -5,3 +5,9 @@ module.filter('prettyDate', function() {
         return moment(dateString).format('LLLL');
     }
 });
+
+module.filter('timeSince', function() {
+    return function(dateString) {
+        return moment(dateString).toNow(true);
+    }
+});
