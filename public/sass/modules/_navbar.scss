@@ -29,10 +29,10 @@ nav .navbar-brand img {
 @media only screen and (min-width: 768px) {
 
   nav  {
-    font-size: 150%;
+    font-size: $font-size-tablet * 0.8;
 
     .dropdown-menu li {
-        font-size: 150%;
+        font-size: $font-size-tablet * 0.8;
     }
   }
 

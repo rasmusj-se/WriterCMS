@@ -12,12 +12,12 @@ angular.module('writer.directives', []);
 moment.locale('sv');
 
 /* Router setup */
-writer.config(function($stateProvider, $locationProvider, $urlRouterProvider, 
+writer.config(function($stateProvider, $locationProvider, $urlRouterProvider,
     $httpProvider, cfpLoadingBarProvider) {
 
     /* Crawler magic */
     $locationProvider.hashPrefix('!');
-    $locationProvider.html5Mode(true);
+    // $locationProvider.html5Mode(true);
 
     /* API Base URL */
     $httpProvider.defaults.base_url = 'https://writer.axelniklasson.se';
@@ -128,12 +128,12 @@ writer.run(function ($rootScope, $state, AuthService) {
     $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
         if (toState.authenticate && !AuthService.isAuthenticated()) {
             $state.transitionTo('base.admin.login');
-            event.preventDefault(); 
+            event.preventDefault();
         }
     });
     $rootScope.$on('$stateChangeSuccess', function (evt, toState) {
         if (toState.name === 'base.admin') {
             $state.go('base.admin.dashboard');
-        }  
+        }
     });
 });

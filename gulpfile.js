@@ -80,7 +80,7 @@ gulp.task('styles-inject', ['styles'], function() {
         .pipe(gulp.dest('./public'))
 });
 
-gulp.task('inject', ['lib', 'styles', 'js'], function() {
+gulp.task('inject', function() {
     var sources = gulp.src(['./public/dist/lib_styles.css', './public/dist/lib_scripts.js',
         './public/dist/styles.css', './public/dist/scripts.js'], {read: false});
 
@@ -90,9 +90,9 @@ gulp.task('inject', ['lib', 'styles', 'js'], function() {
 });
 
 gulp.task('default', ['inject'], function() {
-    gulp.watch('./public/js/**/*.js', ['js-inject']);
-    gulp.watch('./public/sass/**/*.scss', ['styles-inject']);
-    gulp.watch('./bower_components/**/*', ['lib-inject']);
+    gulp.watch('./public/js/**/*.js', ['js', 'inject']);
+    gulp.watch('./public/sass/**/*.scss', ['inject']);
+    gulp.watch('./bower_components/**/*', ['inject']);
 
     return gulp.src('./public')
         .pipe(server({

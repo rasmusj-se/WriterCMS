@@ -44,7 +44,7 @@ module.controller('PostDetailCtrl', function($scope, $stateParams, PostService) 
     });
 });
 
-module.controller('AdminPostDetailCtrl', function($scope, $state, $stateParams, 
+module.controller('AdminPostDetailCtrl', function($scope, $state, $stateParams,
     ngDialog, CategoryService, PostService) {
 
     $scope.removePhoto = function(index) {
@@ -121,7 +121,7 @@ module.controller('NewPostCtrl', function($scope, $stateParams, $timeout, Catego
 
     $scope.submitPost = function() {
         var spinner = ngDialog.open({ template: 'partials/popups/spinner.html', className: 'ngdialog-theme-default' });
-        var post = { title: $scope.post.title, content: $scope.post.content, images: $scope.images, 
+        var post = { title: $scope.post.title, content: $scope.post.content, images: $scope.images,
             author: localStorage.getItem('userID'), categories: $scope.post.categories, location: $scope.post.location };
 
         PostService.createPost(post).success(function(response) {
