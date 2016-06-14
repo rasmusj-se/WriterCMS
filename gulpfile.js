@@ -89,10 +89,10 @@ gulp.task('inject', function() {
         .pipe(gulp.dest('./public'));
 });
 
-gulp.task('default', ['inject'], function() {
+gulp.task('default', ['lib', 'js', 'styles', 'inject'], function() {
     gulp.watch('./public/js/**/*.js', ['js', 'inject']);
-    gulp.watch('./public/sass/**/*.scss', ['inject']);
-    gulp.watch('./bower_components/**/*', ['inject']);
+    gulp.watch('./public/sass/**/*.scss', ['styles', 'inject']);
+    gulp.watch('./bower_components/**/*', ['lib', 'inject']);
 
     return gulp.src('./public')
         .pipe(server({

@@ -52,6 +52,7 @@ app.use(function(req, res, next) {
 app.use('/auth', require('./app/routes/auth'));
 app.use('/categories', require('./app/routes/categories'));
 app.use('/posts', require('./app/routes/posts'));
+app.use('/status', require('./app/routes/status'));
 app.use('/users', require('./app/routes/users'));
 
 /* Development */

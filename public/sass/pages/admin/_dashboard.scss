@@ -1,0 +1,25 @@
+.dashboard-status-item {
+    border: 3px solid $light-blue;
+    width: 30%;
+    padding: 10%;
+    margin: 5% auto;
+    border-radius: 50%;
+    display: table;
+    position: relative;
+
+    i {
+        color: $light-blue;
+    }
+
+    span {
+        background: red;
+        padding: 5px 10px;
+        font-size: 130%;
+        background: $light-red;
+        border-radius: 50%;
+        color: white;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+}
