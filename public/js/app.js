@@ -21,6 +21,7 @@ writer.config(function($stateProvider, $locationProvider, $urlRouterProvider,
 
     /* API Base URL */
     $httpProvider.defaults.base_url = 'https://writer.axelniklasson.se';
+    // $httpProvider.defaults.base_url = 'http://localhost:3000';
 
     /* Remove spinner */
     cfpLoadingBarProvider.includeSpinner = false;
@@ -68,6 +69,7 @@ writer.config(function($stateProvider, $locationProvider, $urlRouterProvider,
         .state('base.admin.dashboard', {
             url: '/dashboard',
             templateUrl: 'partials/admin/dashboard.html',
+            controller: 'DashboardCtrl',
             authenticate: true
         })
         .state('base.admin.posts', {
