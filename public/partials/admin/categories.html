@@ -3,6 +3,7 @@
         <h1>Hantera kategorier</h1>
         <hr class="heading">
         <div class="admin-list">
+            <a class="new" ui-sref="base.admin.categories.new">Ny kategori</a>
             <div ng-repeat="category in categories">
                 <div ui-sref="base.admin.categories.detail({ id: category._id })" class="admin-category">
                     <h1 class="category-name">{{ category.name }}</h1>

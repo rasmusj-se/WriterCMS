@@ -87,7 +87,8 @@ writer.config(function($stateProvider, $locationProvider, $urlRouterProvider,
         .state('base.admin.posts.detail', {
             url: '/:id',
             templateUrl: 'partials/admin/posts-detail.html',
-            controller: 'AdminPostDetailCtrl'
+            controller: 'AdminPostDetailCtrl',
+            authenticate: true
         })
         .state('base.admin.categories', {
             url: '/categories',

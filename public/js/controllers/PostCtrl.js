@@ -88,6 +88,10 @@ module.controller('AdminPostDetailCtrl', function($scope, $state, $stateParams,
 
     PostService.getPostByID($stateParams.id).success(function(response) {
         $scope.post = response;
+        angular.forEach($scope.post.categories, function(category, index) {
+            $scope.post.categories[index] = category._id;
+        });
+        console.log()
     }).error(function(err) {
         $scope.post = {};
         console.log(err);

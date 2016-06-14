@@ -37,7 +37,8 @@
                     <a ui-sref="base.postdetail({ id: lastPost._id })">{{ lastPost.title }}</a>, för {{ lastPost.date | timeSince }} sedan.
                 Inlägget kategoriserades som
                     <span ng-repeat="cat in lastPost.categories track by $index">
-                        {{ cat.name }}<span ng-show="$index < lastPost.categories.length - 1">, </span>
+                        {{ cat.name }}<span ng-show="$index < lastPost.categories.length - 2">, </span>
+                        <span ng-show="$index == lastPost.categories.length - 2">och </span>
                     </span> och har fått 0 kommentarer.
                 </p>
             </div>
@@ -46,7 +47,7 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1">
                 <h3>Statistik</h3>
-                <p>Det postas {{ stats.postsPerDay }} inlägg per dag som i snitt har {{ stats.avgNbrCategories }} kategorier.
+                <p>Det postas ungefär {{ stats.postsPerDay }} inlägg per dag som i snitt har {{ stats.avgNbrCategories }} kategorier.
                     Den flitigaste bloggaren heter {{ stats.topWriter.name }} och har skrivit {{ stats.topWriter.share * 100 }}% av
                 alla inlägg.</p>
             </div>

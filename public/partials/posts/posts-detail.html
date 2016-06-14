@@ -1,10 +1,11 @@
 <div class="back">
-    <a ui-sref="base.posts">&larr; Tillbaka till alla inlägg</a>
+    <a ui-sref="base.posts">&larr; Alla inlägg</a>
 </div>
 
 <div class="post">
     <a ui-sref="base.postdetail({ id: post._id })"><h1 class="post-title">{{ post.title | uppercase }}</h1></a>
     <hr class="inline-separator">
+    <a ui-sref="base.admin.postdetail({ id: post._id })">Ändra</a>
     <p class="post-date">{{ post.date | prettyDate }}</p>
     <div class="post-content" ng-bind-html="post.content | trust"></div>
     <div class="post-images" ng-repeat="image in post.images track by $index">

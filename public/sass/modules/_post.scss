@@ -65,6 +65,16 @@
         float: none;
         max-width: 40px;
     }
+
+    pre {
+        text-align: left !important;
+
+        code {
+            color: #c7254e;
+            background-color: #f9f2f4;
+        }
+
+    }
 }
 
 @media only screen and (min-width: 768px) {
