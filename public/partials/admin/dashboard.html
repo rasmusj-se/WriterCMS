@@ -37,9 +37,7 @@
                     <a ui-sref="base.postdetail({ id: lastPost._id })">{{ lastPost.title }}</a>, för {{ lastPost.date | timeSince }} sedan.
                 Inlägget kategoriserades som
                     <span ng-repeat="cat in lastPost.categories track by $index">
-                        {{ cat.name }}<span ng-show="$index < lastPost.categories.length - 2">, </span>
-                        <span ng-show="$index == lastPost.categories.length - 2">och </span>
-                    </span> och har fått 0 kommentarer.
+                        {{ cat.name }}<span ng-show="$index < lastPost.categories.length - 2">, </span>.
                 </p>
             </div>
         </div>

@@ -13,7 +13,7 @@ router.get('/', function(req, res) {
         } else {
             var days = moment(new Date()).diff(moment(posts[0].date), 'days') + 1;
             var status = {
-                postsPerDay: posts.length / days
+                postsPerDay:  Math.round((posts.length / days) * 100) / 100
             };
 
             var nbrOfCategories = 0;
