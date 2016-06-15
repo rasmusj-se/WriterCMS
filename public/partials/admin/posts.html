@@ -5,7 +5,7 @@
         <div class="admin-list">
             <a class="new" ui-sref="base.admin.posts.new">Nytt inlägg</a>
             <div ng-repeat="post in posts">
-                <div ui-sref="base.admin.postdetail({ id: post._id })" class="admin-post">
+                <div ui-sref="base.admin.posts.detail({ id: post._id })" class="admin-post">
                     <h1 class="post-title">{{ post.title }}</h1>
                     <div class="footer">
                         <span class="admin-post-author">Postat av {{ post.author.firstName }}</span>
