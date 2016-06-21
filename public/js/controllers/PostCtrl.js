@@ -3,9 +3,6 @@ var module = angular.module('writer.controllers');
 module.controller('PostCtrl', function($scope, PostService) {
     PostService.getAllPosts().success(function(response) {
         $scope.posts = response;
-        angular.forEach($scope.posts, function(post) {
-            post.content = marked(post.content);
-        });
     }).error(function(err) {
         $scope.posts = [];
         console.log(err);
@@ -20,9 +17,6 @@ module.controller('AdminPostCtrl', function($scope, PostService) {
     function fetchPosts() {
         PostService.getAllPosts().success(function(response) {
             $scope.posts = response;
-            angular.forEach($scope.posts, function(post) {
-                post.content = marked(post.content);
-            });
         }).error(function(err) {
             $scope.posts = [];
             console.log(err);
@@ -46,8 +40,6 @@ module.controller('PostDetailCtrl', function($scope, $stateParams, PostService) 
             metadata.image = null;
         }
         $scope.$emit('newPageLoaded', metadata);
-
-        $scope.post.content = marked($scope.post.content);
     }).error(function(err) {
         $scope.post = {};
         console.log(err);
