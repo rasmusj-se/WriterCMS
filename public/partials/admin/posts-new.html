@@ -11,17 +11,11 @@
             </option>
         </select>
 
-        <div class="location">
-            <h4>Plats</h4>
-            <div ng-show="post.location == undefined">
-                <span>Hämtar plats <i class="fa fa-spinner fa-spin"></i></span>
-            </div>
-            <div ng-show="post.location != undefined">
-                <span>Latitud: {{ post.location.latitude }}</span><br>
-                <span>Longitud: {{ post.location.longitude }}</span><br>
-                <span>Noggrannhet: {{ post.location.accuracy }} meter</span>
-            </div>
-        </div>
+        <select ng-model="post.location">
+            <option ng-repeat="place in nearbyPlaces" value="{{ place.place_id }}">
+                {{ place.formatted_address }}
+            </option>
+        </select>
 
         <label for="file-upload" class="custom-file-upload">
             <i class="fa fa-camera"></i>

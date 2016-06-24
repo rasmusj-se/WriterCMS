@@ -95,7 +95,17 @@ module.controller('NewPostCtrl', function($scope, $stateParams, $timeout, Catego
     $scope.post = { categories: [] };
 
     LocationService.getCurrentLocation().then(function(location) {
-        $scope.$apply($scope.post.location = location);
+        var geocoder = new google.maps.Geocoder;
+        var latLng = {
+            lat: location.latitude,
+            lng: location.longitude
+        }
+
+        geocoder.geocode({'location': latLng}, function(results, status) {
+            $scope.$apply($scope.nearbyPlaces = results);
+            $scope.$apply($scope.post.location = $scope.nearbyPlaces[0].place_id);
+        });
+
     }).catch(function(err) {
         console.log(err);
     });
@@ -128,7 +138,15 @@ module.controller('NewPostCtrl', function($scope, $stateParams, $timeout, Catego
     $scope.submitPost = function() {
         var spinner = ngDialog.open({ template: 'partials/popups/spinner.html', className: 'ngdialog-theme-default' });
         var post = { title: $scope.post.title, content: $scope.post.content, images: $scope.images,
-            author: localStorage.getItem('userID'), categories: $scope.post.categories, location: $scope.post.location };
+            author: localStorage.getItem('userID'), categories: $scope.post.categories };
+
+        for (var i = 0; i < $scope.nearbyPlaces.length; i++) {
+            var place = $scope.nearbyPlaces[i];
+            if (place.place_id == $scope.post.location) {
+                post.location = place;
+                break;
+            }
+        }
 
         PostService.createPost(post).success(function(response) {
             $scope.post = {};

@@ -13,12 +13,16 @@
 
     .post-content {
         padding: 3% 5%;
-        font-weight: 200;
+        font-weight: 700;
         font-size: $font-size-mobile;
 
         h1 {
             font-size: 150%;
             font-weight: 300;
+        }
+
+        * {
+            font-size: $font-size-mobile;
         }
 
     }
@@ -27,6 +31,7 @@
         width: 100%;
         text-align: center;
         padding: 0 !important;
+        margin-bottom: 5%;
     }
 
     .post-images img {
@@ -35,20 +40,23 @@
         margin: 0 !important;
     }
 
-    .post-location {
-        margin: 30px auto;
-    }
-
-    .post-location ng-map {
-        max-height: 200px;
-        margin-top: 25px;
-    }
-
     .post-footer {
         margin-top: 30px;
         font-style: italic;
         font-size: 110%;
         font-weight: 300;
+
+        .post-location {
+            i {
+                color: $primary-color;
+                font-size: $font-size-mobile;
+            }
+
+            span {
+                font-weight: 300;
+                font-size: $font-size-mobile;
+            }
+        }
     }
 
     .post-share {
