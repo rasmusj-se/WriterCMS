@@ -121,14 +121,6 @@ router.put('/:id', function(req, res) {
     var images = req.body.images;
 
     Post.findOne({_id: ID}, function(err, post) {
-        if (images.length != post.images.length) {
-            for (var i = 0; i < post.images.length; i++) {
-                if (images.indexOf(post.images[i]) == -1) {
-                    fs.unlinkSync('public' + post.images[i]);
-                }
-            }
-        }
-
         post.update({ title: title, content: content, categories: categories, 
             images: images }, function(err, post) {
             if (err) {
@@ -145,12 +137,6 @@ router.delete('/:id', function(req, res) {
     var ID = req.params.id;
 
     Post.findOne({_id: ID}, function(err, post) {
-        if (post.images.length > 0) {
-            for (var i = 0; i < post.images.length; i++) {
-                fs.unlinkSync('public' + post.images[i]);
-            }
-        }
-
         post.remove(function(err) {
             if (err) {
                 res.status(500).send('Could not remove post. Error: ' + err);
