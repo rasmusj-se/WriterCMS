@@ -47,6 +47,9 @@
         font-weight: 300;
 
         .post-location {
+            max-width: 80%;
+            margin: auto;
+
             i {
                 color: $primary-color;
                 font-size: $font-size-mobile;

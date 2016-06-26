@@ -12,6 +12,8 @@
     "body-parser": "^1.15.1",
     "cors": "^2.7.1",
     "express": "^4.13.4",
+    "gcloud": "^0.36.0",
+    "googleapis": "^9.0.0",
     "gulp": "^3.9.1",
     "gulp-clean-css": "^2.0.10",
     "gulp-concat": "^2.6.0",
