@@ -41,4 +41,37 @@ router.post('/', function(req, res) {
     });
 });
 
+/* Update user */
+router.put('/:id', function(req, res) {
+    var ID = req.params.id;
+    var firstName = req.body.firstName;
+    var lastName = req.body.lastName;
+    var username = req.body.username;
+
+    User.findOne({_id: ID}, function(err, user) {
+        user.update({ firstName: firstName, lastName: lastName, username: username }, function(err, user) {
+            if (err) {
+                res.status(500).send('Could not update user. Error: ' + err);
+            } else {
+                res.json(user);
+            }
+        });
+    });
+});
+
+/* Delete user */
+router.delete('/:id', function(req, res) {
+    var ID = req.params.id;
+
+    User.findOne({_id: ID}, function(err, user) {
+        user.remove(function(err) {
+            if (err) {
+                res.status(500).send('Could not delete user. Error: ' + err);
+            } else {
+                res.status(200).send('User deleted.');
+            }
+        });
+    });
+});
+
 module.exports = router;

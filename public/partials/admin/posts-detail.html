@@ -1,8 +1,9 @@
 <nav class="light-blue">
-    <div class="nav-wrapper">
-        <div class="col s12">
-            <a ui-sref="base.admin.posts" class="breadcrumb">Inlägg</a>
-            <a ui-sref="base.admin.posts.detail({ id: post._id })" class="breadcrumb">{{ post.title }}</a>
-        </div>
+  <div class="nav-wrapper">
+    <div class="col s12">
+    	<a ui-sref="base.admin" class="breadcrumb">Admin</a>
+      <a ui-sref="base.admin.posts" class="breadcrumb">Inlägg</a>
+      <a ui-sref="base.admin.posts.detail({ id: post._id })" class="breadcrumb">{{ post.title }}</a>
     </div>
+  </div>
 </nav>

@@ -17,11 +17,11 @@ writer.config(function($stateProvider, $locationProvider, $urlRouterProvider,
 
     /* Crawler magic */
     $locationProvider.hashPrefix('!');
-    // $locationProvider.html5Mode(true);
+    $locationProvider.html5Mode(true);
 
     /* API Base URL */
-     $httpProvider.defaults.base_url = 'https://writer.axelniklasson.se';
-    //$httpProvider.defaults.base_url = 'http://localhost:3000';
+    $httpProvider.defaults.base_url = 'https://writer.axelniklasson.se';
+    // $httpProvider.defaults.base_url = 'http://localhost:3000';
 
     /* Remove spinner */
     cfpLoadingBarProvider.includeSpinner = false;
@@ -110,11 +110,19 @@ writer.config(function($stateProvider, $locationProvider, $urlRouterProvider,
         .state('base.admin.users', {
             url: '/users',
             templateUrl: 'partials/admin/users.html',
+            controller: 'AdminUsersCtrl',
             authenticate: true
         })
         .state('base.admin.users.new', {
             url: '/new',
             templateUrl: 'partials/admin/users-new.html',
+            controller: 'NewUserCtrl',
+            authenticate: true
+        })
+        .state('base.admin.users.detail', {
+            url: '/:id',
+            templateUrl: 'partials/admin/users-detail.html',
+            controller: 'AdminUsersDetailCtrl',
             authenticate: true
         })
         .state('base.admin.settings', {

@@ -95,6 +95,22 @@ module.controller('NewPostCtrl', function($scope, $stateParams, $timeout, Catego
     $scope.post = { categories: [] };
 
     $('ul.tabs').tabs();
+
+    $scope.$watch('categories', function() {
+        if ($scope.categories != null) {
+            setTimeout(function() {
+                $('#postCategories').material_select();
+            }, 0);
+        }
+    });
+
+    $scope.$watch('nearbyPlaces', function() {
+        if ($scope.nearbyPlaces != null) {
+            setTimeout(function() {
+                $('#postLocation').material_select();
+            }, 0);
+        }
+    });
     
     LocationService.getCurrentLocation().then(function(location) {
         var geocoder = new google.maps.Geocoder;
@@ -105,7 +121,6 @@ module.controller('NewPostCtrl', function($scope, $stateParams, $timeout, Catego
 
         geocoder.geocode({'location': latLng}, function(results, status) {
             $scope.$apply($scope.nearbyPlaces = results);
-            $scope.$apply($scope.post.location = $scope.nearbyPlaces[0].place_id);
         });
 
     }).catch(function(err) {
@@ -138,7 +153,6 @@ module.controller('NewPostCtrl', function($scope, $stateParams, $timeout, Catego
     }
 
     $scope.submitPost = function() {
-        var spinner = ngDialog.open({ template: 'partials/popups/spinner.html', className: 'ngdialog-theme-default' });
         var post = { title: $scope.post.title, content: $scope.post.content, images: $scope.images,
             author: localStorage.getItem('userID'), categories: $scope.post.categories };
 
@@ -150,14 +164,14 @@ module.controller('NewPostCtrl', function($scope, $stateParams, $timeout, Catego
             }
         }
 
-        PostService.createPost(post).success(function(response) {
-            $scope.post = {};
-            $scope.images = [];
-            spinner.close();
-            ngDialog.open({ template: 'partials/popups/posts/postCreatedSuccess.html', className: 'ngdialog-theme-default' });
-        }).error(function(err) {
-            spinner.close();
-            ngDialog.open({ template: 'partials/popups/posts/postCreatedError.html', className: 'ngdialog-theme-default' });
-        });
+        // PostService.createPost(post).success(function(response) {
+        //     $scope.post = {};
+        //     $scope.images = [];
+        //     spinner.close();
+        //     ngDialog.open({ template: 'partials/popups/posts/postCreatedSuccess.html', className: 'ngdialog-theme-default' });
+        // }).error(function(err) {
+        //     spinner.close();
+        //     ngDialog.open({ template: 'partials/popups/posts/postCreatedError.html', className: 'ngdialog-theme-default' });
+        // });
     }
 });

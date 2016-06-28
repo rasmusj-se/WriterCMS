@@ -3,7 +3,7 @@ var module = angular.module('writer.controllers');
 module.controller('AppCtrl', function($scope) {
     $scope.settings = {
         site: {
-            title: 'Asien 2017'
+            title: 'Writer'
         }
     };
 
