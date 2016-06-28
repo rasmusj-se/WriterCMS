@@ -1,15 +1,23 @@
-<div class="admin">
-    <div class="back">
-        <a ui-sref="base.admin.categories">&larr; Alla kategorier</a>
-    </div>
-
-    <div class="edit categories">
-        <h3>Namn</h3>
-        <input ng-model="category.name" type="text">
-
-        <div class="action-buttons">
-            <button class="edit" ng-click="updateCategory()">Uppdatera</button>
-            <button class="delete" ng-click="deleteCategory()">Ta bort</button>
+<nav class="light-blue">
+    <div class="nav-wrapper">
+        <div class="col s12">
+            <a ui-sref="base.admin.categories" class="breadcrumb">Kategorier</a>
+            <a ui-sref="base.admin.categories.detail({ id: category._id })" class="breadcrumb">{{ category.name }}</a>
         </div>
     </div>
+</nav>
+
+<div class="container">
+	<div class="row">
+	  <form class="col s12" name="newCategoryForm">
+	    <div class="row">
+	      <div class="input-field col s12">
+	        <input ng-required="true" ng-model="category.name" type="text" class="validate" id="category_name">
+	        <label ng-class="{ active: category.name != '' }" for="category_name">Namn</label>
+	      </div>
+        <a ng-class="{ disabled: newCategoryForm.$invalid }" ng-click="updateCategory()" class="waves-effect waves-light btn left"><i class="material-icons left">edit</i>Spara</a>
+
+        <a ng-click="deleteCategory()" class="waves-effect waves-light btn right red lighten-1"><i class="material-icons left">delete</i>Ta bort</a>
+	  </form>
+	</div>
 </div>

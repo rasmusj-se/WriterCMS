@@ -3,11 +3,13 @@ var module = angular.module('writer.controllers');
 module.controller('NewCategoryCtrl', function($scope, ngDialog, CategoryService) {
     $scope.createCategory = function() {
         var category = { name: $scope.category.name };
+
         CategoryService.createCategory(category).success(function(response) {
             $scope.category = {};
-            ngDialog.open({ template: 'partials/popups/categories/categoryCreatedSuccess.html', className: 'ngdialog-theme-default' });
+            Materialize.toast('Kategorin är skapad!', 3000);
+            $('form label').removeClass('active');
         }).error(function(err) {
-            ngDialog.open({ template: 'partials/popups/categories/categoryCreatedError.html', className: 'ngdialog-theme-default' });
+            Materialize.toast('Det gick inte att skapa kategorin.', 3000);
             console.log(err);
         });
     }
@@ -38,20 +40,25 @@ module.controller('AdminCategoryDetailCtrl', function($scope, $stateParams, $sta
 
     $scope.updateCategory = function() {
         CategoryService.updateCategory($scope.category).success(function(response) {
-            ngDialog.open({ template: 'partials/popups/categories/categoryUpdatedSuccess.html', className: 'ngdialog-theme-default' });
+            Materialize.toast('Kategorin är uppdaterad!', 3000);
         }).error(function(err) {
             console.log(err);
-            ngDialog.open({ template: 'partials/popups/categories/categoryUpdatedError.html', className: 'ngdialog-theme-default' });
+            Materialize.toast('Kategorin kunde inte uppdateras!', 3000);
         })
     }
 
     $scope.deleteCategory = function() {
+        // var $toastContent = $('<span class="toast">Vill du verkligen radera kategorin?<a class="confirm warning" onClick=confirmDelete()>OK</a></span>');
+        // Materialize.toast($toastContent, 3000);
+
+            
         CategoryService.deleteCategory($scope.category._id).success(function(response) {
-            ngDialog.open({ template: 'partials/popups/categories/categoryDeletedSuccess.html', className: 'ngdialog-theme-default' });
+            Materialize.toast('Kategorin är raderad!', 3000);
             $state.go('base.admin.categories');
         }).error(function(err) {
             console.log(err);
-            ngDialog.open({ template: 'partials/popups/categories/categoryDeletedError.html', className: 'ngdialog-theme-default' });
+            Materialize.toast('Kategorin kunde inte raderas!', 3000);
         })
+        
     }
 });

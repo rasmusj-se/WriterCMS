@@ -94,6 +94,8 @@ module.controller('NewPostCtrl', function($scope, $stateParams, $timeout, Catego
     $scope.images = [];
     $scope.post = { categories: [] };
 
+    $('ul.tabs').tabs();
+    
     LocationService.getCurrentLocation().then(function(location) {
         var geocoder = new google.maps.Geocoder;
         var latLng = {

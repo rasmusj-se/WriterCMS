@@ -11,13 +11,6 @@ gulp.task('bower', function() {
     return gulp.src('./bower.json')
         .pipe(mainBowerFiles({
             overrides: {
-                bootstrap: {
-                    main: [
-                        './dist/js/bootstrap.js',
-                        './dist/css/*.*',
-                        './dist/fonts/*.*'
-                    ]
-                },
                 'blueimp-load-image': {
                     main: [
                         './js/load-image.all.js'

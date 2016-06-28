@@ -1,42 +1,8 @@
-<div class="admin">
-    <div class="back">
-        <a ui-sref="base.admin.posts">&larr; Alla inlägg</a>
-    </div>
-
-    <div class="edit posts">
-        <div class="row">
-            <h3>Titel</h3>
-            <input ng-model="post.title" type="text">
-        </div>
-
-        <div class="row">
-            <h3>Innehåll</h3>
-            <textarea ng-model="post.content"></textarea>
-        </div>
-
-        <div class="row">
-            <h3>Kategorier</h3>
-            <select ng-model="post.categories" multiple>
-                <option ng-repeat="category in categories" value="{{ category._id }}">
-                    {{ category.name }}
-                </option>
-            </select>
-        </div>
-
-        <div class="row">
-            <div class="gallery" ng-repeat="image in post.images track by $index">
-                <div class="gallery-image">
-                    <img ng-src="{{ image }}" />
-                    <input type="button" class="removePhotoButton" value="X" ng-click="removePhoto($index)" />
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="action-buttons">
-                <button class="edit" ng-click="updatePost()">Uppdatera</button>
-                <button class="delete" ng-click="deletePost()">Ta bort</button>
-            </div>
+<nav class="light-blue">
+    <div class="nav-wrapper">
+        <div class="col s12">
+            <a ui-sref="base.admin.posts" class="breadcrumb">Inlägg</a>
+            <a ui-sref="base.admin.posts.detail({ id: post._id })" class="breadcrumb">{{ post.title }}</a>
         </div>
     </div>
-</div>
+</nav>

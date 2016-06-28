@@ -1,8 +1,10 @@
 .post {
+    text-align: center;
 
     h1 {
         color: black;
         font-weight: 200;
+        font-size: 2em;
     }
 
     .post-date {
@@ -64,17 +66,10 @@
 
     .post-share {
         padding: 30px;
-    }
 
-    .post-share ul {
-        text-align: center !important;
-    }
-
-    .post-share li {
-        margin: auto;
-        display: inline-block;
-        float: none;
-        max-width: 40px;
+        a {
+            margin: 1.5%;
+        }
     }
 
     pre {

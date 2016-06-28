@@ -1,0 +1,12 @@
+<div ui-view>
+    <ul class="collection with-header">
+        <li class="collection-header"><h4>Användare</h4></li>
+        <li class="collection-item" ng-repeat="user in users">
+            <div>{{ user.name }}
+                <a ui-sref="base.admin.posts.detail({ id: category._id })" class="secondary-content">
+                    <i class="material-icons">send</i>
+                </a>
+            </div>
+        </li>
+    </ul>
+</div>

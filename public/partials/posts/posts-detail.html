@@ -1,6 +1,11 @@
-<div class="back">
-    <a ui-sref="base.posts">&larr; Alla inlägg</a>
-</div>
+<nav class="light-blue">
+    <div class="nav-wrapper">
+        <div class="col s12">
+            <a ui-sref="base.posts" class="breadcrumb">Blogg</a>
+            <a ui-sref="base.admin.posts.detail({ id: post._id })" class="breadcrumb">{{ post.title }}</a>
+        </div>
+    </div>
+</nav>
 
 <div class="post">
     <h1 class="post-title">{{ post.title | uppercase }}</h1>
@@ -11,11 +16,8 @@
     <div class="post-images" ng-repeat="image in post.images track by $index">
         <img image-lazy-load="{{ image }}" image-index="$index">
     </div>
-    <div class="post-location" ng-show="post.location != undefined">
-      <ng-map center="[{{ post.location.latitude }}, {{ post.location.longitude }}]" zoom="10"
-      scrollwheel="false" draggable="false">
-        <marker position="[{{ post.location.latitude }}, {{ post.location.longitude }}]" />
-      </ng-map>
+    <div class="post-location" ng-show="post.location.formatted_address != undefined">
+      <i class="fa fa-map-marker"></i><span> {{ post.location.formatted_address }}</span>
     </div>
     <div class="post-footer">
         <span class="post-author-name">Postat av {{ post.author.firstName }} i

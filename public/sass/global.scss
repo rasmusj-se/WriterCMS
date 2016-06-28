@@ -6,22 +6,11 @@
 
 /* MODULES - Reusable elements */
 @import 'modules/_button.scss';
-@import 'modules/_gallery.scss';
-@import 'modules/_inputs.scss';
-@import 'modules/_list.scss';
+@import 'modules/_form.scss';
+@import 'modules/_lists.scss';
 @import 'modules/_navbar.scss';
-@import 'modules/_popup.scss';
 @import 'modules/_post.scss';
-@import 'modules/_separator.scss';
+@import 'modules/_separators.scss';
+@import 'modules/_toast.scss';
 
 /* PAGES - Different pages and their styles */
-@import 'pages/_about.scss';
-@import 'pages/_route.scss';
-@import 'pages/admin/_dashboard.scss';
-@import 'pages/admin/categories/_categories.scss';
-@import 'pages/admin/categories/_editcategory.scss';
-@import 'pages/admin/categories/_newcategory.scss';
-@import 'pages/admin/_login.scss';
-@import 'pages/admin/posts/_posts.scss';
-@import 'pages/admin/posts/_editpost.scss';
-@import 'pages/admin/posts/_newpost.scss';
