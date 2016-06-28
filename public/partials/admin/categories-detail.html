@@ -17,7 +17,18 @@
 	      </div>
         <a ng-class="{ disabled: newCategoryForm.$invalid }" ng-click="updateCategory()" class="waves-effect waves-light btn left"><i class="material-icons left">edit</i>Spara</a>
 
-        <a ng-click="deleteCategory()" class="waves-effect waves-light btn right red lighten-1"><i class="material-icons left">delete</i>Ta bort</a>
+        <a data-target="confirmDeleteModal" class="modal-trigger waves-effect waves-light btn right red lighten-1"><i class="material-icons left">delete</i>Ta bort</a>
 	  </form>
 	</div>
+</div>
+
+<div id="confirmDeleteModal" class="modal bottom-sheet">
+  <div class="modal-content">
+    <h4>Ta bort kategori</h4>
+    <p>Vill du verkligen radera kategorin? Detta går inte att ångra.</p>
+  </div>
+  <div class="modal-footer">
+    <a ng-click="deleteCategory()" class="modal-action modal-close waves-effect waves-light btn right red lighten-1">Ok</a>
+    <a class="modal-action modal-close waves-effect waves-green btn-flat">Avbryt</a>
+  </div>
 </div>

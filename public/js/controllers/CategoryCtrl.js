@@ -31,6 +31,8 @@ module.controller('AdminCategoriesCtrl', function($scope, CategoryService) {
 });
 
 module.controller('AdminCategoryDetailCtrl', function($scope, $stateParams, $state, CategoryService, ngDialog) {
+    $('.modal-trigger').leanModal();    
+
     CategoryService.getCategoryByID($stateParams.id).success(function(response) {
         $scope.category = response;
     }).error(function(err) {
@@ -47,11 +49,7 @@ module.controller('AdminCategoryDetailCtrl', function($scope, $stateParams, $sta
         })
     }
 
-    $scope.deleteCategory = function() {
-        // var $toastContent = $('<span class="toast">Vill du verkligen radera kategorin?<a class="confirm warning" onClick=confirmDelete()>OK</a></span>');
-        // Materialize.toast($toastContent, 3000);
-
-            
+    $scope.deleteCategory = function() {            
         CategoryService.deleteCategory($scope.category._id).success(function(response) {
             Materialize.toast('Kategorin är raderad!', 3000);
             $state.go('base.admin.categories');
@@ -59,6 +57,5 @@ module.controller('AdminCategoryDetailCtrl', function($scope, $stateParams, $sta
             console.log(err);
             Materialize.toast('Kategorin kunde inte raderas!', 3000);
         })
-        
     }
 });
