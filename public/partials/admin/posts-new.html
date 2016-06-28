@@ -52,8 +52,57 @@
             </div>
         </div>
 
+        <div class="row" ng-show="categories.length > 0">
+          <div class="input-field col s12">
+            <select id="postCategories" ng-model="selectedCategories" ng-options="category._id as category.name for category in categories track by category._id" ng-required="true" multiple>
+                <option value="" disabled selected>Välj kategori</option>
+            </select>
+            <label>Kategorier</label>
+          </div>
+        </div>
+
+        <div class="row" ng-show="nearbyPlaces.length > 0">
+          <div class="input-field col s12">
+            <select id="postLocation" ng-model="post.location" ng-options="place.place_id as place.formatted_address for place in nearbyPlaces track by place.place_id" multiple>
+                <option value="" disabled selected>Välj plats</option>
+            </select>
+            <label>Plats</label>
+          </div>
+        </div>
+
         <div class="row">
-            <a ng-class="{ disabled: newPostForm.$invalid }" ng-click="createCategory()" class="waves-effect waves-light btn left"><i class="material-icons left">send</i>Skapa</a>
+            <form action="#">
+                <div class="file-field input-field">
+                    <div class="btn">
+                        <span>Bilder</span>
+                        <input type="file" multiple>
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text" placeholder="Välj en eller flera bilder">
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="row">
+            <div class="switch col s6">
+                <label>
+                  <input type="checkbox">
+                  <span class="lever"></span>
+                  Facebook
+                </label>
+            </div>
+            <div class="switch col s6">
+                <label>
+                  <input type="checkbox">
+                  <span class="lever"></span>
+                  Twitter
+                </label>
+            </div>
+        </div>
+
+        <div class="row">
+            <a ng-class="{ disabled: newPostForm.$invalid }" ng-click="submitPost()" class="waves-effect waves-light btn left"><i class="material-icons left">send</i>Skapa</a>
         </div>
 
       </form>

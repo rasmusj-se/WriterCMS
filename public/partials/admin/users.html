@@ -1,4 +1,12 @@
 <div ui-view>
+    <nav class="light-blue">
+        <div class="nav-wrapper">
+          <div class="col s12">
+            <a ui-sref="base.admin" class="breadcrumb">Admin</a>
+            <a ui-sref="base.admin.users" class="breadcrumb">Användare</a>
+          </div>
+        </div>
+    </nav>
     <ul class="collection with-header">
         <li class="collection-header"><h4>Användare</h4></li>
         <li class="collection-item" ng-repeat="user in users">
