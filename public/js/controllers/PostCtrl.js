@@ -8,26 +8,31 @@ module.controller('PostCtrl', function($scope, PostService) {
         $scope.loading = false;
     }).error(function(err) {
         $scope.posts = [];
+        $scope.loading = false;
         console.log(err);
     });
 });
 
 module.controller('AdminPostCtrl', function($scope, PostService) {
     $scope.$on('$viewContentLoaded', function() {
+        $scope.loading = true;
         fetchPosts();
     });
 
     function fetchPosts() {
         PostService.getAllPosts().success(function(response) {
             $scope.posts = response;
+            $scope.loading = false;
         }).error(function(err) {
             $scope.posts = [];
+            $scope.loading = false;
             console.log(err);
         });
     }
 });
 
 module.controller('PostDetailCtrl', function($scope, $stateParams, PostService) {
+    $scope.loading = true;
 
     PostService.getPostByID($stateParams.id).success(function(response) {
         $scope.post = response;
@@ -43,14 +48,17 @@ module.controller('PostDetailCtrl', function($scope, $stateParams, PostService) 
             metadata.image = null;
         }
         $scope.$emit('newPageLoaded', metadata);
+        $scope.loading = false;
     }).error(function(err) {
         $scope.post = {};
+        $scope.loading = false;
         console.log(err);
     });
 });
 
 module.controller('AdminPostDetailCtrl', function($scope, $state, $stateParams,
     ngDialog, CategoryService, PostService) {
+    $scope.loading = true;
 
     $scope.removePhoto = function(index) {
         $scope.post.images.splice(index, 1);
@@ -86,9 +94,11 @@ module.controller('AdminPostDetailCtrl', function($scope, $state, $stateParams,
         angular.forEach($scope.post.categories, function(category, index) {
             $scope.post.categories[index] = category._id;
         });
+        $scope.loading = true;
         console.log()
     }).error(function(err) {
         $scope.post = {};
+        $scope.loading = true;
         console.log(err);
     });
 });

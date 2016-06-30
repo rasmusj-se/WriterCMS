@@ -30,17 +30,6 @@ module.directive('imageLazyLoad', function() {
                 document.addEventListener('scroll', lazyLoad);
             }
         }
-
-        // document.addEventListener('scroll', function() {
-        //     if ((rect.top >= 0 && rect.left >= 0) && 
-        //         (rect.bottom <= $(window).height()
-        //          && rect.right <= $(window).height())) {
-        //         if (!image.src) {
-        //             console.log('set');
-        //             image.src = src;
-        //         }
-        //     }
-        // });
     }
   };
 });

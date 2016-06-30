@@ -17,13 +17,16 @@ module.controller('NewCategoryCtrl', function($scope, ngDialog, CategoryService)
 
 module.controller('AdminCategoriesCtrl', function($scope, CategoryService) {
     $scope.$on('$viewContentLoaded', function() {
+        $scope.loading = true;
         fetchCategories();
     });
 
     function fetchCategories() {
         CategoryService.getAllCategories().success(function(response) {
+            $scope.loading = false;
             $scope.categories = response;
         }).error(function(err) {
+            $scope.loading = false;
             $scope.categories = [];
             console.log(err);
         });
@@ -32,11 +35,14 @@ module.controller('AdminCategoriesCtrl', function($scope, CategoryService) {
 
 module.controller('AdminCategoryDetailCtrl', function($scope, $stateParams, $state, CategoryService, ngDialog) {
     $('.modal-trigger').leanModal();    
+    $scope.loading = true;
 
     CategoryService.getCategoryByID($stateParams.id).success(function(response) {
         $scope.category = response;
+        $scope.loading = false;
     }).error(function(err) {
         $scope.category = {};
+        $scope.loading = false;
         console.log(err);
     });
 

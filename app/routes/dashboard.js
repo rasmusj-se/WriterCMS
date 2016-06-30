@@ -13,7 +13,7 @@ router.get('/', function(req, res) {
                 if (err) {
                     res.status(500).send('Could not count categories. Error: ' + err);
                 } else {
-                    res.json({ posts: posts, categories: categories, comments: 0, views: 0 });
+                    res.json({ posts: posts, categories: categories, comments: 0, views: 0, users: 2 });
                 }
             });
         }

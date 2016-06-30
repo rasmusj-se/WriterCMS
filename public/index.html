@@ -66,13 +66,19 @@
     <li><a ng-click="logOut()">Logga ut</a></li>
   </ul>
 
+  <ul id="posts-dropdown" class="dropdown-content">
+    <li><a ui-sref="base.posts">Alla inlägg</a></li>
+    <li><a ui-sref="base.posts">Kategorier</a></li>
+    <li><a ui-sref="base.posts">Arkiv</a></li>
+  </ul>
+
   <div class="navbar-fixed">
     <nav class="light-blue">
       <div class="nav-wrapper">
         <a href="#!" class="brand-logo">Writer</a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
-          <li><a ui-sref="base.posts">Blogg</a></li>
+          <li><a class="dropdown-button" href="#!" data-activates="posts-dropdown">Blogg<i class="material-icons right">arrow_drop_down</i></a></li>
           <li><a ui-sref="base.route">Rutt</a></li>
           <li><a ui-sref="base.about">Om oss</a></li>
           <li ng-show="!authenticated"><a ui-sref="base.admin">Admin</a></li>
@@ -82,7 +88,15 @@
         <ul class="side-nav" id="mobile-demo">
           <li class="no-padding">
             <ul class="collapsible collapsible-accordion">
-              <li><a ui-sref="base.posts">Blogg</a></li>
+              <li class="bold"><a class="collapsible-header waves-effect">Blogg</a>
+                <div class="collapsible-body">
+                  <ul>
+                    <li><a ui-sref="base.posts">Alla inlägg</a></li>
+                    <li><a ui-sref="base.posts">Kategorier</a></li>
+                    <li><a ui-sref="base.posts">Arkiv</a></li>
+                  </ul>
+                </div>
+              </li>
               <li><a ui-sref="base.route">Rutt</a></li>
               <li><a ui-sref="base.about">Om oss</a></li>
               <li ng-show="!authenticated"><a ui-sref="base.admin">Admin</a></li>

@@ -7,7 +7,9 @@
     </div>
 </nav>
 
-<div class="post">
+<spinner></spinner>
+
+<div class="post" ng-show="!loading">
     <h1 class="post-title">{{ post.title | uppercase }}</h1>
     <hr class="inline-separator">
     <p class="post-date">{{ post.date | prettyDate }}</p>
