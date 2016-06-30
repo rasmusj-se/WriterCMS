@@ -1,6 +1,21 @@
 <div>
-    <!-- <h1 class="heading center">Senaste inläggen</h1> -->
-    <!-- <hr class="heading"> -->
+
+    <div class="spinner-wrapper" ng-show="loading">
+        <div class="preloader-wrapper active">
+            <div class="spinner-layer spinner-blue-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="posts-wrapper" ng-repeat="post in posts">
         <div class="post">
             <a ui-sref="base.postdetail({ id: post._id })"><h1 class="post-title">{{ post.title | uppercase }}</h1></a>
@@ -18,14 +33,17 @@
               <div class="post-location" ng-show="post.location.formatted_address != undefined">
                 <i class="fa fa-map-marker"></i><span> {{ post.location.formatted_address }}</span>
               </div>
-                <!-- <span class="post-author-name">Postat av {{ post.author.firstName }} i -->
-<!--                 <span ng-repeat="category in post.categories track by $index">
+              <div class="post-categories">
+                <span class="post-author-name">Postat av {{ post.author.firstName }} i
+                <span ng-repeat="category in post.categories track by $index">
                 <a>{{ category.name }}</a><span ng-show="$index < post.categories.length - 2">, </span>
-                <span ng-show="$index == post.categories.length - 2">och </span> -->
-                <!-- <span ng-show="$index < post.categories.length - 1">, </span> -->
+                <span ng-show="$index == post.categories.length - 2">och </span>
+                <span ng-show="$index < post.categories.length - 1">, </span>
                 </span>
                 </span>
             </div>
+            </div>
+
             <div class="post-share">
 
               <a ng-href="https://www.facebook.com/sharer/sharer.php?u=https://resa.axelniklasson.se/posts/{{ post._id }}" target="_blank" class="waves-effect waves-light btn"><i class="fa fa-facebook"></i></a>

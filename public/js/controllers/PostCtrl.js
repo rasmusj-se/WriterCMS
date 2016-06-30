@@ -1,8 +1,11 @@
 var module = angular.module('writer.controllers');
 
 module.controller('PostCtrl', function($scope, PostService) {
+    $scope.loading = true;
+
     PostService.getAllPosts().success(function(response) {
         $scope.posts = response;
+        $scope.loading = false;
     }).error(function(err) {
         $scope.posts = [];
         console.log(err);
