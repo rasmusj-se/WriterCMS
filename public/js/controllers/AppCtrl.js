@@ -1,6 +1,6 @@
 var module = angular.module('writer.controllers');
 
-module.controller('AppCtrl', function($scope) {
+module.controller('AppCtrl', function($scope, AuthService) {
     $scope.settings = {
         site: {
             title: 'Writer'
@@ -17,4 +17,10 @@ module.controller('AppCtrl', function($scope) {
     $scope.$on('newPageLoaded', function(event, metadata) {
         $scope.metadata = metadata;
     });
+
+    $scope.logOut = function() {
+        AuthService.logOut();
+        location.reload();
+        $state.go('base.posts');
+    }
 });
