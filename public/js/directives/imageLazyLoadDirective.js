@@ -3,15 +3,19 @@ var module = angular.module('writer.directives');
 module.directive('imageLazyLoad', function() {
   return {
     restrict: 'A',
-    link: function (scope, element, attrs) {
+    link: function ($scope, element, attrs) {
         var image = element[0];
-        var index = scope.$eval(attrs.imageIndex);
+        var imageIndex = $scope.$eval(attrs.imageIndex);
+        var postIndex = $scope.$eval(attrs.postIndex);
         var src = attrs.imageLazyLoad;
 
         function isVisible(element) {
+            if (postIndex == 0 && imageIndex == 0) {
+                return true;
+            }
+
             var rect = image.getBoundingClientRect();
-            return rect.top >= 0 && rect.left >= 0 &&
-                rect.bottom <= $(window).height();
+            return rect.top >= 0 && rect.left >= 0 && rect.bottom <= $(window).height();
         }
 
         function lazyLoad() {
@@ -24,11 +28,7 @@ module.directive('imageLazyLoad', function() {
         if (!isVisible(image)) {
             document.addEventListener('scroll', lazyLoad);
         } else {
-            if (index == 0) {
-                image.src = src;
-            } else {
-                document.addEventListener('scroll', lazyLoad);
-            }
+            image.src = src;
         }
     }
   };

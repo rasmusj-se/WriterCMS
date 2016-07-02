@@ -94,11 +94,11 @@ module.controller('AdminPostDetailCtrl', function($scope, $state, $stateParams,
         angular.forEach($scope.post.categories, function(category, index) {
             $scope.post.categories[index] = category._id;
         });
-        $scope.loading = true;
+        $scope.loading = false;
         console.log()
     }).error(function(err) {
         $scope.post = {};
-        $scope.loading = true;
+        $scope.loading = false;
         console.log(err);
     });
 });
