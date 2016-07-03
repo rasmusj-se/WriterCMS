@@ -6,10 +6,10 @@ module.controller('NewCategoryCtrl', function($scope, ngDialog, CategoryService)
 
         CategoryService.createCategory(category).success(function(response) {
             $scope.category = {};
-            Materialize.toast('Kategorin är skapad!', 3000);
+            Materialize.toast('Kategorin är skapad!', 2000);
             $('form label').removeClass('active');
         }).error(function(err) {
-            Materialize.toast('Det gick inte att skapa kategorin.', 3000);
+            Materialize.toast('Det gick inte att skapa kategorin.', 2000);
             console.log(err);
         });
     }
@@ -48,20 +48,20 @@ module.controller('AdminCategoryDetailCtrl', function($scope, $stateParams, $sta
 
     $scope.updateCategory = function() {
         CategoryService.updateCategory($scope.category).success(function(response) {
-            Materialize.toast('Kategorin är uppdaterad!', 3000);
+            Materialize.toast('Kategorin är uppdaterad!', 2000);
         }).error(function(err) {
             console.log(err);
-            Materialize.toast('Kategorin kunde inte uppdateras!', 3000);
+            Materialize.toast('Kategorin kunde inte uppdateras!', 2000);
         })
     }
 
     $scope.deleteCategory = function() {            
         CategoryService.deleteCategory($scope.category._id).success(function(response) {
-            Materialize.toast('Kategorin är raderad!', 3000);
+            Materialize.toast('Kategorin är raderad!', 2000);
             $state.go('base.admin.categories');
         }).error(function(err) {
             console.log(err);
-            Materialize.toast('Kategorin kunde inte raderas!', 3000);
+            Materialize.toast('Kategorin kunde inte raderas!', 2000);
         })
     }
 });

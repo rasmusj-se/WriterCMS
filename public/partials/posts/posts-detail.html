@@ -10,13 +10,34 @@
 <spinner></spinner>
 
 <div class="post" ng-show="!loading">
-    <h1 class="post-title">{{ post.title | uppercase }}</h1>
-    <hr class="inline-separator">
-    <p class="post-date">{{ post.date | prettyDate }}</p>
+    <h1 ng-show="!editing" class="post-title">{{ post.title | uppercase }}</h1>
+    
+    <hr class="inline-separator" ng-show="!editing">
+    <p class="post-date" ng-show="!editing">{{ post.date | prettyDate }}</p>
 
-    <a ng-show="authenticated" class="waves-effect waves-light btn"><i class="material-icons left">edit</i>Ändra</a>
+    <a ng-show="authenticated && !editing" ng-click="editing = true" class="waves-effect waves-light btn"><i class="material-icons left">edit</i>Ändra</a>
 
-    <div class="post-content" ng-bind-html="post.content | markdown | trust"></div>
+    <div class="editField">
+        <a ng-show="authenticated && editing" ng-click="updatePost(post)" class="waves-effect waves-light btn"><i class="material-icons left">save</i>Spara</a>
+
+        <a ng-show="authenticated && editing" ng-click="editing = false" class="waves-effect waves-light btn grey"><i class="material-icons left">close</i>Avbryt</a>
+    </div>
+
+    <div class="row editField" ng-show="editing">
+        <div class="input-field col s12">
+          <input type="text" placeholder="Titel" ng-model="post.title" id="postTitle" class="materialize-input editField"></textarea>
+          <label class="active" for="postTitle">Titel</label>
+        </div>
+    </div>
+
+    <div class="row editField" ng-show="editing">
+        <div class="input-field col s12">
+          <textarea ng-model="post.content" placeholder="Innehåll" id="postContent" class="materialize-textarea"></textarea>
+          <label class="active" for="postContent">Innehåll</label>
+        </div>
+    </div>
+
+    <div ng-show="!editing" class="post-content" ng-bind-html="post.content | markdown | trust"></div>
     <div class="post-images" ng-repeat="image in post.images track by $index">
         <img image-lazy-load="{{ image }}" image-index="$index">
     </div>

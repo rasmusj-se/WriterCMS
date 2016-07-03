@@ -1,7 +1,8 @@
 var module = angular.module('writer.controllers');
 
-module.controller('PostCtrl', function($scope, PostService) {
+module.controller('PostCtrl', function($scope, $timeout, PostService) {
     $scope.loading = true;
+    $scope.editing = false;
 
     PostService.getAllPosts().success(function(response) {
         $scope.posts = response;
@@ -11,6 +12,25 @@ module.controller('PostCtrl', function($scope, PostService) {
         $scope.loading = false;
         console.log(err);
     });
+
+    $scope.showEditFields = function() {
+        $scope.editing = true;
+        $('#postContent').trigger('autoresize');
+    }
+
+    $scope.hideEditFields = function() {
+        $scope.editing = false;
+    }
+
+    $scope.updatePost = function(post) {
+        PostService.updatePost(post).success(function(response) {
+            Materialize.toast('Inlägget är uppdaterat!', 2000);
+            $scope.editing = false;
+        }).error(function(err) {
+            console.log(err);
+            Materialize.toast('Inlägget kunde inte uppdateras!', 2000);
+        });
+    }
 });
 
 module.controller('AdminPostCtrl', function($scope, PostService) {
@@ -33,6 +53,7 @@ module.controller('AdminPostCtrl', function($scope, PostService) {
 
 module.controller('PostDetailCtrl', function($scope, $stateParams, PostService) {
     $scope.loading = true;
+    $scope.editing = false;
 
     PostService.getPostByID($stateParams.id).success(function(response) {
         $scope.post = response;
@@ -54,6 +75,25 @@ module.controller('PostDetailCtrl', function($scope, $stateParams, PostService) 
         $scope.loading = false;
         console.log(err);
     });
+
+    $scope.showEditFields = function() {
+        $scope.editing = true;
+        $('#postContent').trigger('autoresize');
+    }
+
+    $scope.hideEditFields = function() {
+        $scope.editing = false;
+    }
+
+    $scope.updatePost = function(post) {
+        PostService.updatePost(post).success(function(response) {
+            Materialize.toast('Inlägget är uppdaterat!', 2000);
+            $scope.editing = false;
+        }).error(function(err) {
+            console.log(err);
+            Materialize.toast('Inlägget kunde inte uppdateras!', 2000);
+        });
+    }
 });
 
 module.controller('AdminPostDetailCtrl', function($scope, $state, $stateParams,
@@ -108,22 +148,7 @@ module.controller('NewPostCtrl', function($scope, $stateParams, $timeout, Catego
     $scope.post = { categories: [] };
 
     $('ul.tabs').tabs();
-
-    $scope.$watch('categories', function() {
-        if ($scope.categories != null) {
-            setTimeout(function() {
-                $('#postCategories').material_select();
-            }, 0);
-        }
-    });
-
-    $scope.$watch('nearbyPlaces', function() {
-        if ($scope.nearbyPlaces != null) {
-            setTimeout(function() {
-                $('#postLocation').material_select();
-            }, 0);
-        }
-    });
+    $('.modal-trigger').leanModal();
     
     LocationService.getCurrentLocation().then(function(location) {
         var geocoder = new google.maps.Geocoder;
@@ -134,6 +159,7 @@ module.controller('NewPostCtrl', function($scope, $stateParams, $timeout, Catego
 
         geocoder.geocode({'location': latLng}, function(results, status) {
             $scope.$apply($scope.nearbyPlaces = results);
+            $scope.$apply($scope.post.location = $scope.nearbyPlaces[0].place_id);
         });
 
     }).catch(function(err) {
@@ -166,25 +192,28 @@ module.controller('NewPostCtrl', function($scope, $stateParams, $timeout, Catego
     }
 
     $scope.submitPost = function() {
+        $scope.uploadingPost = true;
+        $('#createPostModal').openModal();
         var post = { title: $scope.post.title, content: $scope.post.content, images: $scope.images,
             author: localStorage.getItem('userID'), categories: $scope.post.categories };
 
-        for (var i = 0; i < $scope.nearbyPlaces.length; i++) {
-            var place = $scope.nearbyPlaces[i];
-            if (place.place_id == $scope.post.location) {
-                post.location = place;
-                break;
+        if ($scope.post.location != null) {
+            for (var i = 0; i < $scope.nearbyPlaces.length; i++) {
+                var place = $scope.nearbyPlaces[i];
+                if (place.place_id == $scope.post.location) {
+                    post.location = place;
+                    break;
+                }
             }
         }
 
-        // PostService.createPost(post).success(function(response) {
-        //     $scope.post = {};
-        //     $scope.images = [];
-        //     spinner.close();
-        //     ngDialog.open({ template: 'partials/popups/posts/postCreatedSuccess.html', className: 'ngdialog-theme-default' });
-        // }).error(function(err) {
-        //     spinner.close();
-        //     ngDialog.open({ template: 'partials/popups/posts/postCreatedError.html', className: 'ngdialog-theme-default' });
-        // });
+        PostService.createPost(post).success(function(response) {
+            $scope.post = {};
+            $scope.images = [];
+            $scope.uploadingPost = false;
+        }).error(function(err) {
+            console.log(err);
+            $scope.uploadingPost = false;
+        });
     }
 });

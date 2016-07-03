@@ -33,21 +33,21 @@ module.controller('AdminUsersDetailCtrl', function($scope, $state, $stateParams,
 
     $scope.updateUser = function() {
         UserService.updateUser($scope.user).success(function(response) {
-            Materialize.toast('Användaren är uppdaterad!', 3000);
+            Materialize.toast('Användaren är uppdaterad!', 2000);
         }).error(function(err) {
             console.log(err);
-            Materialize.toast('Användaren kunde inte uppdateras!', 3000);
+            Materialize.toast('Användaren kunde inte uppdateras!', 2000);
         })
     }
 
     $scope.deleteUser = function() { 
         console.log('asd');           
         UserService.deleteUser($stateParams.id).success(function(response) {
-            Materialize.toast('Användaren är raderad!', 3000);
+            Materialize.toast('Användaren är raderad!', 2000);
             $state.go('base.admin.users');
         }).error(function(err) {
             console.log(err);
-            Materialize.toast('Användaren kunde inte raderas!', 3000);
+            Materialize.toast('Användaren kunde inte raderas!', 2000);
         })
     }
 });
@@ -59,10 +59,10 @@ module.controller('NewUserCtrl', function($scope, $stateParams, UserService) {
 
         UserService.createUser(user).success(function(response) {
             $scope.user = {};
-            Materialize.toast('Användaren är skapad!', 3000);
+            Materialize.toast('Användaren är skapad!', 2000);
             $('form label').removeClass('active');
         }).error(function(err) {
-            Materialize.toast('Det gick inte att skapa användaren.', 3000);
+            Materialize.toast('Det gick inte att skapa användaren.', 2000);
             console.log(err);
         });
     }

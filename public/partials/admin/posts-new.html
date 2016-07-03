@@ -49,63 +49,69 @@
                 </div>
 
                 <div class="post-content col s6" ng-bind-html="post.content | markdown | trust"></div>
-
             </div>
         </div>
 
-        <div class="row" ng-show="categories.length > 0">
-          <div class="input-field col s12">
-            <select id="postCategories" ng-model="selectedCategories" ng-options="category._id as category.name for category in categories track by category._id" ng-required="true" multiple>
-                <option value="" disabled selected>Välj kategori</option>
-            </select>
-            <label>Kategorier</label>
-          </div>
-        </div>
+        <label>Kategorier</label>
+        <select ng-model="post.categories" ng-required="true" class="browser-default" multiple>
+            <option ng-repeat="category in categories" value="{{ category._id }}">
+                {{ category.name }}
+            </option>
+        </select>
 
-        <div class="row" ng-show="nearbyPlaces.length > 0">
-          <div class="input-field col s12">
-            <select id="postLocation" ng-model="post.location" ng-options="place.place_id as place.formatted_address for place in nearbyPlaces track by place.place_id" multiple>
-                <option value="" disabled selected>Välj plats</option>
-            </select>
-            <label>Plats</label>
-          </div>
-        </div>
+        <label>Plats</label>
+        <select ng-model="post.location" class="browser-default">
+            <option ng-repeat="place in nearbyPlaces" value="{{ place.place_id }}">
+                {{ place.formatted_address }}
+            </option>
+        </select>
 
         <div class="row">
             <form action="#">
-                <div class="file-field input-field">
-                    <div class="btn">
-                        <span>Bilder</span>
-                        <input type="file" multiple>
-                    </div>
-                    <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text" placeholder="Välj en eller flera bilder">
+                <div class="file-field input-field col s12">
+                    <div class="btn center-align">
+                        <span>Lägg till bilder</span>
+                        <input type="file" multiple custom-on-change="renderImages">
                     </div>
                 </div>
             </form>
         </div>
 
         <div class="row">
-            <div class="switch col s6">
-                <label>
-                  <input type="checkbox">
-                  <span class="lever"></span>
-                  Facebook
-                </label>
-            </div>
-            <div class="switch col s6">
-                <label>
-                  <input type="checkbox">
-                  <span class="lever"></span>
-                  Twitter
-                </label>
+            <div class="col s6" ng-repeat="image in images track by $index">
+                <div class="card">
+                    <div class="card-image"><img ng-src="{{ image }}"></div>
+                    <div class="card-action"><a ng-click="removePhoto($index)">Ta bort</a></div>
+                </div>
             </div>
         </div>
 
         <div class="row">
-            <a ng-class="{ disabled: newPostForm.$invalid }" ng-click="submitPost()" class="waves-effect waves-light btn left"><i class="material-icons left">send</i>Skapa</a>
+            <div class="col s12">
+                <a ng-class="{ disabled: newPostForm.$invalid }" ng-click="submitPost()" class="waves-effect waves-light btn left"><i class="material-icons left">send</i>Posta</a>
+            </div>
         </div>
 
       </form>
     </div>
+</div>
+
+<div id="createPostModal" class="modal bottom-sheet">
+  <div class="modal-content">
+    <div ng-show="uploadingPost">
+        <h4>Laddar upp inlägg</h4>
+        <p>Det här kan ta en stund, beroende på internetuppkoppling.</p>
+        <div class="progress">
+            <div class="indeterminate"></div>
+        </div>
+    </div>
+
+    <div ng-show="!uploadingPost">
+        <h4>Klart!</h4>
+        <p>Inägget är nu uppladdat!</p>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a class="modal-action modal-close waves-effect waves-light btn right">Ok</a>
+  </div>
 </div>
