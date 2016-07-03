@@ -1,6 +1,6 @@
 var module = angular.module('writer.controllers');
 
-module.controller('NewCategoryCtrl', function($scope, ngDialog, CategoryService) {
+module.controller('NewCategoryCtrl', function($scope, CategoryService) {
     $scope.createCategory = function() {
         var category = { name: $scope.category.name };
 
@@ -33,8 +33,8 @@ module.controller('AdminCategoriesCtrl', function($scope, CategoryService) {
     }
 });
 
-module.controller('AdminCategoryDetailCtrl', function($scope, $stateParams, $state, CategoryService, ngDialog) {
-    $('.modal-trigger').leanModal();    
+module.controller('AdminCategoryDetailCtrl', function($scope, $stateParams, $state, CategoryService) {
+    $('.modal-trigger').leanModal();   
     $scope.loading = true;
 
     CategoryService.getCategoryByID($stateParams.id).success(function(response) {

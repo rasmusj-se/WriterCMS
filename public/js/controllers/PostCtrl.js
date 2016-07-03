@@ -96,9 +96,11 @@ module.controller('PostDetailCtrl', function($scope, $stateParams, PostService) 
     }
 });
 
-module.controller('AdminPostDetailCtrl', function($scope, $state, $stateParams,
-    ngDialog, CategoryService, PostService) {
+module.controller('AdminPostDetailCtrl', function($scope, $state, $stateParams, CategoryService, PostService) {
     $scope.loading = true;
+
+    $('.modal-trigger').leanModal();
+    $('ul.tabs').tabs();
 
     $scope.removePhoto = function(index) {
         $scope.post.images.splice(index, 1);
@@ -106,21 +108,21 @@ module.controller('AdminPostDetailCtrl', function($scope, $state, $stateParams,
 
     $scope.updatePost = function() {
         PostService.updatePost($scope.post).success(function(response) {
-            ngDialog.open({ template: 'partials/popups/posts/postUpdatedSuccess.html', className: 'ngdialog-theme-default' });
+            Materialize.toast('Inlägget är raderat!', 2000);
         }).error(function(err) {
             console.log(err);
-            ngDialog.open({ template: 'partials/popups/posts/postUpdatedError.html', className: 'ngdialog-theme-default' });
-        })
+            Materialize.toast('Inlägget kunde inte raderas!', 2000);
+        });
     }
 
     $scope.deletePost = function() {
         PostService.deletePost($scope.post._id).success(function(response) {
-            ngDialog.open({ template: 'partials/popups/posts/postDeletedSuccess.html', className: 'ngdialog-theme-default' });
+            Materialize.toast('Inlägget är raderat!', 2000);
             $state.go('base.admin.posts');
         }).error(function(err) {
             console.log(err);
-            ngDialog.open({ template: 'partials/popups/posts/postDeletedError.html', className: 'ngdialog-theme-default' });
-        })
+            Materialize.toast('Inlägget kunde inte raderas!', 2000);
+        });
     }
 
     CategoryService.getAllCategories().success(function(response) {
@@ -143,7 +145,7 @@ module.controller('AdminPostDetailCtrl', function($scope, $state, $stateParams,
     });
 });
 
-module.controller('NewPostCtrl', function($scope, $stateParams, $timeout, CategoryService, LocationService, PostService, ngDialog) {
+module.controller('NewPostCtrl', function($scope, $stateParams, $timeout, CategoryService, LocationService, PostService) {
     $scope.images = [];
     $scope.post = { categories: [] };
 

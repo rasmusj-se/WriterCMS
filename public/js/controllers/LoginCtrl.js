@@ -1,6 +1,6 @@
 var module = angular.module('writer.controllers');
 
-module.controller('LoginCtrl', function($rootScope, $scope, $state, AuthService, ngDialog) {
+module.controller('LoginCtrl', function($rootScope, $scope, $state, AuthService) {
     $scope.logIn = function() {
         var credentials = { username: $scope.username, password: $scope.password };
         AuthService.logIn(credentials).success(function(response) {
