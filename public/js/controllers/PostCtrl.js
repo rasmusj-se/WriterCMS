@@ -107,11 +107,16 @@ module.controller('AdminPostDetailCtrl', function($scope, $state, $stateParams, 
     }
 
     $scope.updatePost = function() {
+        $('#updatePostModal').openModal();
+        $scope.uploadingPost = true;
         PostService.updatePost($scope.post).success(function(response) {
-            Materialize.toast('Inlägget är raderat!', 2000);
+            $scope.uploadingPost = false;
+            $scope.updateSuccess = true;
         }).error(function(err) {
             console.log(err);
-            Materialize.toast('Inlägget kunde inte raderas!', 2000);
+            $scope.uploadingPost = false;
+            $scope.updateSuccess = false;
+            Materialize.toast('Inlägget kunde inte uppdateras!', 2000);
         });
     }
 
@@ -137,7 +142,6 @@ module.controller('AdminPostDetailCtrl', function($scope, $state, $stateParams, 
             $scope.post.categories[index] = category._id;
         });
         $scope.loading = false;
-        console.log()
     }).error(function(err) {
         $scope.post = {};
         $scope.loading = false;
