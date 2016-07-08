@@ -50,9 +50,6 @@
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-        ga('create', 'UA-72529449-3', 'auto');
-        ga('send', 'pageview');
     </script>
 </head>
 <body>
@@ -68,8 +65,8 @@
 
   <ul id="posts-dropdown" class="dropdown-content">
     <li><a ui-sref="base.posts">Alla inlägg</a></li>
-    <li><a ui-sref="base.posts">Kategorier</a></li>
-    <li><a ui-sref="base.posts">Arkiv</a></li>
+    <!-- <li><a ui-sref="base.posts">Kategorier</a></li> -->
+    <!-- <li><a ui-sref="base.posts">Arkiv</a></li> -->
   </ul>
 
   <div class="navbar-fixed">
@@ -92,8 +89,8 @@
                 <div class="collapsible-body">
                   <ul>
                     <li><a ui-sref="base.posts">Alla inlägg</a></li>
-                    <li><a ui-sref="base.posts">Kategorier</a></li>
-                    <li><a ui-sref="base.posts">Arkiv</a></li>
+                    <!-- <li><a ui-sref="base.posts">Kategorier</a></li> -->
+                    <!-- <li><a ui-sref="base.posts">Arkiv</a></li> -->
                   </ul>
                 </div>
               </li>
@@ -128,6 +125,9 @@
 
   <!-- Materialize JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+
+  <script src="https://apis.google.com/js/client.js?onload=authorize"></script>
+
 
   <!-- Google Maps JS -->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXdVPHiF7sEEF-6jirURd23LYutqEhKKk"

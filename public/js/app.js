@@ -1,5 +1,5 @@
 /* Angular init */
-var writer = angular.module('writer', ['ui.router', 'ngDialog', 'angular-loading-bar', 'ngMap',
+var writer = angular.module('writer', ['ui.router', 'angular-loading-bar',
     'writer.controllers', 'writer.services', 'writer.filters', 'writer.directives']);
 
 /* Module setup */
@@ -17,11 +17,11 @@ writer.config(function($stateProvider, $locationProvider, $urlRouterProvider,
 
     /* Crawler magic */
     $locationProvider.hashPrefix('!');
-    $locationProvider.html5Mode(true);
+    // $locationProvider.html5Mode(true);
 
     /* API Base URL */
-    $httpProvider.defaults.base_url = 'https://writer.axelniklasson.se';
-    // $httpProvider.defaults.base_url = 'http://localhost:3000';
+    // $httpProvider.defaults.base_url = 'https://writer.axelniklasson.se';
+    $httpProvider.defaults.base_url = 'http://localhost:3000';
 
     /* Remove spinner */
     cfpLoadingBarProvider.includeSpinner = false;
@@ -128,13 +128,18 @@ writer.config(function($stateProvider, $locationProvider, $urlRouterProvider,
         .state('base.admin.settings', {
             url: '/settings',
             templateUrl: 'partials/admin/settings.html',
+            controller: 'SettingsCtrl',
             authenticate: true
         })
 });
 
+
 /* Adding authentication */
-writer.run(function ($rootScope, $state, AuthService) {
+writer.run(function ($rootScope, $state, $window, $location, AuthService) {
     $rootScope.authenticated = AuthService.isAuthenticated();
+
+    // Initialize Google Analytics
+    $window.ga('create', 'UA-72529449-3', 'auto');
 
     $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
         if (toState.authenticate && !AuthService.isAuthenticated()) {
@@ -146,5 +151,6 @@ writer.run(function ($rootScope, $state, AuthService) {
         if (toState.name === 'base.admin') {
             $state.go('base.admin.dashboard');
         }
+        $window.ga('send', 'pageview', $location.path());
     });
 });
