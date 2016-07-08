@@ -26,7 +26,9 @@ app.use(function(req, res, next) {
 });
 
 app.use(function(req, res, next) {
-    if (req.path !== '/auth/login') {
+    if (req.path === '/comments' || req.path === '/auth/login') {
+        next();
+    } else {
         if (req.method === 'GET') {
             next();
         } else {
@@ -43,14 +45,13 @@ app.use(function(req, res, next) {
                 return res.status(400).send('No token provided.');
             }
         }
-    } else {
-        next();
     }
 });
 
 /* Routing */
 app.use('/auth', require('./app/routes/auth'));
 app.use('/categories', require('./app/routes/categories'));
+app.use('/comments', require('./app/routes/comments'));
 app.use('/dashboard', require('./app/routes/dashboard'));
 app.use('/posts', require('./app/routes/posts'));
 app.use('/stats', require('./app/routes/stats'));

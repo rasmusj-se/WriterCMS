@@ -51,6 +51,31 @@
                 </div>
             </div>
 
+            <div class="post-comments">
+                <div class="post-new-comment">
+                    <a ng-show="!newComment" ng-click="showCommentForm()" class="waves-effect waves-light btn">Lämna en kommentar</a>
+
+                    <div ng-show="newComment">
+                        <div class="row">
+                          <div class="input-field col s12 left-align">
+                            <input ng-required="true" id="comment_name" ng-model="comment.userName" type="text" class="validate">
+                            <label for="comment_name">Ditt namn</label>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s12 left-align">
+                              <textarea id="comment_content" ng-model="comment.content" ng-required="true" class="materialize-textarea validate"></textarea>
+                              <label for="comment_content">Kommentar</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a ng-show="newComment" ng-click="hideCommentForm()" class="waves-effect waves-light btn grey"><i class="material-icons right">close</i>Avbryt</a>
+                    <a ng-show="newComment" ng-click="submitComment(post._id)" class="waves-effect waves-light btn"><i class="material-icons right">send</i>Skicka</a>
+                </div>
+            </div>
+
             <div class="post-share">
 
               <a ng-href="https://www.facebook.com/sharer/sharer.php?u=https://resa.axelniklasson.se/posts/{{ post._id }}" target="_blank" class="waves-effect waves-light btn"><i class="fa fa-facebook"></i></a>

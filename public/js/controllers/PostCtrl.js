@@ -1,8 +1,10 @@
 var module = angular.module('writer.controllers');
 
-module.controller('PostCtrl', function($scope, $timeout, PostService) {
+module.controller('PostCtrl', function($scope, $timeout, PostService, CommentService) {
     $scope.loading = true;
     $scope.editing = false;
+    $scope.newComment = false;
+    $scope.comment = {};
 
     PostService.getAllPosts().success(function(response) {
         $scope.posts = response;
@@ -22,6 +24,14 @@ module.controller('PostCtrl', function($scope, $timeout, PostService) {
         $scope.editing = false;
     }
 
+    $scope.showCommentForm = function() {
+        $scope.newComment = true;
+    }
+
+    $scope.hideCommentForm = function() {
+        $scope.newComment = false;
+    }
+
     $scope.updatePost = function(post) {
         PostService.updatePost(post).success(function(response) {
             Materialize.toast('Inlägget är uppdaterat!', 2000);
@@ -29,6 +39,16 @@ module.controller('PostCtrl', function($scope, $timeout, PostService) {
         }).error(function(err) {
             console.log(err);
             Materialize.toast('Inlägget kunde inte uppdateras!', 2000);
+        });
+    }
+
+    $scope.submitComment = function(postID) {
+        $scope.comment.post = postID;
+        CommentService.submitComment($scope.comment).success(function(response) {
+            Materialize.toast('Din kommentar har postats!', 2000);
+            $scope.newComment = false;
+        }).error(function(err) {
+            Materialize.toast('Din kommentar kunde inte postas!', 2000);
         });
     }
 });
@@ -51,7 +71,7 @@ module.controller('AdminPostCtrl', function($scope, PostService) {
     }
 });
 
-module.controller('PostDetailCtrl', function($scope, $stateParams, PostService) {
+module.controller('PostDetailCtrl', function($scope, $stateParams, PostService, CommentService) {
     $scope.loading = true;
     $scope.editing = false;
 
@@ -92,6 +112,24 @@ module.controller('PostDetailCtrl', function($scope, $stateParams, PostService) 
         }).error(function(err) {
             console.log(err);
             Materialize.toast('Inlägget kunde inte uppdateras!', 2000);
+        });
+    }
+
+    $scope.showCommentForm = function() {
+        $scope.newComment = true;
+    }
+
+    $scope.hideCommentForm = function() {
+        $scope.newComment = false;
+    }
+
+    $scope.submitComment = function(postID) {
+        $scope.comment.post = postID;
+        CommentService.submitComment($scope.comment).success(function(response) {
+            Materialize.toast('Din kommentar har postats!', 2000);
+            $scope.newComment = false;
+        }).error(function(err) {
+            Materialize.toast('Din kommentar kunde inte postas!', 2000);
         });
     }
 });
