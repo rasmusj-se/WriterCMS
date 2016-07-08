@@ -1,5 +1,5 @@
 /* Angular init */
-var writer = angular.module('writer', ['ui.router', 'angular-loading-bar', 'cp.ng.fix-image-orientation',
+var writer = angular.module('writer', ['ui.router', 'angular-loading-bar',
     'writer.controllers', 'writer.services', 'writer.filters', 'writer.directives']);
 
 /* Module setup */
