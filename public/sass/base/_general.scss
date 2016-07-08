@@ -1,36 +1,13 @@
-html {
-    min-height: 100%;
-    position: relative;
+p {
+	font-weight: 300;
 }
 
-body {
-    height: 100%;
+h4.heading {
+	font-weight: 300;
+	text-align: center;
+	margin: 5% auto;
 }
 
-p, h1, h2, h3, h4, a {
-  font-weight: 300;
-}
-
-a, a:link, a:hover, a:active {
-    text-decoration: none;
-}
-
-.main-content {
-    padding-top: 50px;
-    text-align: center;
-}
-
-.back {
-    padding-left: 5%;
-    margin-top: 20px;
-    text-align: left;
-    font-size: $font-size-mobile;
-}
-
-.admin {
-    padding: 5%;
-
-    .back {
-        padding-left: 0;
-    }
+.container .row {
+	margin: 5% auto;
 }

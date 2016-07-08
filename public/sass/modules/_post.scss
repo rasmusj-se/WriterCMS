@@ -1,8 +1,16 @@
+.spinner-wrapper {
+    width: 100% !important;
+    text-align: center;
+    padding-top: 50%;
+}
+
 .post {
+    text-align: center;
 
     h1 {
         color: black;
         font-weight: 200;
+        font-size: 2em;
     }
 
     .post-date {
@@ -41,14 +49,13 @@
     }
 
     .post-footer {
-        margin-top: 30px;
         font-style: italic;
         font-size: 110%;
         font-weight: 300;
 
-        .post-location {
+        .post-location, .post-categories {
             max-width: 80%;
-            margin: auto;
+            margin: 10px auto;
 
             i {
                 color: $primary-color;
@@ -64,17 +71,10 @@
 
     .post-share {
         padding: 30px;
-    }
 
-    .post-share ul {
-        text-align: center !important;
-    }
-
-    .post-share li {
-        margin: auto;
-        display: inline-block;
-        float: none;
-        max-width: 40px;
+        a {
+            margin: 1.5%;
+        }
     }
 
     pre {
@@ -85,6 +85,10 @@
             background-color: #f9f2f4;
         }
 
+    }
+
+    .editField {
+        margin: 5% auto;
     }
 }
 

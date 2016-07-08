@@ -1,11 +1,24 @@
-<div class="admin text-center login">
-    <h1 class="heading center">Admin</h1>
-    <hr class="heading">
-    <form id="loginForm">
-        <input ng-model="username" type="text" placeholder="Användarnamn">
-        <input ng-model="password" type="password" placeholder="Lösenord">
-        <button ng-click="logIn()">Logga in</button>
+<div class="container">
+  <div class="row">
+    <h4 class="heading" class="center-aligned">Admin</h4>
+    <form class="col s12" name="newPostForm">
+      <div class="row">
+        <div class="input-field col s12">
+          <input ng-required="true" id="post_title" ng-model="username" type="text" class="validate">
+          <label for="post_title">Användarnamn</label>
+        </div>
+
+        <div class="input-field col s12">
+          <input ng-required="true" id="post_title" ng-model="password" type="password" class="validate">
+          <label for="post_title">Lösenord</label>
+        </div>
+
+        <div class="col s12">
+        	<button class="waves-effect waves-light btn left-aligned" ng-click="logIn()">Logga in</button>
+        </div>
+      </div>
     </form>
+  </div>
 </div>
 
 <div ui-view></div>

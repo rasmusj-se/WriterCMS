@@ -139,7 +139,7 @@ router.delete('/:id', function(req, res) {
     Post.findOne({_id: ID}, function(err, post) {
         post.remove(function(err) {
             if (err) {
-                res.status(500).send('Could not remove post. Error: ' + err);
+                res.status(500).send('Could not delete post. Error: ' + err);
             } else {
                 res.status(200).send('Post deleted.');
             }

@@ -1,54 +1,68 @@
-<div class="dashboard text-center">
-    <h1 class="heading center">Dashboard</h1>
-    <hr class="heading">
+<div>
+    <nav class="light-blue">
+        <div class="nav-wrapper">
+          <div class="col s12">
+            <a ui-sref="base.admin" class="breadcrumb">Admin</a>
+            <a ui-sref="base.admin.dashboard" class="breadcrumb">Dashboard</a>
+          </div>
+        </div>
+    </nav>
 
-    <div class="container">
+    <spinner></spinner>
+
+    <div class="container" ng-show="status">
         <div class="row">
-            <div class="col-lg-3 col-md-6 col-xs-6">
-                <div class="dashboard-status-item">
-                    <i class="fa fa-users fa-3x"></i>
-                    <span>{{ status.views }}</span>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-xs-6">
-                <div class="dashboard-status-item">
-                    <i class="fa fa-comments fa-3x"></i>
-                    <span>{{ status.comments }}</span>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-xs-6" ui-sref="base.admin.posts">
-                <div class="dashboard-status-item">
-                    <i class="fa fa-edit fa-3x"></i>
-                    <span>{{ status.posts }}</span>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-xs-6" ui-sref="base.admin.categories">
-                <div class="dashboard-status-item">
-                    <i class="fa fa-tags fa-3x"></i>
-                    <span>{{ status.categories }}</span>
-                </div>
-            </div>
+          <div class="collection">
+            <a ui-sref="base.admin.posts" class="collection-item">Inlägg<span class="badge">{{ status.posts }}</span></a>
+            <a ui-sref="base.admin.categories" class="collection-item">Kategorier<span class="badge">{{ status.categories }}</span></a>
+            <a ui-sref="base.admin.users" class="collection-item">Användare<span class="badge">{{ status.users }}</span></a>
+            <a class="collection-item">Kommentarer<span class="badge">0</span></a>
+          </div>
         </div>
 
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1">
-                <h3>Senaste inlägget</h3>
-                <p>{{ lastPost.author.firstName }} postade det senaste inlägget,
-                    <a ui-sref="base.postdetail({ id: lastPost._id })">{{ lastPost.title }}</a>, för {{ lastPost.date | timeSince }} sedan.
-                Inlägget kategoriserades som
-                    <span ng-repeat="cat in lastPost.categories track by $index">
-                        {{ cat.name }}<span ng-show="$index < lastPost.categories.length - 2">, </span>.
-                </p>
+            <div class="col s12 m12 l6">
+                <div class="card">
+                    <div class="card-content">
+                        <h4>Läsare</h4>
+                        <p>Bloggen är nu uppe i 1337 läsare. Information hämtad från Google Analytics.</p>
+                    </div>
+                    <div class="card-action">
+                        <a>Läs mer</a>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1">
-                <h3>Statistik</h3>
-                <p>Det postas ungefär {{ stats.postsPerDay }} inlägg per dag som i snitt har {{ stats.avgNbrCategories }} kategorier.
+            <div class="col s12 m12 l6">
+                <div class="card">
+                    <div class="card-content">
+                        <h4>Senaste inlägget</h4>
+                        <p>{{ lastPost.author.firstName }} postade det senaste inlägget,
+                            <a ui-sref="base.postdetail({ id: lastPost._id })">{{ lastPost.title }}</a>, för {{ lastPost.date | timeSince }} sedan.
+                        Inlägget kategoriserades som
+                            <span ng-repeat="cat in lastPost.categories track by $index">
+                                {{ cat.name }}<span ng-show="$index < lastPost.categories.length - 2">, </span>.
+                        </p>
+                    </div>
+                    <div class="card-action">
+                        <a ui-sref="base.postdetail({ id: lastPost._id })">Gå till inlägget</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col s12 m12 l6">
+                <div class="card">
+                    <div class="card-content">
+                        <h4>Statistik</h4>
+                        <p>Det postas ungefär {{ stats.postsPerDay }} inlägg per dag som i snitt har {{ stats.avgNbrCategories }} kategorier.
                     Den flitigaste bloggaren heter {{ stats.topWriter.name }} och har skrivit {{ stats.topWriter.share * 100 }}% av
                 alla inlägg.</p>
+                    </div>
+                    <div class="card-action">
+                        <a>Mer statistik</a>
+                    </div>
+                </div>
             </div>
-        </div>
+
     </div>
 </div>
