@@ -33,7 +33,7 @@
 
             <div ng-show="!editing" class="post-content" ng-bind-html="post.content | markdown | trust"></div>
             <div class="post-images" ng-repeat="image in post.images track by $index">
-                <img image-lazy-load="{{ image }}" image-index="$index" post-index="$parent.$index">
+                <img image-lazy-load="{{ image }}" img-fix-orientation="image" image-index="$index" post-index="$parent.$index">
             </div>
 
             <div class="post-footer">

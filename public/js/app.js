@@ -1,5 +1,5 @@
 /* Angular init */
-var writer = angular.module('writer', ['ui.router', 'angular-loading-bar',
+var writer = angular.module('writer', ['ui.router', 'angular-loading-bar', 'cp.ng.fix-image-orientation',
     'writer.controllers', 'writer.services', 'writer.filters', 'writer.directives']);
 
 /* Module setup */
@@ -17,7 +17,7 @@ writer.config(function($stateProvider, $locationProvider, $urlRouterProvider,
 
     /* Crawler magic */
     $locationProvider.hashPrefix('!');
-    $locationProvider.html5Mode(true);
+    // $locationProvider.html5Mode(true);
 
     /* API Base URL */
     $httpProvider.defaults.base_url = 'https://writer.axelniklasson.se';
