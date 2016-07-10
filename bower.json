@@ -19,6 +19,7 @@
     "angular-loading-bar": "^0.9.0",
     "rrssb": "^1.10.0",
     "ngmap": "^1.17.3",
-    "ngAnalytics": "nganalytics#^1.1.4"
+    "ngAnalytics": "nganalytics#^1.1.4",
+    "jquery": "^3.1.0"
   }
 }
