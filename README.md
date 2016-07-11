@@ -1,4 +1,7 @@
 # Writer
+
+[![GitHub issues](https://img.shields.io/github/issues/badges/shields.svg?maxAge=2592000)]()
+
 Clean, extremely simple writing tool for developers.
 
 ## Purpose
