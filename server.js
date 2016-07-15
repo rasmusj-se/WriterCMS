@@ -49,6 +49,7 @@ app.use(function(req, res, next) {
 });
 
 /* Routing */
+app.use('/', require('./app/routes/base'));
 app.use('/auth', require('./app/routes/auth'));
 app.use('/categories', require('./app/routes/categories'));
 app.use('/dashboard', require('./app/routes/dashboard'));
