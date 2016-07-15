@@ -1,4 +1,7 @@
 # Writer
+[![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
+[![GitHub issues](https://img.shields.io/github/issues/axelniklasson/WriterCMS.svg)](https://github.com/axelniklasson/WriterCMS/issues)
+
 Clean, extremely simple writing tool for developers.
 
 ## Purpose
@@ -15,7 +18,7 @@ Writer is intended to be used by me and my friend while backpacking in South-Eas
 - [x] Attaching images to posts, which are displayed inline after each post.
 - [x] Categories
 - [x] Share specific posts to FB, Twitter and G+ while implementing Open Graph Protocol to enable Rich Sharing
-- [ ] Designed according to Material Design
+- [x] Designed according to Material Design
 - [ ] Fully responsive - all types of devices should be supported.
 - [ ] Making it possible for readers to comment on posts.
 - [ ] Facebook (and possibly Twitter) integration, to enable auto-sharing when publishing posts
