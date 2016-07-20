@@ -1,5 +1,5 @@
 # Writer
-![WriterCMS logo](https://storage.googleapis.com/writer-images/writercms_logo.png)
+![WriterCMS logo](https://storage.googleapis.com/writer-images/logo.png)
 
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 [![GitHub issues](https://img.shields.io/github/issues/axelniklasson/WriterCMS.svg)](https://github.com/axelniklasson/WriterCMS/issues)
