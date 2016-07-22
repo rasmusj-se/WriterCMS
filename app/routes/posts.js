@@ -8,6 +8,8 @@ var gcloud = require('gcloud');
 var google = require('googleapis');
 var config = require('../../config/gcloud.js');
 var stream = require('stream');
+var url = require("url");
+var path = require("path");
 var CLOUD_BUCKET = config.GCLOUD_BUCKET;
 
 /* Get all posts */
@@ -141,6 +143,33 @@ router.delete('/:id', function(req, res) {
             if (err) {
                 res.status(500).send('Could not delete post. Error: ' + err);
             } else {
+                google.auth.getApplicationDefault(function (err, authClient) {
+                        if (err) {
+                        console.log(err);
+                    } else {
+                        if (authClient.createScopedRequired &&
+                            authClient.createScopedRequired()) {
+                        authClient = authClient.createScoped(
+                            ['https://www.googleapis.com/auth/devstorage.read_write']);
+                        }
+
+                        var storage = gcloud.storage({
+                            projectId: config.GCLOUD_PROJECT,
+                            auth: authClient
+                        });
+                        
+                        var bucket = storage.bucket(CLOUD_BUCKET);
+                        
+                        post.images.forEach(function(link) {
+                            var parsedUrl = url.parse(link);
+                            var fileName = path.basename(parsedUrl.pathname);
+                            bucket.file(fileName).delete(function(err, apiResponse) {
+                                if (err != null)
+                                    console.log("Deletion of GCS file " + fileName + "failed.");
+                            });
+                        }, this);
+                    }
+                });
                 res.status(200).send('Post deleted.');
             }
         });
